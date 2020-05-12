@@ -16,7 +16,7 @@
             <StackPanel Orientation="Horizontal">
                 <Image Height="50" Width="100" Source="Resourses/wslogo.png"></Image>
                 <Button x:Name="BtnBack" Click="BtnBack_Click" Margin="5" Width="70" Height="30">Back</Button>
-                <TextBlock Foreground="White" Margin="15" VerticalAlignment="Center" Style="{StaticResource StyleTblTitle}">Worldskills China Competition 2016</TextBlock>
+                <TextBlock Foreground="White" Margin="15" VerticalAlignment="Center" Style="{StaticResource StyleTblTitle}">Worldskills China Competition 2021</TextBlock>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Background="{StaticResource MyBlue}">

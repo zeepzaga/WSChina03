@@ -17,9 +17,9 @@
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Image Height="150" Width="150" Source="/WSChina2020AppComp03;component/Resourses/wslogo.png" ></Image>
                 <StackPanel>
-                    <TextBlock FontSize="34" TextWrapping="Wrap" Foreground="White" Width="400" TextAlignment="Center" Style="{StaticResource StyleTblTitle}">Skills Competition Managment System 2016</TextBlock>
+                    <TextBlock FontSize="34" TextWrapping="Wrap" Foreground="White" Width="400" TextAlignment="Center" Style="{StaticResource StyleTblTitle}">Skills Competition Managment System 2021</TextBlock>
                     <TextBlock Margin="0" HorizontalAlignment="Center" Style="{StaticResource StyleTblTitle}">Shang Hai, China</TextBlock>
-                    <TextBlock Margin="0" HorizontalAlignment="Center" Style="{StaticResource StyleTblTitle}">Saturday August 13 2016</TextBlock>
+                    <TextBlock Margin="0" HorizontalAlignment="Center" Style="{StaticResource StyleTblTitle}">Tuesday September 23 2016</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Grid>
