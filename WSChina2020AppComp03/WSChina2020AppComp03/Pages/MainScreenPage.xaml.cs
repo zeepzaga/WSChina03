@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WSChina2020AppComp03.Entities;
 
 namespace WSChina2020AppComp03.Pages
 {
@@ -23,6 +24,11 @@ namespace WSChina2020AppComp03.Pages
         public MainScreenPage()
         {
             InitializeComponent();
+        }
+
+        private void BtnAboutWs_Click(object sender, RoutedEventArgs e)
+        {
+            AppData.MainFrame.Navigate(new AboutWorldskillsPage());
         }
     }
 }

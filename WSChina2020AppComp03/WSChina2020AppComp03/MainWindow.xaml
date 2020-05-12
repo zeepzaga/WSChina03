@@ -14,13 +14,13 @@
         </Grid.RowDefinitions>
         <Grid Background="{StaticResource MyBlue}">
             <StackPanel Orientation="Horizontal">
-                <Image Height="50" Width="150" Source="Resourses/wslogo.png"></Image>
-                <Button Width="70" Height="30">Back</Button>
+                <Image Height="50" Width="100" Source="Resourses/wslogo.png"></Image>
+                <Button x:Name="BtnBack" Click="BtnBack_Click" Margin="5" Width="70" Height="30">Back</Button>
                 <TextBlock Foreground="White" Margin="15" VerticalAlignment="Center" Style="{StaticResource StyleTblTitle}">Worldskills China Competition 2016</TextBlock>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Background="{StaticResource MyBlue}">
-            <TextBlock HorizontalAlignment="Center" Foreground="White" Style="{StaticResource StyleTbBody}">380 дней 1 час 1 минута и 20 секунд до начала</TextBlock>
+            <TextBlock x:Name="TblTimer" HorizontalAlignment="Center" Foreground="White" Style="{StaticResource StyleTbBody}"></TextBlock>
         </Grid>
         <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
     </Grid>

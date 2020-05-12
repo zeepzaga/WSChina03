@@ -72,6 +72,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HistoryOfWsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -80,6 +84,9 @@
   <ItemGroup>
     <Compile Include="Pages\AboutWorldskillsPage.xaml.cs">
       <DependentUpon>AboutWorldskillsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HistoryOfWsPage.xaml.cs">
+      <DependentUpon>HistoryOfWsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainScreenPage.xaml.cs">
       <DependentUpon>MainScreenPage.xaml</DependentUpon>
@@ -111,6 +118,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resourses\wslogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\albert.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\firstcomp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\board.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resourses\wslogodark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
