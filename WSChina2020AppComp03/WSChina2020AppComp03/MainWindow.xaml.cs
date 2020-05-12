@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WSChina2020AppComp03.Entities;
+using WSChina2020AppComp03.Pages;
 
 namespace WSChina2020AppComp03
 {
@@ -23,6 +25,17 @@ namespace WSChina2020AppComp03
         public MainWindow()
         {
             InitializeComponent();
+            AppData.MainFrame = MainFrame;
+            AppData.MainFrame.Navigate(new MainScreenPage());
+        }
+
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            var title = (AppData.MainFrame.Content as Page).Title;
+            if (title == "MainScreenPage")
+            {
+                MainGrid.RowDefinitions[0].Height = new GridLength(0);
+            }
         }
     }
 }

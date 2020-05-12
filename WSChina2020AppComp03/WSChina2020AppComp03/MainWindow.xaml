@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WSChina2020AppComp03"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="500" Width="800" MinHeight="500" MinWidth="800">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="{StaticResource MyBlue}">
+            <StackPanel Orientation="Horizontal">
+                <Image Height="50" Width="150" Source="Resourses/wslogo.png"></Image>
+                <Button Width="70" Height="30">Back</Button>
+                <TextBlock Foreground="White" Margin="15" VerticalAlignment="Center" Style="{StaticResource StyleTblTitle}">Worldskills China Competition 2016</TextBlock>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2" Background="{StaticResource MyBlue}">
+            <TextBlock HorizontalAlignment="Center" Foreground="White" Style="{StaticResource StyleTbBody}">380 дней 1 час 1 минута и 20 секунд до начала</TextBlock>
+        </Grid>
+        <Frame Grid.Row="1" x:Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
     </Grid>
 </Window>
