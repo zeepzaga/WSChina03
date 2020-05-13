@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WSChina2020AppComp03.Entities;
 
 namespace WSChina2020AppComp03.Pages
 {
@@ -23,6 +24,27 @@ namespace WSChina2020AppComp03.Pages
         public CompetitionWsPage()
         {
             InitializeComponent();
+            try
+            {
+                TvICompetition.ItemsSource = AppData.Context.CategoryOfCompetitions.ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Connecting to the database error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void TvCompetition_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            try
+            {
+            TblDescription.Text = (TvCompetition.SelectedItem as Competition).Description;
+                Scroll.ScrollToTop();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

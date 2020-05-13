@@ -64,6 +64,7 @@ namespace WSChina2020AppComp03.Pages
                 default:
                     break;
             }
+            Scroll.ScrollToTop();
         }
     }
 }

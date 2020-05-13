@@ -17,11 +17,30 @@
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="10">
-            <TreeView Margin="5">
-                 
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Margin="5">
+            <TreeView  Margin="5 10" Background="Transparent" Name="TvCompetition" BorderThickness="0" SelectedItemChanged="TvCompetition_SelectedItemChanged">
+                <TreeViewItem Name="TvICompetition">
+                    <TreeViewItem.Header>
+                        <TextBlock FontSize="14" Style="{StaticResource StyleTbBody}" Text="All Fields"></TextBlock>
+                    </TreeViewItem.Header>
+                    <TreeViewItem.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Competitions}">
+                            <TextBlock FontSize="14" Style="{StaticResource StyleTbBody}" Text="{Binding Name}"></TextBlock>
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="14" Style="{StaticResource StyleTbBody}" Text="{Binding Name}"></TextBlock>
+                                </DataTemplate>
+                            </HierarchicalDataTemplate.ItemTemplate>
+                        </HierarchicalDataTemplate>
+                    </TreeViewItem.ItemTemplate>
+                </TreeViewItem>
             </TreeView>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="1" Margin="10"></Border>
+        <Border BorderBrush="Black" BorderThickness="2" Grid.Row="1" Grid.Column="1" Margin="5">
+            <ScrollViewer x:Name="Scroll">
+                <TextBlock Margin="20" x:Name="TblDescription" TextWrapping="Wrap" Style="{StaticResource StyleTbBody}"></TextBlock>
+            </ScrollViewer>
+        </Border>
+        <TextBlock Margin="15" Style="{StaticResource StyleTblTitle}" Text="Competition Skills" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
     </Grid>
 </Page>

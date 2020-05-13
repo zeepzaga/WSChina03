@@ -34,8 +34,8 @@
             </Viewbox>
         </Border>
         <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="2" Margin="10">
-            <ScrollViewer>
-                <TextBlock x:Name="TblDescription" TextWrapping="Wrap" Style="{StaticResource StyleTbBody}"></TextBlock>
+            <ScrollViewer x:Name="Scroll">
+                <TextBlock Margin="30" x:Name="TblDescription" TextWrapping="Wrap" Style="{StaticResource StyleTbBody}"></TextBlock>
             </ScrollViewer>
         </Border>
         <TextBlock Margin="15" Style="{StaticResource StyleTblTitle}" Text="History of Worldskills" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
