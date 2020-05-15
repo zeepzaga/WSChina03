@@ -9,6 +9,27 @@
       Title="ReviousCompetitionPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Grid.Row="1" Margin="15" Style="{StaticResource StyleTblTitle}" Text="Previous Competition" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource StyleTbBody}" Text="Ordinal №:"></TextBlock>
+                    <ComboBox LostFocus="CbOrdinal_LostFocus" IsTextSearchCaseSensitive="True" StaysOpenOnEdit="True" IsEditable="True" IsTextSearchEnabled="False" TextBoxBase.TextChanged="CbOrdinal_TextChanged" TextBoxBase.SelectionChanged="CbOrdinal_SelectionChanged" Name="CbOrdinal" DisplayMemberPath="Ordinal"></ComboBox>
+                <TextBlock Margin="40 5 5 5" Style="{StaticResource StyleTbBody}" Text="City, Country"></TextBlock>
+                <ComboBox LostFocus="CbCity_LostFocus" IsTextSearchCaseSensitive="True" StaysOpenOnEdit="True" IsEditable="True" IsTextSearchEnabled="False" TextBoxBase.TextChanged="CbCity_TextChanged" TextBoxBase.SelectionChanged="CbCity_SelectionChanged" Name="CbCity" DisplayMemberPath="TownOfCountry"></ComboBox>
+                <Button x:Name="BtnSearch" Click="BtnSearch_Click" Margin="15 5 5 5" Height="25" Width="100">Search</Button>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid Margin="10" IsReadOnly="True" x:Name="DgComp" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ordinal №" Width="0.5*" Binding="{Binding Ordinal}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Year" Width="*" Binding="{Binding Year}"></DataGridTextColumn>
+                <DataGridTextColumn Header="City, Country" Width="2*" Binding="{Binding TownPartial}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Number of mumber" Width="1.5*" Binding="{Binding MemberNumber}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

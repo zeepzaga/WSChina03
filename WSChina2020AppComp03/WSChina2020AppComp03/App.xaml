@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:WSChina2020AppComp03"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <SolidColorBrush x:Key="MyBlue" Color="#FF6995C2"></SolidColorBrush>
+        <SolidColorBrush x:Key="MyBlue" Color="DarkRed"></SolidColorBrush>
         <Style TargetType="TextBlock" x:Key="StyleTblTitle">
             <Setter Property="FontFamily" Value="Calibri"></Setter>
             <Setter Property="FontSize" Value="24"></Setter>
@@ -17,11 +17,18 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="150"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
         </Style>
         <Style TargetType="PasswordBox">
             <Setter Property="Width" Value="150"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
         </Style>
         <Style TargetType="Image">
             <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"></Setter>
@@ -47,6 +54,7 @@
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
         <Style TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>

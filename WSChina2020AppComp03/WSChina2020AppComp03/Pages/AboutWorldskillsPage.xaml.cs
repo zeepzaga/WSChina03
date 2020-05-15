@@ -50,7 +50,7 @@ namespace WSChina2020AppComp03.Pages
         /// <param name="e"></param>
         private void BtnPrCom_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("This page is under construction", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            AppData.MainFrame.Navigate(new ReviousCompetitionPage());
         }
     }
 }

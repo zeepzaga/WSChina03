@@ -21,6 +21,22 @@
           <Property Name="CategoryOfCompetitionId" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreviousCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="TownId" Type="int" Nullable="false" />
+          <Property Name="MemberNumber" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -30,6 +46,14 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Town">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Competition_CategoryOfCompetition">
           <End Role="CategoryOfCompetition" Type="Self.CategoryOfCompetition" Multiplicity="1" />
@@ -43,13 +67,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PreviousCompetition_Town">
+          <End Role="Town" Type="Self.Town" Multiplicity="1" />
+          <End Role="PreviousCompetition" Type="Self.PreviousCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreviousCompetition">
+              <PropertyRef Name="TownId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Town_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Town" Type="Self.Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Town">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище WSChina2020BaseComp03ModelContainer">
           <EntitySet Name="CategoryOfCompetition" EntityType="Self.CategoryOfCompetition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreviousCompetition" EntityType="Self.PreviousCompetition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="Self.FK_Competition_CategoryOfCompetition">
             <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetition" />
             <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreviousCompetition_Town" Association="Self.FK_PreviousCompetition_Town">
+            <End Role="Town" EntitySet="Town" />
+            <End Role="PreviousCompetition" EntitySet="PreviousCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Town_Country" Association="Self.FK_Town_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Town" EntitySet="Town" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -59,10 +118,21 @@
         <EntityContainer Name="WSChina2020BaseComp03Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CategoryOfCompetitions" EntityType="WSChina2020BaseComp03Model.CategoryOfCompetition" />
           <EntitySet Name="Competitions" EntityType="WSChina2020BaseComp03Model.Competition" />
+          <EntitySet Name="Countries" EntityType="WSChina2020BaseComp03Model.Country" />
+          <EntitySet Name="PreviousCompetitions" EntityType="WSChina2020BaseComp03Model.PreviousCompetition" />
           <EntitySet Name="sysdiagrams" EntityType="WSChina2020BaseComp03Model.sysdiagram" />
+          <EntitySet Name="Towns" EntityType="WSChina2020BaseComp03Model.Town" />
           <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition">
             <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetitions" />
             <End Role="Competition" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Town_Country" Association="WSChina2020BaseComp03Model.FK_Town_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Town" EntitySet="Towns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreviousCompetition_Town" Association="WSChina2020BaseComp03Model.FK_PreviousCompetition_Town">
+            <End Role="Town" EntitySet="Towns" />
+            <End Role="PreviousCompetition" EntitySet="PreviousCompetitions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="CategoryOfCompetition">
@@ -83,6 +153,24 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CategoryOfCompetition" Relationship="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition" FromRole="Competition" ToRole="CategoryOfCompetition" />
         </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Towns" Relationship="WSChina2020BaseComp03Model.FK_Town_Country" FromRole="Country" ToRole="Town" />
+        </EntityType>
+        <EntityType Name="PreviousCompetition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
+          <Property Name="TownId" Type="Int32" Nullable="false" />
+          <Property Name="MemberNumber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Town" Relationship="WSChina2020BaseComp03Model.FK_PreviousCompetition_Town" FromRole="PreviousCompetition" ToRole="Town" />
+        </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -92,6 +180,16 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Town">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp03Model.FK_Town_Country" FromRole="Town" ToRole="Country" />
+          <NavigationProperty Name="PreviousCompetitions" Relationship="WSChina2020BaseComp03Model.FK_PreviousCompetition_Town" FromRole="Town" ToRole="PreviousCompetition" />
         </EntityType>
         <Association Name="FK_Competition_CategoryOfCompetition">
           <End Type="WSChina2020BaseComp03Model.CategoryOfCompetition" Role="CategoryOfCompetition" Multiplicity="1" />
@@ -105,7 +203,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Town_Country">
+          <End Type="WSChina2020BaseComp03Model.Country" Role="Country" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Town" Role="Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Town">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreviousCompetition_Town">
+          <End Type="WSChina2020BaseComp03Model.Town" Role="Town" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.PreviousCompetition" Role="PreviousCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreviousCompetition">
+              <PropertyRef Name="TownId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -129,6 +251,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreviousCompetitions">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.PreviousCompetition">
+              <MappingFragment StoreEntitySet="PreviousCompetition">
+                <ScalarProperty Name="MemberNumber" ColumnName="MemberNumber" />
+                <ScalarProperty Name="TownId" ColumnName="TownId" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -137,6 +277,15 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Towns">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Town">
+              <MappingFragment StoreEntitySet="Town">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

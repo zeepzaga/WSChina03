@@ -79,6 +79,9 @@
     <Compile Include="Entities\Competition.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Country.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\DataBase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,9 +97,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\PreviousCompetition.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PreviousCompetitionPartial.cs" />
     <Compile Include="Entities\sysdiagram.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Town.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TownPartial.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -16,6 +16,22 @@
     <Property Name="CategoryOfCompetitionId" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PreviousCompetition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="TownId" Type="int" Nullable="false" />
+    <Property Name="MemberNumber" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -25,6 +41,14 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Town">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Competition_CategoryOfCompetition">
     <End Role="CategoryOfCompetition" Type="Self.CategoryOfCompetition" Multiplicity="1" />
@@ -38,13 +62,48 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PreviousCompetition_Town">
+    <End Role="Town" Type="Self.Town" Multiplicity="1" />
+    <End Role="PreviousCompetition" Type="Self.PreviousCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Town">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PreviousCompetition">
+        <PropertyRef Name="TownId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Town_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Town" Type="Self.Town" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Town">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище WSChina2020BaseComp03ModelContainer">
     <EntitySet Name="CategoryOfCompetition" EntityType="Self.CategoryOfCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PreviousCompetition" EntityType="Self.PreviousCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="Self.FK_Competition_CategoryOfCompetition">
       <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetition" />
       <End Role="Competition" EntitySet="Competition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PreviousCompetition_Town" Association="Self.FK_PreviousCompetition_Town">
+      <End Role="Town" EntitySet="Town" />
+      <End Role="PreviousCompetition" EntitySet="PreviousCompetition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Town_Country" Association="Self.FK_Town_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Town" EntitySet="Town" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
