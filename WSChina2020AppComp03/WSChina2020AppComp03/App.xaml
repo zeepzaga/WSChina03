@@ -19,16 +19,26 @@
             <Setter Property="Width" Value="150"></Setter>
             <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="Width" Value="150"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+
         </Style>
         <Style TargetType="PasswordBox">
             <Setter Property="Width" Value="150"></Setter>
             <Setter Property="Margin" Value="5"></Setter>
             <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
         </Style>
         <Style TargetType="Image">
             <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"></Setter>
@@ -54,6 +64,7 @@
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
         <Style TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="FontSize" Value="18"></Setter>
             <Setter Property="FontFamily" Value="Microsoft Sans Serif"></Setter>
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>

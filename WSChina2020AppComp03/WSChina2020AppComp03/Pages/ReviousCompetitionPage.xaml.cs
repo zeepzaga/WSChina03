@@ -21,26 +21,39 @@ namespace WSChina2020AppComp03.Pages
     /// </summary>
     public partial class ReviousCompetitionPage : Page
     {
-        private List<PreviousCompetition> _previousCompList = AppData.Context.PreviousCompetitions.ToList();
-        private List<Town> _TownList = AppData.Context.Towns.ToList();
+        private List<PreviousCompetition> _previousCompList = new List<PreviousCompetition>();
+        private List<Town> _TownList = new List<Town>();
         public ReviousCompetitionPage()
         {
             InitializeComponent();
+            try
+            {
+                _previousCompList = AppData.Context.PreviousCompetitions.ToList();
+                _TownList = AppData.Context.Towns.ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Connecting to the database error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             DgComp.ItemsSource = _previousCompList;
             CbOrdinal.ItemsSource = _previousCompList;
             CbCity.ItemsSource = _TownList;
         }
+        /// <summary>
+        /// Обработка ввода текста в комбобокса для поиска.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CbOrdinal_TextChanged(object sender, TextChangedEventArgs e)
         {
             CbOrdinal.ItemsSource = _previousCompList.Where(p => p.Ordinal.Contains(CbOrdinal.Text)).ToList();
             CbOrdinal.IsDropDownOpen = true;
         }
-
-        private void CbOrdinal_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Обработка выхода из поля для поиска и подстановка первого попавшегося элемента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CbOrdinal_LostFocus(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrWhiteSpace(CbOrdinal.Text))
@@ -52,18 +65,21 @@ namespace WSChina2020AppComp03.Pages
                 CbOrdinal.SelectedIndex = 0;
             }
         }
-
-        private void CbCity_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Обработка ввода текста в комбобокса для поиска.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CbCity_TextChanged(object sender, TextChangedEventArgs e)
         {
             CbCity.ItemsSource = _TownList.Where(p => p.Country.Name.Contains(CbCity.Text) || p.Name.Contains(CbCity.Text)).ToList();
             CbCity.IsDropDownOpen = true;
         }
-
+        /// <summary>
+        /// Обработка выхода из поля для поиска и подстановка первого попавшегося элемента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CbCity_LostFocus(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrWhiteSpace(CbCity.Text))
@@ -75,7 +91,11 @@ namespace WSChina2020AppComp03.Pages
                 CbCity.SelectedIndex = 0;
             }
         }
-
+        /// <summary>
+        /// Кнопка применяющая параметры поиска
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrWhiteSpace(CbOrdinal.Text))
@@ -87,6 +107,36 @@ namespace WSChina2020AppComp03.Pages
             {
                 DgComp.ItemsSource = null;
                 DgComp.ItemsSource = _previousCompList.Where(p => p.Ordinal == (CbOrdinal.SelectedItem as PreviousCompetition).Ordinal && p.TownPartial.Contains(CbCity.Text)).ToList();
+            }
+        }
+        /// <summary>
+        /// Метод, который позволяет убрать выделение первого символа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbOrdinal_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            CbOrdinal.SelectedIndex = -1;
+            CbOrdinal.SelectedIndex = -1;
+            var text = (TextBox)e.OriginalSource;
+            if(text.SelectionLength!=0 && text.Text.Length == 1)
+            {
+                text.SelectionStart = text.Text.Length;
+            }
+        }
+        /// <summary>
+        /// Метод, который позволяет убрать выделение первого символа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CbCity_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            CbCity.SelectedIndex = -1;
+            CbCity.SelectedIndex = -1;
+            var text = (TextBox)e.OriginalSource;
+            if (text.SelectionLength != 0 && text.Text.Length == 1)
+            {
+                text.SelectionStart = text.Text.Length;
             }
         }
     }

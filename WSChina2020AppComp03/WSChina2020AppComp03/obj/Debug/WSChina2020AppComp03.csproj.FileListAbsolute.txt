@@ -33,3 +33,5 @@ C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutShanghaiPage.baml
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\ReviousCompetitionPage.g.cs
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\ReviousCompetitionPage.baml
+C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWsChinaPage.g.cs
+C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWsChinaPage.baml
