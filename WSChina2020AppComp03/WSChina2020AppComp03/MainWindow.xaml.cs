@@ -43,7 +43,7 @@ namespace WSChina2020AppComp03
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
             var title = (AppData.MainFrame.Content as Page).Title;
-            if (title == "MainScreenPage")
+            if (title == "MainScreenPage" || title == "AboutShanghaiPage")
             {
                 MainGrid.RowDefinitions[0].Height = new GridLength(0);
             }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\
+C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\
 WSChina2020AppComp03
 none
 false
 DEBUG;TRACE
-C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\App.xaml
-527717330
+C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\App.xaml
+7-1503077378
 2-791033901
-171731163745
-18-578967669
-MainWindow.xaml;Pages\AboutWorldskillsPage.xaml;Pages\CompetitionWsPage.xaml;Pages\HistoryOfWsPage.xaml;Pages\MainScreenPage.xaml;
+19170424364
+18-1292801601
+MainWindow.xaml;Pages\AboutShanghaiPage.xaml;Pages\AboutWorldskillsPage.xaml;Pages\CompetitionWsPage.xaml;Pages\HistoryOfWsPage.xaml;Pages\MainScreenPage.xaml;Pages\ReviousCompetitionPage.xaml;
 
-False
+True
 

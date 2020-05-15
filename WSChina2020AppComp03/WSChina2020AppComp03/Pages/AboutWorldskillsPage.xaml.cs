@@ -25,15 +25,32 @@ namespace WSChina2020AppComp03.Pages
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку "History of Worldskills"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnHistoryWs_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new HistoryOfWsPage());
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку "Competition Skills"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnCompetition_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new CompetitionWsPage());
+        }
+        /// <summary>
+        /// Обработка нажатия на кнопку "Previous Competitions"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPrCom_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This page is under construction", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

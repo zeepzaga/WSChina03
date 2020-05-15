@@ -29,3 +29,5 @@ C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\WSChina2020AppComp03_Content.g.cs
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\WSChina2020AppComp03.csproj.CopyComplete
+C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutShanghaiPage.g.cs
+C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutShanghaiPage.baml

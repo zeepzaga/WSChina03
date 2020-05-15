@@ -30,5 +30,20 @@ namespace WSChina2020AppComp03.Pages
         {
             AppData.MainFrame.Navigate(new AboutWorldskillsPage());
         }
+
+        private void BtnAboutShangHai_Click(object sender, RoutedEventArgs e)
+        {
+            AppData.MainFrame.Navigate(new AboutShanghaiPage());
+        }
+
+        private void BtnAboutWsChina_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This page is under construction", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("This page is under construction", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
