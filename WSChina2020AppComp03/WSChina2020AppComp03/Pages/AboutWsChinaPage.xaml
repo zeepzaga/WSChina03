@@ -9,6 +9,51 @@
       Title="AboutWsChinaPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel  Grid.ColumnSpan="2" Margin="5">
+            <TextBlock Style="{StaticResource StyleTblTitle}" Text="About WorldskillsCHina" HorizontalAlignment="Center" Margin="5"></TextBlock>
+            <TextBlock Style="{StaticResource StyleTbBody}" TextWrapping="Wrap" TextAlignment="Center" Text="On October 7, 2010, China is approved by the 2010 world skills organization, officiallybecame the world skills 53rd members of the organization." HorizontalAlignment="Center" Margin="5"></TextBlock>
+        </StackPanel>
+        <TextBlock Style="{StaticResource StyleTbBody}" Margin="5 5 5 0" Grid.Row="1" Text="Resourses Download"></TextBlock>
+        <Border Grid.Row="2" BorderBrush="Black" BorderThickness="2" Margin="10 5 10 5">
+            <Viewbox MaxHeight="400">
+                <StackPanel>
+                    <Border Cursor="Hand" x:Name="Border1" MouseLeftButtonDown="Border1_MouseLeftButtonDown" Background="LightGoldenrodYellow" Margin="5">
+                        <TextBlock Style="{StaticResource StyleTbBody}" Text="Chins's&#10;Accession to the&#10; Worldskills" TextAlignment="Center"></TextBlock>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="Border2" MouseLeftButtonDown="Border2_MouseLeftButtonDown" Background="LightGoldenrodYellow" Margin="5">
+                        <TextBlock Style="{StaticResource StyleTbBody}" Text="Committee of&#10; Worldskills&#10;China" TextAlignment="Center"></TextBlock>
+                    </Border>
+                    <Border Cursor="Hand" x:Name="Border3" MouseLeftButtonDown="Border3_MouseLeftButtonDown" Background="LightGoldenrodYellow" Margin="5">
+                        <TextBlock Style="{StaticResource StyleTbBody}" Text="Participation&#10; and Results" TextAlignment="Center"></TextBlock>
+                    </Border>
+                </StackPanel>
+            </Viewbox>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="1" Margin="10 5 10 5" BorderBrush="Black" BorderThickness="2">
+            <ScrollViewer Height="auto" Margin="25">
+                <ItemsControl x:Name="ICFiles">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Id, StringFormat={}{0}. }" Style="{StaticResource StyleTbBody}"></TextBlock>
+                                    <TextBlock Text="{Binding Name}" Style="{StaticResource StyleTbBody}"></TextBlock>
+                                </StackPanel>
+                                <TextBlock x:Name="TblDownload" MouseLeftButtonDown="TblDownload_MouseLeftButtonDown" HorizontalAlignment="Right" FontSize="24" Margin="100 5 5 5" FontFamily="Segoe MDL2 Assets" Cursor="Hand" Text="&#xE896;" Style="{StaticResource StyleTbBody}"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </Page>
