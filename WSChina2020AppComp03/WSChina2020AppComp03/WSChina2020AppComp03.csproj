@@ -135,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\LoginScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +163,9 @@
     </Compile>
     <Compile Include="Pages\HistoryOfWsPage.xaml.cs">
       <DependentUpon>HistoryOfWsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LoginScreenPage.xaml.cs">
+      <DependentUpon>LoginScreenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainScreenPage.xaml.cs">
       <DependentUpon>MainScreenPage.xaml</DependentUpon>
