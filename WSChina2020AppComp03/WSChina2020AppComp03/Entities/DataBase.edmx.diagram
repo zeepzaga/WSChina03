@@ -4,16 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1a3850545bac47c4943b32b5880ddcd6" Name="Diagram1">
-        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.CategoryOfCompetition" Width="1.5" PointX="0.75" PointY="4.125" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Competition" Width="1.5" PointX="3" PointY="3.875" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Country" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.PreviousCompetition" Width="1.5" PointX="5.25" PointY="0.875" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Town" Width="1.5" PointX="3" PointY="0.875" />
+      <Diagram DiagramId="40edf06524cf41308dd68049dba96030" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.CategoryOfCompetition" Width="1.5" PointX="5.75" PointY="1.125" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Competition" Width="1.5" PointX="8" PointY="0.875" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Country" Width="1.5" PointX="2.75" PointY="5.125" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Gender" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.PreviousCompetition" Width="1.5" PointX="7.25" PointY="4.875" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Role" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.sysdiagram" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.Town" Width="1.5" PointX="5" PointY="4.875" />
+        <EntityTypeShape EntityType="WSChina2020BaseComp03Model.User" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition" />
         <AssociationConnector Association="WSChina2020BaseComp03Model.FK_Town_Country" />
+        <AssociationConnector Association="WSChina2020BaseComp03Model.FK_User_Gender" />
         <AssociationConnector Association="WSChina2020BaseComp03Model.FK_PreviousCompetition_Town" />
+        <AssociationConnector Association="WSChina2020BaseComp03Model.FK_User_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

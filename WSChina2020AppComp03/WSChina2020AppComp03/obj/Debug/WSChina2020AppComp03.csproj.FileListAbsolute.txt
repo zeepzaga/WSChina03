@@ -35,3 +35,13 @@ C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\ReviousCompetitionPage.baml
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWsChinaPage.g.cs
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWsChinaPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Admin\AdministratorMenuPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Competitor\CompetitorMenuPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Coordinator\CoordinatorMenuPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Judger\JudgerMenuPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\LoginScreenPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Admin\AdministratorMenuPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Competitor\CompetitorMenuPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Coordinator\CoordinatorMenuPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Judger\JudgerMenuPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\LoginScreenPage.baml

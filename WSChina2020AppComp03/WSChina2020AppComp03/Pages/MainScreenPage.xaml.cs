@@ -43,7 +43,7 @@ namespace WSChina2020AppComp03.Pages
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("This page is under construction", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            AppData.MainFrame.Navigate(new LoginScreenPage());
         }
     }
 }

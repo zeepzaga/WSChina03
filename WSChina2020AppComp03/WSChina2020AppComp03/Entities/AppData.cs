@@ -11,5 +11,7 @@ namespace WSChina2020AppComp03.Entities
     {
         public static Frame MainFrame;
         public static WSChina2020BaseComp03Entities Context = new WSChina2020BaseComp03Entities();
+        public static User CurrentUser;
+        public static int countLogin;
     }
 }

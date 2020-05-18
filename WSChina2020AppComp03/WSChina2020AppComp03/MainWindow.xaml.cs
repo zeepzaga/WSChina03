@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,13 +52,49 @@ namespace WSChina2020AppComp03
             {
                 MainGrid.RowDefinitions[0].Height = GridLength.Auto;
             }
+            if (AppData.CurrentUser == null)
+            {
+                BtnLogout.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                BtnLogout.Visibility = Visibility.Visible;
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            if (AppData.MainFrame.CanGoBack)
+
+            var title = (AppData.MainFrame.Content as Page).Title;
+            switch (title)
             {
-                AppData.MainFrame.GoBack();
+                case "AdministratorMenuPage":
+                case "CompetitorMenuPage":
+                case "CoordinatorMenuPage":
+                case "JudgerMenuPage.xaml":
+                    BtnLogout_Click(null, null);
+                    break;
+                default:
+                    if (AppData.MainFrame.CanGoBack)
+                    {
+                        AppData.MainFrame.GoBack();
+                    }
+                    break;
+            }
+        }
+        /// <summary>
+        /// Обработка клика на кнопку "Logout"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnLogout_Click(object sender, RoutedEventArgs e) 
+        {
+            if (MessageBox.Show("Do you really want to get out?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                AppData.CurrentUser = null;
+                Properties.Settings.Default.Password = null;
+                Properties.Settings.Default.UserId = null;
+                AppData.MainFrame.Navigate(new MainScreenPage());
             }
         }
     }

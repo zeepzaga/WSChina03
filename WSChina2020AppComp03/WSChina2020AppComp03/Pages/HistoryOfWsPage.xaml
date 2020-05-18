@@ -23,7 +23,7 @@
                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
                         <Ellipse Margin="5" Stroke="Black" Height="80" Width="80">
                             <Ellipse.Fill>
-                                <ImageBrush ImageSource="/WSChina2020AppComp03;component/Resourses/wslogodark.png" Stretch="Uniform"/>
+                                <ImageBrush ImageSource="/WSChina2020AppComp03;component/Resourses/wslogo.png" Stretch="Uniform"/>
                             </Ellipse.Fill>
                         </Ellipse>
                         <Image x:Name="ImageAlbert" MouseLeftButtonDown="ImageAlbert_MouseLeftButtonDown" Cursor="Hand" Height="100" Width="120" Source="/WSChina2020AppComp03;component/Resourses/albert.jpg" Stretch="UniformToFill"/>

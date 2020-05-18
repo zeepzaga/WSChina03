@@ -100,10 +100,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataBase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Gender.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\PreviousCompetition.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\PreviousCompetitionPartial.cs" />
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\sysdiagram.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -111,6 +117,10 @@
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\TownPartial.cs" />
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserPartialClass.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -127,11 +137,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Admin\AdministratorMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CompetitionWsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Competitor\CompetitorMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Coordinator\CoordinatorMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HistoryOfWsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Judger\JudgerMenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -158,11 +184,23 @@
     <Compile Include="Pages\AboutWsChinaPage.xaml.cs">
       <DependentUpon>AboutWsChinaPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Admin\AdministratorMenuPage.xaml.cs">
+      <DependentUpon>AdministratorMenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CompetitionWsPage.xaml.cs">
       <DependentUpon>CompetitionWsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Competitor\CompetitorMenuPage.xaml.cs">
+      <DependentUpon>CompetitorMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Coordinator\CoordinatorMenuPage.xaml.cs">
+      <DependentUpon>CoordinatorMenuPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HistoryOfWsPage.xaml.cs">
       <DependentUpon>HistoryOfWsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Judger\JudgerMenuPage.xaml.cs">
+      <DependentUpon>JudgerMenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginScreenPage.xaml.cs">
       <DependentUpon>LoginScreenPage.xaml</DependentUpon>
@@ -219,19 +257,7 @@
     <Resource Include="Resourses\board.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resourses\wslogodark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Entities\DataBase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DataBase.Context.cs</LastGenOutput>
-      <DependentUpon>DataBase.edmx</DependentUpon>
-    </Content>
-    <Content Include="Entities\DataBase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataBase.edmx</DependentUpon>
-      <LastGenOutput>DataBase.cs</LastGenOutput>
-    </Content>
+    <Resource Include="Resourses\nullphoto.png" />
     <Resource Include="Resourses\res3.jpg" />
     <Resource Include="Resourses\res2.jpg" />
     <Resource Include="Resourses\res1.jpeg" />
@@ -249,6 +275,18 @@
     <Folder Include="Resourses\AboutWsChinaPage\Accession\" />
     <Folder Include="Resourses\AboutWsChinaPage\Commeitte\" />
     <Folder Include="Resourses\AboutWsChinaPage\Partisipation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\DataBase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBase.edmx</DependentUpon>
+      <LastGenOutput>DataBase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\DataBase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataBase.edmx</DependentUpon>
+      <LastGenOutput>DataBase.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
