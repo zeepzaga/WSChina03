@@ -8,6 +8,6 @@ namespace WSChina2020AppComp03.Entities
 {
     public partial class Town
     {
-        public string TownOfCountry { get { return $"{Name}, {Country.Name}"; } set { } }
+        public string TownOfCountry { get { return $"{Name}, {Country.Name}"; } set { } }  // Возращает данные в формате "{Название города, Название страны}"
     }
 }

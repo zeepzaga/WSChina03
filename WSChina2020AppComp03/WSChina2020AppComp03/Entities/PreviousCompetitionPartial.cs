@@ -8,6 +8,9 @@ namespace WSChina2020AppComp03.Entities
 {
     public partial class PreviousCompetition
     {
+        /// <summary>
+        /// Возращает порядковый номер соревнований в нужном формате
+        /// </summary>
         public string Ordinal
         {
             get
@@ -51,6 +54,9 @@ namespace WSChina2020AppComp03.Entities
             }
             set { }
         }
+        /// <summary>
+        /// Возращает данные в формате "{Название города, Название страны}"
+        /// </summary>
         public string TownPartial
         {
             get

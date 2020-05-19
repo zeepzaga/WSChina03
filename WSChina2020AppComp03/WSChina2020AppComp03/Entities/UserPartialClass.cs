@@ -8,6 +8,9 @@ namespace WSChina2020AppComp03.Entities
 {
     public partial class User
     {
+        /// <summary>
+        /// Возращает то как нужно приветствовать юзера.
+        /// </summary>
         public string HelloPerson
         {
             get

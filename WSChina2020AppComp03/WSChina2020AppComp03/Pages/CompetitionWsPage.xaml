@@ -28,7 +28,14 @@
                             <TextBlock FontSize="14" Style="{StaticResource StyleTbBody}" Text="{Binding Name}"></TextBlock>
                             <HierarchicalDataTemplate.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock FontSize="14" Style="{StaticResource StyleTbBody}" Text="{Binding Name}"></TextBlock>
+                                    <TextBlock FontSize="14" Style="{StaticResource StyleTbBody}">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}. {1}">
+                                                <Binding Path="Id" />
+                                                <Binding Path="Name" />
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
                                 </DataTemplate>
                             </HierarchicalDataTemplate.ItemTemplate>
                         </HierarchicalDataTemplate>
