@@ -24,7 +24,9 @@ namespace WSChina2020AppComp03.Pages
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Загрузка нужного текста по клику на картинку.
+        /// </summary>
         private void ImageAlbert_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             switch ((sender as Image).Name)

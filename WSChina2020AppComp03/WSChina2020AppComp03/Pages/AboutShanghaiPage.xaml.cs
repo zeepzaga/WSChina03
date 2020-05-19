@@ -74,8 +74,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработка нажатию на картинку
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ImageBig.Source = (sender as Image).Source;
@@ -84,8 +82,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработка нажатия на кнопку назад именно на этой странице 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             if (Convert.ToString((TCHistory.SelectedItem as TabItem).Header) != "Tourism")

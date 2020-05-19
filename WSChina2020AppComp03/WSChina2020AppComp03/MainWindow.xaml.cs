@@ -34,13 +34,17 @@ namespace WSChina2020AppComp03
             AppData.MainFrame = MainFrame;
             AppData.MainFrame.Navigate(new MainScreenPage());
         }
-
+        /// <summary>
+        /// Во время тика таймера происходит обновление нижней строчки
+        /// </summary>
         private void Timer_Tick(object sender, EventArgs e)
         {
             var dateTimer = new DateTime(2021, 08, 22, 00, 00, 00) - DateTime.Now;
             TblTimer.Text = $"{dateTimer.Days} days, {dateTimer.Hours} hours, {dateTimer.Minutes} minutes and {dateTimer.Seconds} seconds until the WorldSkillsShanghai 2021 starts.";
         }
-
+        /// <summary>
+        /// Метод позволяющий отслеживать изменения контента на Frame
+        /// </summary>
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
             var title = (AppData.MainFrame.Content as Page).Title;
@@ -61,7 +65,9 @@ namespace WSChina2020AppComp03
                 BtnLogout.Visibility = Visibility.Visible;
             }
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку "Back"
+        /// </summary>
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
 
@@ -85,8 +91,6 @@ namespace WSChina2020AppComp03
         /// <summary>
         /// Обработка клика на кнопку "Logout"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnLogout_Click(object sender, RoutedEventArgs e) 
         {
             if (MessageBox.Show("Do you really want to get out?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)

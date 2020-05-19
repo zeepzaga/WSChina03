@@ -33,7 +33,9 @@ namespace WSChina2020AppComp03.Pages
                 MessageBox.Show("Connecting to the database error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        /// <summary>
+        /// Метод отслеживающий смену выбранного элемента TreeView
+        /// </summary>
         private void TvCompetition_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             try

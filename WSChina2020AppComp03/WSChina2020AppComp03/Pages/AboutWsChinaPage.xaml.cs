@@ -67,8 +67,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Метод для переключения отображаемых файлов
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Border1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ICFiles.ItemsSource = _accesionList;
@@ -76,8 +74,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Метод для переключения отображаемых файлов
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Border2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ICFiles.ItemsSource = _commeittieList;
@@ -85,8 +81,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Метод для переключения отображаемых файлов
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Border3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ICFiles.ItemsSource = _partisipationList;
@@ -94,8 +88,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Метод для загрузки выбранного файла
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void TblDownload_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();

@@ -28,8 +28,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработка нажатия на кнопку "History of Worldskills"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnHistoryWs_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new HistoryOfWsPage());
@@ -37,8 +35,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработка нажатия на кнопку "Competition Skills"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnCompetition_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new CompetitionWsPage());
@@ -46,8 +42,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработка нажатия на кнопку "Previous Competitions"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnPrCom_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new ReviousCompetitionPage());

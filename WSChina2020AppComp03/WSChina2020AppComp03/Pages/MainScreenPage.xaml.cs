@@ -25,22 +25,30 @@ namespace WSChina2020AppComp03.Pages
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку "About World Skills"
+        /// </summary>
         private void BtnAboutWs_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new AboutWorldskillsPage());
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку "About Shang Hai"
+        /// </summary>
         private void BtnAboutShangHai_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new AboutShanghaiPage());
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку "About World Skills China"
+        /// </summary>
         private void BtnAboutWsChina_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new AboutWsChinaPage());
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку "Login"
+        /// </summary>
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new LoginScreenPage());

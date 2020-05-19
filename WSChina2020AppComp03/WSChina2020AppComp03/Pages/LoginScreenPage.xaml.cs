@@ -86,8 +86,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработчик клика на кнопку "Login"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             string error = "";
@@ -164,8 +162,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработчик клика на кнопку "Cancel"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Cancel actions?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -176,8 +172,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Обработчик нажатия лкм на картинку
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ImageCapha_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ImageCapha.Source = Drawing(1500, 500); // Обновление капчи
