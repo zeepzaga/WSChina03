@@ -41,7 +41,7 @@
                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" Text="Travel Spots:"></TextBlock>
                                 <Image MouseLeftButtonDown="Image_MouseLeftButtonDown" Height="90" Width="150" Source="/WSChina2020AppComp03;component/Resourses/maxresdefault.jpg" Stretch="UniformToFill" Cursor="Hand"/>
                                 <Image MouseLeftButtonDown="Image_MouseLeftButtonDown" Height="90" Width="150" Source="/WSChina2020AppComp03;component/Resourses/travel2.jpg" Cursor="Hand" Stretch="UniformToFill"></Image>
-                                <Image MouseLeftButtonDown="Image_MouseLeftButtonDown" Height="90" Width="150" Source="/WSChina2020AppComp03;component/Resourses/travel3.jpg" Stretch="UniformToFill"></Image>
+                                <Image MouseLeftButtonDown="Image_MouseLeftButtonDown" Height="90" Width="150" Source="/WSChina2020AppComp03;component/Resourses/travel3.jpg" Stretch="UniformToFill" Cursor="Hand"></Image>
                             </StackPanel>
                             <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" Text="Hotel:"></TextBlock>
@@ -56,7 +56,7 @@
                                 <Image MouseLeftButtonDown="Image_MouseLeftButtonDown"  Height="90" Width="150" Source="/WSChina2020AppComp03;component/Resourses/res3.jpg" Cursor="Hand" Stretch="UniformToFill"></Image>
                             </StackPanel>
                         </StackPanel>
-                        <Image Height="600" Width="1500" x:Name="ImageBig" Visibility="Collapsed" Stretch="Fill"/>
+                        <Image MouseLeftButtonDown="ImageBig_MouseLeftButtonDown" Height="600" Width="1500" x:Name="ImageBig" Visibility="Collapsed" Stretch="Fill"/>
                     </Grid>
                 </Viewbox>
             </TabItem>

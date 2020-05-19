@@ -17,11 +17,11 @@
             <TextBlock Grid.Row="1" Margin="15" Style="{StaticResource StyleTblTitle}" Text="Previous Competition" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource StyleTbBody}" Text="Ordinal №:"></TextBlock>
-                    <ComboBox TextBoxBase.SelectionChanged="CbOrdinal_SelectionChanged" LostFocus="CbOrdinal_LostFocus" IsTextSearchCaseSensitive="True" StaysOpenOnEdit="True" IsEditable="True"
+                    <ComboBox TextBoxBase.SelectionChanged="CbOrdinal_SelectionChanged" IsTextSearchCaseSensitive="True" StaysOpenOnEdit="True" IsEditable="True"
                               IsTextSearchEnabled="False" TextBoxBase.TextChanged="CbOrdinal_TextChanged" Name="CbOrdinal" 
                               DisplayMemberPath="Ordinal"></ComboBox>
                 <TextBlock Margin="40 5 5 5" Style="{StaticResource StyleTbBody}" Text="City, Country"></TextBlock>
-                <ComboBox TextBoxBase.SelectionChanged="CbCity_SelectionChanged" LostFocus="CbCity_LostFocus" IsTextSearchCaseSensitive="True" StaysOpenOnEdit="True" IsEditable="True" IsTextSearchEnabled="False" TextBoxBase.TextChanged="CbCity_TextChanged" Name="CbCity" DisplayMemberPath="TownOfCountry"></ComboBox>
+                <ComboBox TextBoxBase.SelectionChanged="CbCity_SelectionChanged"  IsTextSearchCaseSensitive="True" StaysOpenOnEdit="True" IsEditable="True" IsTextSearchEnabled="False" TextBoxBase.TextChanged="CbCity_TextChanged" Name="CbCity" DisplayMemberPath="Name"></ComboBox>
                 <Button x:Name="BtnSearch" Click="BtnSearch_Click" Margin="15 5 5 5" Height="25" Width="100">Search</Button>
             </StackPanel>
         </StackPanel>

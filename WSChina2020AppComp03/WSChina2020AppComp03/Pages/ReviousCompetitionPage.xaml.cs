@@ -22,14 +22,27 @@ namespace WSChina2020AppComp03.Pages
     public partial class ReviousCompetitionPage : Page
     {
         private List<PreviousCompetition> _previousCompList = new List<PreviousCompetition>();
-        private List<Town> _TownList = new List<Town>();
+        private List<TownAndCountry> _TownList = new List<TownAndCountry>();
         public ReviousCompetitionPage()
         {
             InitializeComponent();
             try
             {
                 _previousCompList = AppData.Context.PreviousCompetitions.ToList();
-                _TownList = AppData.Context.Towns.ToList();
+                foreach (var town in AppData.Context.Towns.ToList())
+                {
+                    _TownList.Add(new TownAndCountry
+                    {
+                        Name = town.Name
+                    });
+                }
+                foreach (var country in AppData.Context.Countries.ToList())
+                {
+                    _TownList.Add(new TownAndCountry
+                    {
+                        Name = country.Name
+                    });
+                }
             }
             catch
             {
@@ -39,87 +52,54 @@ namespace WSChina2020AppComp03.Pages
             CbOrdinal.ItemsSource = _previousCompList;
             CbCity.ItemsSource = _TownList;
         }
+
+        private class TownAndCountry
+        {
+            public string Name { get; set; }
+        }
         /// <summary>
         /// Обработка ввода текста в комбобокса для поиска.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void CbOrdinal_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CbOrdinal.ItemsSource = _previousCompList.Where(p => p.Ordinal.Contains(CbOrdinal.Text)).ToList();
+            CbOrdinal.ItemsSource = _previousCompList.Where(p => p.Ordinal.Contains(CbOrdinal.Text.ToLower())).ToList();
             CbOrdinal.IsDropDownOpen = true;
         }
-        /// <summary>
-        /// Обработка выхода из поля для поиска и подстановка первого попавшегося элемента
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CbOrdinal_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(CbOrdinal.Text))
-            {
-                CbOrdinal.Text = "";
-            }
-            else
-            {
-                CbOrdinal.SelectedIndex = 0;
-            }
-        }
+
         /// <summary>
         /// Обработка ввода текста в комбобокса для поиска.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void CbCity_TextChanged(object sender, TextChangedEventArgs e)
         {
-            CbCity.ItemsSource = _TownList.Where(p => p.Country.Name.Contains(CbCity.Text) || p.Name.Contains(CbCity.Text)).ToList();
+            CbCity.ItemsSource = _TownList.ToList().Where(p => p.Name.ToLower().Contains(CbCity.Text.ToLower())).ToList();
             CbCity.IsDropDownOpen = true;
         }
-        /// <summary>
-        /// Обработка выхода из поля для поиска и подстановка первого попавшегося элемента
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CbCity_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (String.IsNullOrWhiteSpace(CbCity.Text))
-            {
-                CbCity.Text = "";
-            }
-            else
-            {
-                CbCity.SelectedIndex = 0;
-            }
-        }
+
         /// <summary>
         /// Кнопка применяющая параметры поиска
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrWhiteSpace(CbOrdinal.Text))
             {
                 DgComp.ItemsSource = null;
-                DgComp.ItemsSource = _previousCompList.Where(p => p.TownPartial.Contains(CbCity.Text)).ToList();
+                DgComp.ItemsSource = _previousCompList.Where(p => p.TownPartial.ToLower().Contains(CbCity.Text.ToLower())).ToList();
             }
             else
             {
                 DgComp.ItemsSource = null;
-                DgComp.ItemsSource = _previousCompList.Where(p => p.Ordinal == (CbOrdinal.SelectedItem as PreviousCompetition).Ordinal && p.TownPartial.Contains(CbCity.Text)).ToList();
+                DgComp.ItemsSource = _previousCompList.Where(p => p.Ordinal.ToLower().Contains(CbOrdinal.Text.ToLower()) && p.TownPartial.ToLower().Contains(CbCity.Text)).ToList();
             }
         }
         /// <summary>
         /// Метод, который позволяет убрать выделение первого символа
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void CbOrdinal_SelectionChanged(object sender, RoutedEventArgs e)
         {
             CbOrdinal.SelectedIndex = -1;
             CbOrdinal.SelectedIndex = -1;
             var text = (TextBox)e.OriginalSource;
-            if(text.SelectionLength!=0 && text.Text.Length == 1)
+            if (text.SelectionLength != 0 && text.Text.Length == 1)
             {
                 text.SelectionStart = text.Text.Length;
             }

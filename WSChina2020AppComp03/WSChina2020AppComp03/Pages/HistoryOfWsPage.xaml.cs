@@ -68,5 +68,23 @@ namespace WSChina2020AppComp03.Pages
             }
             Scroll.ScrollToTop();
         }
+
+        private void Ellipse_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TblDescription.Text = "WorldSkills organises the world championships of vocational skills, and is held every two years in " +
+                "different parts of the world. The organisation, which also hosts conferences about vocational skills, describes itself as the " +
+                "global hub for skills." +
+                " WorldSkills brings together young people, industry, government, education, and institutions, to promote the benefits of and need " +
+                "for skilled trade professionals. The aims of the competition include demonstrating the advantages of learning a vocational skill, " +
+                "and encouraging 'parity of esteem' " +
+                "between vocational and academic qualifications. \nThe city of Kazan, Russia, hosted the 45th WorldSkills Competition in 2019. " +
+                "At the previous event, WorldSkills Abu Dhabi 2017, there were competitions in 51 skills areas with close to 1,300 young people taking part." +
+                " WorldSkills Abu Dhabi 2017, took place between 15 and 18 October 2017 at Abu Dhabi, United Arab Emirates." +
+                " \nWorldSkills currently has 79 Member countries and regions most of which organise national skills competitions that help to prepare the workforce " +
+                "and talent of today for the jobs of the future." +
+                "\nWorldSkills International, formerly known as the International Vocation Training Organisation (IVTO), " +
+                "was founded in the 1940s and emerged from a desire to create new employment opportunities for young people in some of the economies " +
+                "that were devastated by the Second World War.";
+        }
     }
 }

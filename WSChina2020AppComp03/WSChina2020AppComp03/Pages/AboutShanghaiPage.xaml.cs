@@ -100,5 +100,10 @@ namespace WSChina2020AppComp03.Pages
                 }
             }
         }
+
+        private void ImageBig_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ImageBig.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -21,7 +21,7 @@
             <Viewbox MaxWidth="500">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
-                        <Ellipse Margin="5" Stroke="Black" Height="80" Width="80">
+                        <Ellipse Cursor="Hand" MouseLeftButtonDown="Ellipse_MouseLeftButtonDown" Margin="5" Stroke="Black" Height="80" Width="80">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="/WSChina2020AppComp03;component/Resourses/wslogo.png" Stretch="Uniform"/>
                             </Ellipse.Fill>
