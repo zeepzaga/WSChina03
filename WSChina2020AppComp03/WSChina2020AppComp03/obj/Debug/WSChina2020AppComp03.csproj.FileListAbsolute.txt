@@ -16,8 +16,6 @@ C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\WSChina2020AppComp03.csproj.CoreCompileInputs.cache
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\WSChina2020AppComp03.exe
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\WSChina2020AppComp03.pdb
-C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWorldskillsPage.g.cs
-C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWorldskillsPage.baml
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\HistoryOfWsPage.g.cs
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\HistoryOfWsPage.baml
 C:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\CompetitionWsPage.g.cs
@@ -45,3 +43,5 @@ C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Coordinator\CoordinatorMenuPage.baml
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\Judger\JudgerMenuPage.baml
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\LoginScreenPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWsPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Debug\Pages\AboutWsPage.baml

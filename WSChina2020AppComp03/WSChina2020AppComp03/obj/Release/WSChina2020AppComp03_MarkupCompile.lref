@@ -1,8 +1,16 @@
 ﻿
-FC:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\App.xaml;;
-FC:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\MainWindow.xaml;;
-FC:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\AboutWorldskillsPage.xaml;;
-FC:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\CompetitionWsPage.xaml;;
-FC:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\HistoryOfWsPage.xaml;;
-FC:\Users\danil\Source\Repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\MainScreenPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\App.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\MainWindow.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\AboutShanghaiPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\AboutWsPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\AboutWsChinaPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\Admin\AdministratorMenuPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\CompetitionWsPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\Competitor\CompetitorMenuPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\Coordinator\CoordinatorMenuPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\HistoryOfWsPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\Judger\JudgerMenuPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\LoginScreenPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\MainScreenPage.xaml;;
+FC:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\Pages\ReviousCompetitionPage.xaml;;
 

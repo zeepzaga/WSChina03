@@ -33,7 +33,7 @@ namespace WSChina2020AppComp03.Pages
         {
             InitializeComponent();
             GetFiles(_accesionList, "Accession");
-            GetFiles(_commeittieList, "Commeitte");
+            GetFiles(_commeittieList, "Committee");
             GetFiles(_partisipationList, "Partisipation");
             ICFiles.ItemsSource = _accesionList;
         }
@@ -49,8 +49,6 @@ namespace WSChina2020AppComp03.Pages
         /// <summary>
         /// Метод для получения нужных фалов
         /// </summary>
-        /// <param name="list"></param>
-        /// <param name="type"></param>
         private void GetFiles(List<FilesForDownload> list, string type)
         {
             int id = 1;
