@@ -27,20 +27,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Genders">
-      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Gender">
-        <MappingFragment StoreEntitySet="Gender">
-          <ScalarProperty Name="Name" ColumnName="Name" />
+    <EntitySetMapping Name="EventCompetitions">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.EventCompetition">
+        <MappingFragment StoreEntitySet="EventCompetition">
+          <ScalarProperty Name="NumberOfMember" ColumnName="NumberOfMember" />
+          <ScalarProperty Name="TownId" ColumnName="TownId" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PreviousCompetitions">
-      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.PreviousCompetition">
-        <MappingFragment StoreEntitySet="PreviousCompetition">
-          <ScalarProperty Name="MemberNumber" ColumnName="MemberNumber" />
-          <ScalarProperty Name="TownId" ColumnName="TownId" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

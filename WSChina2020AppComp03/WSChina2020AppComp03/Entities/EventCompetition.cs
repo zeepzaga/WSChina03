@@ -12,12 +12,12 @@ namespace WSChina2020AppComp03.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class PreviousCompetition
+    public partial class EventCompetition
     {
         public int Id { get; set; }
         public int Year { get; set; }
         public int TownId { get; set; }
-        public int MemberNumber { get; set; }
+        public int NumberOfMember { get; set; }
     
         public virtual Town Town { get; set; }
     }

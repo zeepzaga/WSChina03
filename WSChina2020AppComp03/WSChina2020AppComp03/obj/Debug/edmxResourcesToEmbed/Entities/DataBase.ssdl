@@ -23,21 +23,21 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="Gender">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PreviousCompetition">
+  <EntityType Name="EventCompetition">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Year" Type="int" Nullable="false" />
     <Property Name="TownId" Type="int" Nullable="false" />
-    <Property Name="MemberNumber" Type="int" Nullable="false" />
+    <Property Name="NumberOfMember" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -68,7 +68,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -88,19 +88,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PreviousCompetition_Town">
+  <Association Name="FK_EventCompetition_Town">
     <End Role="Town" Type="Self.Town" Multiplicity="1" />
-    <End Role="PreviousCompetition" Type="Self.PreviousCompetition" Multiplicity="*" />
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Town">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="PreviousCompetition">
+      <Dependent Role="EventCompetition">
         <PropertyRef Name="TownId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Town_Country">
+  <Association Name="FK_Town_Country1">
     <End Role="Country" Type="Self.Country" Multiplicity="1" />
     <End Role="Town" Type="Self.Town" Multiplicity="*" />
     <ReferentialConstraint>
@@ -140,8 +140,8 @@
     <EntitySet Name="CategoryOfCompetition" EntityType="Self.CategoryOfCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventCompetition" EntityType="Self.EventCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PreviousCompetition" EntityType="Self.PreviousCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
@@ -150,11 +150,11 @@
       <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetition" />
       <End Role="Competition" EntitySet="Competition" />
     </AssociationSet>
-    <AssociationSet Name="FK_PreviousCompetition_Town" Association="Self.FK_PreviousCompetition_Town">
+    <AssociationSet Name="FK_EventCompetition_Town" Association="Self.FK_EventCompetition_Town">
       <End Role="Town" EntitySet="Town" />
-      <End Role="PreviousCompetition" EntitySet="PreviousCompetition" />
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
     </AssociationSet>
-    <AssociationSet Name="FK_Town_Country" Association="Self.FK_Town_Country">
+    <AssociationSet Name="FK_Town_Country1" Association="Self.FK_Town_Country1">
       <End Role="Country" EntitySet="Country" />
       <End Role="Town" EntitySet="Town" />
     </AssociationSet>

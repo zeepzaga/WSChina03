@@ -21,14 +21,14 @@ namespace WSChina2020AppComp03.Pages
     /// </summary>
     public partial class ReviousCompetitionPage : Page
     {
-        private List<PreviousCompetition> _previousCompList = new List<PreviousCompetition>();
+        private List<EventCompetition> _previousCompList = new List<EventCompetition>();
         private List<TownAndCountry> _TownList = new List<TownAndCountry>();
         public ReviousCompetitionPage()
         {
             InitializeComponent();
             try
             {
-                _previousCompList = AppData.Context.PreviousCompetitions.ToList();
+                _previousCompList = AppData.Context.EventCompetitions.ToList();
                 foreach (var town in AppData.Context.Towns.ToList())
                 {
                     _TownList.Add(new TownAndCountry

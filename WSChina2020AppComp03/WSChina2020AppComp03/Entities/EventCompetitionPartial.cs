@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WSChina2020AppComp03.Entities
 {
-    public partial class PreviousCompetition
+    public partial class EventCompetition
     {
         /// <summary>
         /// Возращает порядковый номер соревнований в нужном формате

@@ -21,7 +21,7 @@ namespace WSChina2020AppComp03.Pages
     /// </summary>
     public partial class CompetitionWsPage : Page
     {
-       private List<CategoryOfCompetition> _competitions = AppData.Context.CategoryOfCompetitions.ToList();
+        private List<CategoryOfCompetition> _competitions = AppData.Context.CategoryOfCompetitions.ToList();
         public CompetitionWsPage()
         {
             InitializeComponent();
@@ -45,30 +45,32 @@ namespace WSChina2020AppComp03.Pages
                 Competition competition = (TvCompetition.SelectedItem as Competition);
                 TblDescription.Text = $"{competition.Id}. {competition.Name}\n\n" +
                     $"{competition.Description}";
-                Scroll.ScrollToTop();
             }
             catch
             {
                 try
                 {
+                    TblDescription.Text += $"{(TvCompetition.SelectedItem as CategoryOfCompetition).Name}\n\n";
                     foreach (var competition in (TvCompetition.SelectedItem as CategoryOfCompetition).Competitions)
                     {
-                        TblDescription.Text += $"{competition.Id}. {competition.Name}\n\n" +
+                        TblDescription.Text += $"{competition.Id}. {competition.Name}\n" +
                             $"{competition.Description}\n\n";
                     }
                 }
                 catch
                 {
-                    foreach (var item in _competitions)
+                    foreach (var item in AppData.Context.CategoryOfCompetitions)
                     {
+                        TblDescription.Text += $"{item.Name}\n\n";
                         foreach (var competition in item.Competitions)
                         {
-                            TblDescription.Text += $"{competition.Id}. {competition.Name}\n\n" +
-                           $"{competition.Description}\n\n";
+                            TblDescription.Text += $"{competition.Id}. {competition.Name}\n" +
+                            $"{competition.Description}\n\n";
                         }
                     }
                 }
             }
+            Scroll.ScrollToTop();
         }
     }
 }
