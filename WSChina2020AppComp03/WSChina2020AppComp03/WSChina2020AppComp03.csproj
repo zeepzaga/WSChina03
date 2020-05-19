@@ -129,7 +129,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\AboutWorldskillsPage.xaml">
+    <Page Include="Pages\AboutWsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,8 +178,8 @@
     <Compile Include="Pages\AboutShanghaiPage.xaml.cs">
       <DependentUpon>AboutShanghaiPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AboutWorldskillsPage.xaml.cs">
-      <DependentUpon>AboutWorldskillsPage.xaml</DependentUpon>
+    <Compile Include="Pages\AboutWsPage.xaml.cs">
+      <DependentUpon>AboutWsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AboutWsChinaPage.xaml.cs">
       <DependentUpon>AboutWsChinaPage.xaml</DependentUpon>
