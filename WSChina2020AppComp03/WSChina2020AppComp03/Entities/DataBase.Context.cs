@@ -27,6 +27,7 @@ namespace WSChina2020AppComp03.Entities
     
         public virtual DbSet<CategoryOfCompetition> CategoryOfCompetitions { get; set; }
         public virtual DbSet<Competition> Competitions { get; set; }
+        public virtual DbSet<Competitior> Competitiors { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<EventCompetition> EventCompetitions { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }

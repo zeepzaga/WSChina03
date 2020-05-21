@@ -17,9 +17,10 @@
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                 <StackPanel>
                     <TextBlock Text="{Binding HelloPerson}" Width="250" TextWrapping="Wrap" TextAlignment="Center" Style="{StaticResource StyleTbBody}"></TextBlock>
-                    <Image Margin="5" Height="200" Width="150">
+                    <Image  Margin="5" Height="200" Width="150">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="{Binding Photo}"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Photo}" Value="{x:Null}">
                                         <Setter Property="Source" Value="/WSChina2020AppComp03;component/Resourses/nullphoto.png"></Setter>

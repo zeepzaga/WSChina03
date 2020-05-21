@@ -16,6 +16,15 @@
     <Property Name="CategoryOfCompetitionId" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Competitior">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CountryId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Country">
     <Key>
       <PropertyRef Name="Id" />
@@ -75,6 +84,7 @@
     <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
     <Property Name="GenderId" Type="int" Nullable="false" />
     <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK_Competition_CategoryOfCompetition">
     <End Role="CategoryOfCompetition" Type="Self.CategoryOfCompetition" Multiplicity="1" />
@@ -85,6 +95,42 @@
       </Principal>
       <Dependent Role="Competition">
         <PropertyRef Name="CategoryOfCompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competitior_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Competitior">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competitior_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Competitior">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competitior_User1">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Competitior">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -139,6 +185,7 @@
   <EntityContainer Name="Хранилище WSChina2020BaseComp03ModelContainer">
     <EntitySet Name="CategoryOfCompetition" EntityType="Self.CategoryOfCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Competitior" EntityType="Self.Competitior" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EventCompetition" EntityType="Self.EventCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
@@ -149,6 +196,18 @@
     <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="Self.FK_Competition_CategoryOfCompetition">
       <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetition" />
       <End Role="Competition" EntitySet="Competition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competitior_Competition" Association="Self.FK_Competitior_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="Competitior" EntitySet="Competitior" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competitior_Country" Association="Self.FK_Competitior_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Competitior" EntitySet="Competitior" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competitior_User1" Association="Self.FK_Competitior_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="Competitior" EntitySet="Competitior" />
     </AssociationSet>
     <AssociationSet Name="FK_EventCompetition_Town" Association="Self.FK_EventCompetition_Town">
       <End Role="Town" EntitySet="Town" />

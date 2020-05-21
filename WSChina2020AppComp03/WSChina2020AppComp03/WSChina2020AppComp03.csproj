@@ -82,6 +82,10 @@
     <Compile Include="Entities\Competition.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Competitior.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CompetitorPartial.cs" />
     <Compile Include="Entities\Country.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
@@ -149,6 +153,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Competitor\MySkillsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Coordinator\CoordinatorMenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +200,9 @@
     </Compile>
     <Compile Include="Pages\Competitor\CompetitorMenuPage.xaml.cs">
       <DependentUpon>CompetitorMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Competitor\MySkillsPage.xaml.cs">
+      <DependentUpon>MySkillsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Coordinator\CoordinatorMenuPage.xaml.cs">
       <DependentUpon>CoordinatorMenuPage.xaml</DependentUpon>

@@ -29,8 +29,6 @@ namespace WSChina2020AppComp03.Pages.Competitor
         /// <summary>
         /// Обработчик кнопки "My Profile"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnProfile_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -38,18 +36,14 @@ namespace WSChina2020AppComp03.Pages.Competitor
         /// <summary>
         /// Обработчик кнопки "My Skills"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnSkills_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            AppData.MainFrame.Navigate(new MySkillsPage());
 
         }
         /// <summary>
         /// Обработчик кнопки "My Results"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnResult_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
