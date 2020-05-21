@@ -12,6 +12,8 @@
     <EntitySetMapping Name="Competitions">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competition">
         <MappingFragment StoreEntitySet="Competition">
+          <ScalarProperty Name="Infrastructure" ColumnName="Infrastructure" />
+          <ScalarProperty Name="WorkShopLayout" ColumnName="WorkShopLayout" />
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="CategoryOfCompetitionId" ColumnName="CategoryOfCompetitionId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -55,9 +57,30 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Judgers">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Judger">
+        <MappingFragment StoreEntitySet="Judgers">
+          <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Roles">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Role">
         <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+          <ScalarProperty Name="DateTimeEnd" ColumnName="DateTimeEnd" />
+          <ScalarProperty Name="DateTimeStart" ColumnName="DateTimeStart" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
@@ -86,6 +109,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="GenderId" ColumnName="GenderId" />

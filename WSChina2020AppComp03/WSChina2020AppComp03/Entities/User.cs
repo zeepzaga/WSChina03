@@ -18,6 +18,7 @@ namespace WSChina2020AppComp03.Entities
         public User()
         {
             this.Competitiors = new HashSet<Competitior>();
+            this.Judgers = new HashSet<Judger>();
         }
     
         public int Id { get; set; }
@@ -28,10 +29,13 @@ namespace WSChina2020AppComp03.Entities
         public int GenderId { get; set; }
         public int RoleId { get; set; }
         public byte[] Photo { get; set; }
+        public string IdNumber { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Competitior> Competitiors { get; set; }
         public virtual Gender Gender { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Judger> Judgers { get; set; }
         public virtual Role Role { get; set; }
     }
 }

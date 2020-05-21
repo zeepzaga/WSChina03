@@ -18,15 +18,23 @@ namespace WSChina2020AppComp03.Entities
         public Competition()
         {
             this.Competitiors = new HashSet<Competitior>();
+            this.Judgers = new HashSet<Judger>();
+            this.Schedules = new HashSet<Schedule>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
         public int CategoryOfCompetitionId { get; set; }
         public string Description { get; set; }
+        public byte[] WorkShopLayout { get; set; }
+        public byte[] Infrastructure { get; set; }
     
         public virtual CategoryOfCompetition CategoryOfCompetition { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Competitior> Competitiors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Judger> Judgers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Schedule> Schedules { get; set; }
     }
 }

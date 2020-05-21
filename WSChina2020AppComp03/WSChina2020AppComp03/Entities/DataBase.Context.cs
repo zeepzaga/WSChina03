@@ -31,7 +31,9 @@ namespace WSChina2020AppComp03.Entities
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<EventCompetition> EventCompetitions { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
+        public virtual DbSet<Judger> Judgers { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<User> Users { get; set; }

@@ -20,6 +20,8 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CategoryOfCompetitionId" Type="int" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WorkShopLayout" Type="varbinary(max)" />
+          <Property Name="Infrastructure" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Competitior">
           <Key>
@@ -53,12 +55,31 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Judgers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CompetitionId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateTimeStart" Type="datetime" Nullable="false" />
+          <Property Name="DateTimeEnd" Type="datetime" Nullable="false" />
+          <Property Name="CompetitionId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -90,6 +111,7 @@
           <Property Name="GenderId" Type="int" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="Photo" Type="varbinary(max)" />
+          <Property Name="IdNumber" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Competition_CategoryOfCompetition">
           <End Role="CategoryOfCompetition" Type="Self.CategoryOfCompetition" Multiplicity="1" />
@@ -151,6 +173,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Judgers_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+          <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Judgers">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Judgers_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Judgers">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Judgers_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Judgers">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Town_Country1">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Town" Type="Self.Town" Multiplicity="*" />
@@ -194,7 +264,9 @@
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventCompetition" EntityType="Self.EventCompetition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Judgers" EntityType="Self.Judgers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -217,6 +289,22 @@
           <AssociationSet Name="FK_EventCompetition_Town" Association="Self.FK_EventCompetition_Town">
             <End Role="Town" EntitySet="Town" />
             <End Role="EventCompetition" EntitySet="EventCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Judgers_Competition" Association="Self.FK_Judgers_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Judgers" EntitySet="Judgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Judgers_Country" Association="Self.FK_Judgers_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Judgers" EntitySet="Judgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Judgers_User" Association="Self.FK_Judgers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Judgers" EntitySet="Judgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Competition" Association="Self.FK_Schedule_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="Schedule" EntitySet="Schedule" />
           </AssociationSet>
           <AssociationSet Name="FK_Town_Country1" Association="Self.FK_Town_Country1">
             <End Role="Country" EntitySet="Country" />
@@ -242,7 +330,9 @@
           <EntitySet Name="Countries" EntityType="WSChina2020BaseComp03Model.Country" />
           <EntitySet Name="EventCompetitions" EntityType="WSChina2020BaseComp03Model.EventCompetition" />
           <EntitySet Name="Genders" EntityType="WSChina2020BaseComp03Model.Gender" />
+          <EntitySet Name="Judgers" EntityType="WSChina2020BaseComp03Model.Judger" />
           <EntitySet Name="Roles" EntityType="WSChina2020BaseComp03Model.Role" />
+          <EntitySet Name="Schedules" EntityType="WSChina2020BaseComp03Model.Schedule" />
           <EntitySet Name="sysdiagrams" EntityType="WSChina2020BaseComp03Model.sysdiagram" />
           <EntitySet Name="Towns" EntityType="WSChina2020BaseComp03Model.Town" />
           <EntitySet Name="Users" EntityType="WSChina2020BaseComp03Model.User" />
@@ -254,6 +344,14 @@
             <End Role="Competition" EntitySet="Competitions" />
             <End Role="Competitior" EntitySet="Competitiors" />
           </AssociationSet>
+          <AssociationSet Name="FK_Judgers_Competition" Association="WSChina2020BaseComp03Model.FK_Judgers_Competition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="Judger" EntitySet="Judgers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Competition" Association="WSChina2020BaseComp03Model.FK_Schedule_Competition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
           <AssociationSet Name="FK_Competitior_Country" Association="WSChina2020BaseComp03Model.FK_Competitior_Country">
             <End Role="Country" EntitySet="Countries" />
             <End Role="Competitior" EntitySet="Competitiors" />
@@ -261,6 +359,10 @@
           <AssociationSet Name="FK_Competitior_User1" Association="WSChina2020BaseComp03Model.FK_Competitior_User1">
             <End Role="User" EntitySet="Users" />
             <End Role="Competitior" EntitySet="Competitiors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Judgers_Country" Association="WSChina2020BaseComp03Model.FK_Judgers_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Judger" EntitySet="Judgers" />
           </AssociationSet>
           <AssociationSet Name="FK_Town_Country1" Association="WSChina2020BaseComp03Model.FK_Town_Country1">
             <End Role="Country" EntitySet="Countries" />
@@ -273,6 +375,10 @@
           <AssociationSet Name="FK_User_Gender" Association="WSChina2020BaseComp03Model.FK_User_Gender">
             <End Role="Gender" EntitySet="Genders" />
             <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Judgers_User" Association="WSChina2020BaseComp03Model.FK_Judgers_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Judger" EntitySet="Judgers" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="WSChina2020BaseComp03Model.FK_User_Role">
             <End Role="Role" EntitySet="Roles" />
@@ -295,8 +401,12 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CategoryOfCompetitionId" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WorkShopLayout" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Infrastructure" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="CategoryOfCompetition" Relationship="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition" FromRole="Competition" ToRole="CategoryOfCompetition" />
           <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Competition" FromRole="Competition" ToRole="Competitior" />
+          <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Competition" FromRole="Competition" ToRole="Judger" />
+          <NavigationProperty Name="Schedules" Relationship="WSChina2020BaseComp03Model.FK_Schedule_Competition" FromRole="Competition" ToRole="Schedule" />
         </EntityType>
         <EntityType Name="Competitior">
           <Key>
@@ -317,6 +427,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Country" FromRole="Country" ToRole="Competitior" />
+          <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Country" FromRole="Country" ToRole="Judger" />
           <NavigationProperty Name="Towns" Relationship="WSChina2020BaseComp03Model.FK_Town_Country1" FromRole="Country" ToRole="Town" />
         </EntityType>
         <EntityType Name="EventCompetition">
@@ -337,6 +448,18 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="WSChina2020BaseComp03Model.FK_User_Gender" FromRole="Gender" ToRole="User" />
         </EntityType>
+        <EntityType Name="Judger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CompetitionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Competition" FromRole="Judger" ToRole="Competition" />
+          <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Country" FromRole="Judger" ToRole="Country" />
+          <NavigationProperty Name="User" Relationship="WSChina2020BaseComp03Model.FK_Judgers_User" FromRole="Judger" ToRole="User" />
+        </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="Id" />
@@ -344,6 +467,17 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Users" Relationship="WSChina2020BaseComp03Model.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateTimeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateTimeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompetitionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Schedule_Competition" FromRole="Schedule" ToRole="Competition" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -377,8 +511,10 @@
           <Property Name="GenderId" Type="Int32" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IdNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User1" FromRole="User" ToRole="Competitior" />
           <NavigationProperty Name="Gender" Relationship="WSChina2020BaseComp03Model.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_User" FromRole="User" ToRole="Judger" />
           <NavigationProperty Name="Role" Relationship="WSChina2020BaseComp03Model.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Competition_CategoryOfCompetition">
@@ -405,6 +541,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Judgers_Competition">
+          <End Type="WSChina2020BaseComp03Model.Competition" Role="Competition" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Judger" Role="Judger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Judger">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Competition">
+          <End Type="WSChina2020BaseComp03Model.Competition" Role="Competition" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Schedule" Role="Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Competitior_Country">
           <End Type="WSChina2020BaseComp03Model.Country" Role="Country" Multiplicity="1" />
           <End Type="WSChina2020BaseComp03Model.Competitior" Role="Competitior" Multiplicity="*" />
@@ -426,6 +586,18 @@
             </Principal>
             <Dependent Role="Competitior">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Judgers_Country">
+          <End Type="WSChina2020BaseComp03Model.Country" Role="Country" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Judger" Role="Judger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Judger">
+              <PropertyRef Name="CountryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -465,6 +637,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Judgers_User">
+          <End Type="WSChina2020BaseComp03Model.User" Role="User" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Judger" Role="Judger" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Judger">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Role">
           <End Type="WSChina2020BaseComp03Model.Role" Role="Role" Multiplicity="1" />
           <End Type="WSChina2020BaseComp03Model.User" Role="User" Multiplicity="*" />
@@ -494,6 +678,8 @@
           <EntitySetMapping Name="Competitions">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competition">
               <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="Infrastructure" ColumnName="Infrastructure" />
+                <ScalarProperty Name="WorkShopLayout" ColumnName="WorkShopLayout" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CategoryOfCompetitionId" ColumnName="CategoryOfCompetitionId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -537,9 +723,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Judgers">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Judger">
+              <MappingFragment StoreEntitySet="Judgers">
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Role">
               <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+                <ScalarProperty Name="DateTimeEnd" ColumnName="DateTimeEnd" />
+                <ScalarProperty Name="DateTimeStart" ColumnName="DateTimeStart" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -568,6 +775,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="GenderId" ColumnName="GenderId" />

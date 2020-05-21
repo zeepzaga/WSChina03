@@ -111,7 +111,14 @@
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\EventCompetitionPartial.cs" />
+    <Compile Include="Entities\Judger.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\JudgerPartial.cs" />
     <Compile Include="Entities\Role.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Schedule.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sysdiagram.cs">
