@@ -10,6 +10,7 @@
     <EntitySet Name="Judgers" EntityType="WSChina2020BaseComp03Model.Judger" />
     <EntitySet Name="Roles" EntityType="WSChina2020BaseComp03Model.Role" />
     <EntitySet Name="Schedules" EntityType="WSChina2020BaseComp03Model.Schedule" />
+    <EntitySet Name="ScheduleOfCompetitors" EntityType="WSChina2020BaseComp03Model.ScheduleOfCompetitor" />
     <EntitySet Name="sysdiagrams" EntityType="WSChina2020BaseComp03Model.sysdiagram" />
     <EntitySet Name="Towns" EntityType="WSChina2020BaseComp03Model.Town" />
     <EntitySet Name="Users" EntityType="WSChina2020BaseComp03Model.User" />
@@ -37,6 +38,10 @@
       <End Role="User" EntitySet="Users" />
       <End Role="Competitior" EntitySet="Competitiors" />
     </AssociationSet>
+    <AssociationSet Name="FK_ScheduleOfCompetitor_Competitior" Association="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior">
+      <End Role="Competitior" EntitySet="Competitiors" />
+      <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitors" />
+    </AssociationSet>
     <AssociationSet Name="FK_Judgers_Country" Association="WSChina2020BaseComp03Model.FK_Judgers_Country">
       <End Role="Country" EntitySet="Countries" />
       <End Role="Judger" EntitySet="Judgers" />
@@ -60,6 +65,10 @@
     <AssociationSet Name="FK_User_Role" Association="WSChina2020BaseComp03Model.FK_User_Role">
       <End Role="Role" EntitySet="Roles" />
       <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleOfCompetitor_Schedule" Association="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule">
+      <End Role="Schedule" EntitySet="Schedules" />
+      <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitors" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="CategoryOfCompetition">
@@ -96,6 +105,7 @@
     <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Competition" FromRole="Competitior" ToRole="Competition" />
     <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Country" FromRole="Competitior" ToRole="Country" />
     <NavigationProperty Name="User" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User1" FromRole="Competitior" ToRole="User" />
+    <NavigationProperty Name="ScheduleOfCompetitors" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior" FromRole="Competitior" ToRole="ScheduleOfCompetitor" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -149,12 +159,24 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DateTimeStart" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DateTimeEnd" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CompetitionId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Schedule_Competition" FromRole="Schedule" ToRole="Competition" />
+    <NavigationProperty Name="ScheduleOfCompetitors" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule" FromRole="Schedule" ToRole="ScheduleOfCompetitor" />
+  </EntityType>
+  <EntityType Name="ScheduleOfCompetitor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Points" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ScheduleId" Type="Int32" Nullable="false" />
+    <Property Name="CompetitorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Competitior" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior" FromRole="ScheduleOfCompetitor" ToRole="Competitior" />
+    <NavigationProperty Name="Schedule" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule" FromRole="ScheduleOfCompetitor" ToRole="Schedule" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -189,6 +211,9 @@
     <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="IdNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User1" FromRole="User" ToRole="Competitior" />
     <NavigationProperty Name="Gender" Relationship="WSChina2020BaseComp03Model.FK_User_Gender" FromRole="User" ToRole="Gender" />
     <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_User" FromRole="User" ToRole="Judger" />
@@ -266,6 +291,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ScheduleOfCompetitor_Competitior">
+    <End Type="WSChina2020BaseComp03Model.Competitior" Role="Competitior" Multiplicity="1" />
+    <End Type="WSChina2020BaseComp03Model.ScheduleOfCompetitor" Role="ScheduleOfCompetitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competitior">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleOfCompetitor">
+        <PropertyRef Name="CompetitorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Judgers_Country">
     <End Type="WSChina2020BaseComp03Model.Country" Role="Country" Multiplicity="1" />
     <End Type="WSChina2020BaseComp03Model.Judger" Role="Judger" Multiplicity="*" />
@@ -335,6 +372,18 @@
       </Principal>
       <Dependent Role="User">
         <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleOfCompetitor_Schedule">
+    <End Type="WSChina2020BaseComp03Model.Schedule" Role="Schedule" Multiplicity="1" />
+    <End Type="WSChina2020BaseComp03Model.ScheduleOfCompetitor" Role="ScheduleOfCompetitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleOfCompetitor">
+        <PropertyRef Name="CompetitorId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

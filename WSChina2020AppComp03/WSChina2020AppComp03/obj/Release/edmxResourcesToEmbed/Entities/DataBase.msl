@@ -86,6 +86,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ScheduleOfCompetitors">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.ScheduleOfCompetitor">
+        <MappingFragment StoreEntitySet="ScheduleOfCompetitor">
+          <ScalarProperty Name="CompetitorId" ColumnName="CompetitorId" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -109,6 +119,9 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
