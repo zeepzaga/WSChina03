@@ -160,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Competitor\MyProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Competitor\MySkillsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -207,6 +211,9 @@
     </Compile>
     <Compile Include="Pages\Competitor\CompetitorMenuPage.xaml.cs">
       <DependentUpon>CompetitorMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Competitor\MyProfilePage.xaml.cs">
+      <DependentUpon>MyProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Competitor\MySkillsPage.xaml.cs">
       <DependentUpon>MySkillsPage.xaml</DependentUpon>

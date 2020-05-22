@@ -31,7 +31,7 @@ namespace WSChina2020AppComp03.Pages.Competitor
         /// </summary>
         private void BtnProfile_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            AppData.MainFrame.Navigate(new MyProfilePage());
         }
         /// <summary>
         /// Обработчик кнопки "My Skills"

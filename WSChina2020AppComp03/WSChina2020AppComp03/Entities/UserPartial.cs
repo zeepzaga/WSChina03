@@ -37,5 +37,13 @@ namespace WSChina2020AppComp03.Entities
             }
             set { }
         }
+        public string FullName
+        {
+            get
+            {
+                return $"{Name} {LastName} {Patronymic}";
+            }
+            set { }
+        }
     }
 }
