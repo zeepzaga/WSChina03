@@ -14,6 +14,7 @@
     <EntitySet Name="sysdiagrams" EntityType="WSChina2020BaseComp03Model.sysdiagram" />
     <EntitySet Name="Towns" EntityType="WSChina2020BaseComp03Model.Town" />
     <EntitySet Name="Users" EntityType="WSChina2020BaseComp03Model.User" />
+    <EntitySet Name="Volunteers" EntityType="WSChina2020BaseComp03Model.Volunteer" />
     <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition">
       <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetitions" />
       <End Role="Competition" EntitySet="Competitions" />
@@ -29,6 +30,10 @@
     <AssociationSet Name="FK_Schedule_Competition" Association="WSChina2020BaseComp03Model.FK_Schedule_Competition">
       <End Role="Competition" EntitySet="Competitions" />
       <End Role="Schedule" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Competition" Association="WSChina2020BaseComp03Model.FK_Volunteer_Competition">
+      <End Role="Competition" EntitySet="Competitions" />
+      <End Role="Volunteer" EntitySet="Volunteers" />
     </AssociationSet>
     <AssociationSet Name="FK_Competitior_Country" Association="WSChina2020BaseComp03Model.FK_Competitior_Country">
       <End Role="Country" EntitySet="Countries" />
@@ -50,6 +55,14 @@
       <End Role="Country" EntitySet="Countries" />
       <End Role="Town" EntitySet="Towns" />
     </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Country" Association="WSChina2020BaseComp03Model.FK_Volunteer_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Volunteer" EntitySet="Volunteers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Country1" Association="WSChina2020BaseComp03Model.FK_Volunteer_Country1">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Volunteer" EntitySet="Volunteers" />
+    </AssociationSet>
     <AssociationSet Name="FK_EventCompetition_Town" Association="WSChina2020BaseComp03Model.FK_EventCompetition_Town">
       <End Role="Town" EntitySet="Towns" />
       <End Role="EventCompetition" EntitySet="EventCompetitions" />
@@ -57,6 +70,10 @@
     <AssociationSet Name="FK_User_Gender" Association="WSChina2020BaseComp03Model.FK_User_Gender">
       <End Role="Gender" EntitySet="Genders" />
       <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Gender" Association="WSChina2020BaseComp03Model.FK_Volunteer_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Volunteer" EntitySet="Volunteers" />
     </AssociationSet>
     <AssociationSet Name="FK_Judgers_User" Association="WSChina2020BaseComp03Model.FK_Judgers_User">
       <End Role="User" EntitySet="Users" />
@@ -93,6 +110,7 @@
     <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Competition" FromRole="Competition" ToRole="Competitior" />
     <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Competition" FromRole="Competition" ToRole="Judger" />
     <NavigationProperty Name="Schedules" Relationship="WSChina2020BaseComp03Model.FK_Schedule_Competition" FromRole="Competition" ToRole="Schedule" />
+    <NavigationProperty Name="Volunteers" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Competition" FromRole="Competition" ToRole="Volunteer" />
   </EntityType>
   <EntityType Name="Competitior">
     <Key>
@@ -116,6 +134,8 @@
     <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Country" FromRole="Country" ToRole="Competitior" />
     <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Country" FromRole="Country" ToRole="Judger" />
     <NavigationProperty Name="Towns" Relationship="WSChina2020BaseComp03Model.FK_Town_Country1" FromRole="Country" ToRole="Town" />
+    <NavigationProperty Name="Volunteers" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Country" FromRole="Country" ToRole="Volunteer" />
+    <NavigationProperty Name="Volunteers1" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Country1" FromRole="Country" ToRole="Volunteer" />
   </EntityType>
   <EntityType Name="EventCompetition">
     <Key>
@@ -134,6 +154,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Users" Relationship="WSChina2020BaseComp03Model.FK_User_Gender" FromRole="Gender" ToRole="User" />
+    <NavigationProperty Name="Volunteers" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Gender" FromRole="Gender" ToRole="Volunteer" />
   </EntityType>
   <EntityType Name="Judger">
     <Key>
@@ -210,7 +231,6 @@
     <Property Name="GenderId" Type="Int32" Nullable="false" />
     <Property Name="RoleId" Type="Int32" Nullable="false" />
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="IdNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
     <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -218,6 +238,22 @@
     <NavigationProperty Name="Gender" Relationship="WSChina2020BaseComp03Model.FK_User_Gender" FromRole="User" ToRole="Gender" />
     <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_User" FromRole="User" ToRole="Judger" />
     <NavigationProperty Name="Role" Relationship="WSChina2020BaseComp03Model.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Volunteer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="RepresentCountryId" Type="Int32" Nullable="false" />
+    <Property Name="BornCountryId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GenderId" Type="Int32" Nullable="false" />
+    <Property Name="CompetitionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Competition" FromRole="Volunteer" ToRole="Competition" />
+    <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Country" FromRole="Volunteer" ToRole="Country" />
+    <NavigationProperty Name="Country1" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Country1" FromRole="Volunteer" ToRole="Country" />
+    <NavigationProperty Name="Gender" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Gender" FromRole="Volunteer" ToRole="Gender" />
   </EntityType>
   <Association Name="FK_Competition_CategoryOfCompetition">
     <End Type="WSChina2020BaseComp03Model.CategoryOfCompetition" Role="CategoryOfCompetition" Multiplicity="1" />
@@ -263,6 +299,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Schedule">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Competition">
+    <End Type="WSChina2020BaseComp03Model.Competition" Role="Competition" Multiplicity="1" />
+    <End Type="WSChina2020BaseComp03Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
         <PropertyRef Name="CompetitionId" />
       </Dependent>
     </ReferentialConstraint>
@@ -327,6 +375,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Volunteer_Country">
+    <End Type="WSChina2020BaseComp03Model.Country" Role="Country" Multiplicity="1" />
+    <End Type="WSChina2020BaseComp03Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="RepresentCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Country1">
+    <End Type="WSChina2020BaseComp03Model.Country" Role="Country" Multiplicity="1" />
+    <End Type="WSChina2020BaseComp03Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="BornCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_EventCompetition_Town">
     <End Type="WSChina2020BaseComp03Model.Town" Role="Town" Multiplicity="1" />
     <End Type="WSChina2020BaseComp03Model.EventCompetition" Role="EventCompetition" Multiplicity="*" />
@@ -347,6 +419,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="User">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Gender">
+    <End Type="WSChina2020BaseComp03Model.Gender" Role="Gender" Multiplicity="1" />
+    <End Type="WSChina2020BaseComp03Model.Volunteer" Role="Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
         <PropertyRef Name="GenderId" />
       </Dependent>
     </ReferentialConstraint>

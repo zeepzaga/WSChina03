@@ -33,8 +33,7 @@ namespace WSChina2020AppComp03.Pages.Coordinator
         /// <param name="e"></param>
         private void BtnVolonteer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            AppData.MainFrame.Navigate(new VolunteerManagmentPage());
         }
         /// <summary>
         /// Обработчик клика на кнопку Sponsorship Managment

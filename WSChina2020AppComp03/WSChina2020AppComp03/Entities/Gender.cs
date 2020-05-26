@@ -18,6 +18,7 @@ namespace WSChina2020AppComp03.Entities
         public Gender()
         {
             this.Users = new HashSet<User>();
+            this.Volunteers = new HashSet<Volunteer>();
         }
     
         public int Id { get; set; }
@@ -25,5 +26,7 @@ namespace WSChina2020AppComp03.Entities
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<User> Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Volunteer> Volunteers { get; set; }
     }
 }

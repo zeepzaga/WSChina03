@@ -38,5 +38,6 @@ namespace WSChina2020AppComp03.Entities
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Volunteer> Volunteers { get; set; }
     }
 }

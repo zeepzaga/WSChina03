@@ -122,7 +122,6 @@
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
           <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="GenderId" ColumnName="GenderId" />
@@ -130,6 +129,19 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Volunteers">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Volunteer">
+        <MappingFragment StoreEntitySet="Volunteer">
+          <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BornCountryId" ColumnName="BornCountryId" />
+          <ScalarProperty Name="RepresentCountryId" ColumnName="RepresentCountryId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

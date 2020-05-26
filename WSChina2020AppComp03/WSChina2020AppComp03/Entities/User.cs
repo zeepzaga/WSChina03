@@ -29,7 +29,6 @@ namespace WSChina2020AppComp03.Entities
         public int GenderId { get; set; }
         public int RoleId { get; set; }
         public byte[] Photo { get; set; }
-        public string IdNumber { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Phone { get; set; }

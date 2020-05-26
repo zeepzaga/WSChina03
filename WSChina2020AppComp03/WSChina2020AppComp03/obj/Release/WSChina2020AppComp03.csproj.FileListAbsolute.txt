@@ -51,3 +51,8 @@ C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Competitor\MyProfilePage.baml
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Competitor\MyResultsPage.g.cs
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Competitor\MyResultsPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Coordinator\VolunteerManagmentPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Coordinator\VolunteerManagmentPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Coordinator\ImportVolonteersPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Coordinator\ImportVolonteersPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\WSChina2020AppComp03.csproj.ResolveComReference.cache
