@@ -8,6 +8,18 @@ namespace WSChina2020AppComp03.Entities
 {
     public partial class Competition
     {
+        public int CountVolunteer
+        {
+            get
+            {
+                int count = 0;
+                foreach (var item in Volunteers)
+                {
+                    count++;
+                }
+                return count;
+            }
+        }
         public string FullCompetition
         {
             get

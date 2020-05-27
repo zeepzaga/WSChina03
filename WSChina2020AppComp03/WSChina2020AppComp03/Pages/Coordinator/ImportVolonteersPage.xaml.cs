@@ -27,15 +27,18 @@ namespace WSChina2020AppComp03.Pages.Coordinator
     /// </summary>
     public partial class ImportVolonteersPage : System.Windows.Controls.Page
     {
+        // переменные нужные для работы с Excel
         private Worksheet _worksheet;
         private Range _range;
-        private int CountOfRows;
-        private int CountOfColumns;
         private Workbook _workbook;
         private _Application _application = new _Excel.Application();
+        private int CountOfRows;
+        private int CountOfColumns;
+        // переменные для счёта для финального вывода
         private int _newRecord = 0;
         private int _totalRecord = 0;
         private int _overriderRecord = 0;
+        //воркер
         BackgroundWorker backgroundWorker;
         public ImportVolonteersPage()
         {
@@ -47,11 +50,16 @@ namespace WSChina2020AppComp03.Pages.Coordinator
             backgroundWorker.ProgressChanged += BackgroundWorker_ProgressChanged;
             backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
         }
-
+        /// <summary>
+        /// Обработка кнопки импорт
+        /// </summary>
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
             backgroundWorker.RunWorkerAsync();
         }
+        /// <summary>
+        ///  Обработка отмены импорта
+        /// </summary>
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Do you want to cancel actions?", "Question", MessageBoxButton.OK, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -63,6 +71,9 @@ namespace WSChina2020AppComp03.Pages.Coordinator
                 }
             }
         }
+        /// <summary>
+        /// Кнопка для загрузки документа
+        /// </summary>
         private void BtnDocument_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog()
@@ -84,18 +95,24 @@ namespace WSChina2020AppComp03.Pages.Coordinator
                 PBProgress.Value = 0;
             }
         }
-
+        /// <summary>
+        /// Метод обрабатывающий окончание работы
+        /// </summary>
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             PBProgress.Value = 100;
             TblResult.Text = $"Import Successfully! Total Record: {_totalRecord}; New Record: {_newRecord}; Overridden Record: {_overriderRecord}";
         }
-
+        /// <summary>
+        /// Счётчик процессов 
+        /// </summary>
         private void BackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             PBProgress.Value = e.ProgressPercentage;
         }
-
+        /// <summary>
+        /// Выполнение импорта
+        /// </summary>
         private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             if (CountOfColumns != 6)
@@ -105,9 +122,6 @@ namespace WSChina2020AppComp03.Pages.Coordinator
             }
             for (int row = 2; row <= CountOfRows; row++)
             {
-                //if (_range.Cells[row, 1].Value2 == null && _range.Cells[row, 2].Value2 == null
-                //    && _range.Cells[row, 3].Value2 == null && _range.Cells[row, 4].Value2 == null
-                //    && _range.Cells[row, 5].Value2 == null && _range.Cells[row, 6].Value2 == null) ;
                 string nameAndLastName = Convert.ToString(_worksheet.Cells[row, 2].Value2);
                 string name = nameAndLastName.Substring(0, nameAndLastName.IndexOf(" "));
                 string lastName = nameAndLastName.Substring(nameAndLastName.IndexOf(" "));
@@ -127,7 +141,7 @@ namespace WSChina2020AppComp03.Pages.Coordinator
                 {
                     var newVolunteer = new Volunteer
                     {
-                        Id = Convert.ToInt32(Convert.ToString(_worksheet.Cells[row,1].Value2)),
+                        Id = Convert.ToInt32(Convert.ToString(_worksheet.Cells[row, 1].Value2)),
                         Name = name,
                         LastName = lastName,
                         GenderId = gender,
@@ -145,18 +159,17 @@ namespace WSChina2020AppComp03.Pages.Coordinator
                         _newRecord++;
                         _overriderRecord++;
                         _totalRecord++;
-                        return;
                     }
-                    AppData.Context.Volunteers.Add(newVolunteer);
-                    AppData.Context.SaveChanges();
-                    _newRecord++;
-                    _totalRecord++;
+                    else
+                    {
+                        AppData.Context.Volunteers.Add(newVolunteer);
+                        AppData.Context.SaveChanges();
+                        _newRecord++;
+                        _totalRecord++;
+                    }
                 }
-                catch (Exception ex)
-                {
-                   
-                }
-                backgroundWorker.ReportProgress((int)(100/_totalRecord * row));
+                catch { MessageBox.Show(""); }
+                backgroundWorker.ReportProgress((int)(100 / _totalRecord * row));
             }
         }
     }

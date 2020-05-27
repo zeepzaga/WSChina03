@@ -136,6 +136,7 @@
     <EntitySetMapping Name="Volunteers">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Volunteer">
         <MappingFragment StoreEntitySet="Volunteer">
+          <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
           <ScalarProperty Name="GenderId" ColumnName="GenderId" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />

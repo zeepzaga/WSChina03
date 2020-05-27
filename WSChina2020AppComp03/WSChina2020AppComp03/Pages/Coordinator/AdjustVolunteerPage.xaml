@@ -1,0 +1,79 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Coordinator.AdjustVolunteerPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Coordinator"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="AdjustVolunteerPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock  Style="{StaticResource StyleTblTitle}" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Center">Adjust volunteers between skils</TextBlock>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource StyleTbBody}">No less than the average volunteers number</TextBlock>
+                    <Border Margin="5" BorderBrush="Black" BorderThickness="1">
+                        <StackPanel Margin="10">
+                            <TextBlock Style="{StaticResource StyleTbBody}" HorizontalAlignment="Center">Competition:</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox DisplayMemberPath="FullCompetition" SelectionChanged="CbCompetition1_SelectionChanged" Name="CbCompetition1" Width="175"></ComboBox>
+                                <Button x:Name="BtnSearch1" Margin="30 5 5 5" Height="30" Click="BtnSearch1_Click">Search</Button>
+                            </StackPanel>
+                            <DataGrid Width="400" x:Name="DgVolunteers1" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="False" Height="200">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Width="0.5*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox x:Name="ChB1" Click="ChB1_Click"></CheckBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="*" Header="Gender" Binding="{Binding Gender.Name}"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="0.5*" Header="Age" Binding="{Binding Age}"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="*" Header="Occupation" Binding="{Binding Country.Name}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBlock x:Name="TbTotal1" Style="{StaticResource StyleTbBody}" Margin="5 10 5 5"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center">
+                    <Button x:Name="BtnToRight" Click="BtnToRight_Click" Margin="10" Content=">" Height="30" Width="75"></Button>
+                    <Button x:Name="BtnToLeft" Margin="10" Content="&lt;" Height="30" Width="75" Click="BtnToLeft_Click"></Button>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource StyleTbBody}">Less than the average volunteers number</TextBlock>
+                    <Border Margin="5" BorderBrush="Black" BorderThickness="1">
+                        <StackPanel Margin="10">
+                            <TextBlock Style="{StaticResource StyleTbBody}" HorizontalAlignment="Center">Competition:</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox DisplayMemberPath="FullCompetition" SelectionChanged="CbCompetition2_SelectionChanged" Name="CbCompetition2" Width="175"></ComboBox>
+                                <Button x:Name="BtnSearch2" Margin="30 5 5 5" Height="30" Click="BtnSearch2_Click">Search</Button>
+                            </StackPanel>
+                            <DataGrid Width="400" x:Name="DgVolunteers2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="False" Height="200">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn Width="0.5*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <CheckBox x:Name="ChB2" Click="ChB2_Click"></CheckBox>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="*" Header="Gender" Binding="{Binding Gender.Name}"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="0.5*" Header="Age" Binding="{Binding Age}"></DataGridTextColumn>
+                                    <DataGridTextColumn Width="*" Header="Occupation" Binding="{Binding Country.Name}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBlock x:Name="TbTotal2" Style="{StaticResource StyleTbBody}" Margin="5 10 5 5"></TextBlock>
+                        </StackPanel>
+                    </Border>
+                    <Button x:Name="BtnSave" HorizontalAlignment="Right" Width="150" Margin="5" Click="BtnSave_Click">Save Adjustment</Button>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

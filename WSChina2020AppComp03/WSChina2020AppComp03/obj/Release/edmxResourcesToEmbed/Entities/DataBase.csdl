@@ -250,6 +250,7 @@
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="GenderId" Type="Int32" Nullable="false" />
     <Property Name="CompetitionId" Type="Int32" Nullable="false" />
+    <Property Name="Age" Type="Int32" />
     <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Competition" FromRole="Volunteer" ToRole="Competition" />
     <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Country" FromRole="Volunteer" ToRole="Country" />
     <NavigationProperty Name="Country1" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Country1" FromRole="Volunteer" ToRole="Country" />

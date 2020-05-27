@@ -21,6 +21,7 @@ namespace WSChina2020AppComp03.Entities
         public string LastName { get; set; }
         public int GenderId { get; set; }
         public int CompetitionId { get; set; }
+        public Nullable<int> Age { get; set; }
     
         public virtual Competition Competition { get; set; }
         public virtual Country Country { get; set; }

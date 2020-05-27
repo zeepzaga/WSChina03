@@ -130,6 +130,7 @@
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="GenderId" Type="int" Nullable="false" />
     <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="Age" Type="int" />
   </EntityType>
   <Association Name="FK_Competition_CategoryOfCompetition">
     <End Role="CategoryOfCompetition" Type="Self.CategoryOfCompetition" Multiplicity="1" />

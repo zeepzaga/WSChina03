@@ -50,7 +50,7 @@
                 <Button x:Name="BtnNextPage" Click="BtnNextPage_Click" Margin="5" Width="100">Next</Button>
                 <Button x:Name="BtnLastPage" Click="BtnLastPage_Click" Margin="22 5 5 5" Width="100">Last</Button>
                 <TextBlock Style="{StaticResource StyleTbBody}">Go to Page</TextBlock>
-                <TextBox x:Name="TbPageNumber" Width="40"></TextBox>
+                <TextBox PreviewTextInput="TbPageNumber_PreviewTextInput" x:Name="TbPageNumber" Width="40"></TextBox>
                 <Button x:Name="BtnGoPage" Click="BtnGoPage_Click" Margin="5" Width="50">Go</Button>
             </StackPanel>
         </StackPanel>
