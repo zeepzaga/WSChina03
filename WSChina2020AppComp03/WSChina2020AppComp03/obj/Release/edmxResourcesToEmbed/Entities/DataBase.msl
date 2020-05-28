@@ -9,6 +9,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CategoryOfSponsorships">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.CategoryOfSponsorship">
+        <MappingFragment StoreEntitySet="CategoryOfSponsorship">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Competitions">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competition">
         <MappingFragment StoreEntitySet="Competition">
@@ -93,6 +102,26 @@
           <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
           <ScalarProperty Name="Points" ColumnName="Points" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sponsors">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Sponsor">
+        <MappingFragment StoreEntitySet="Sponsor">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sponsorships">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Sponsorship">
+        <MappingFragment StoreEntitySet="Sponsorship">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="CategoryOfSponsorshipId" ColumnName="CategoryOfSponsorshipId" />
+          <ScalarProperty Name="SponsorId" ColumnName="SponsorId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

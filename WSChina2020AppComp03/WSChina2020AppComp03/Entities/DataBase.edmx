@@ -12,6 +12,14 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="CategoryOfSponsorship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Competition">
           <Key>
             <PropertyRef Name="Id" />
@@ -89,6 +97,26 @@
           <Property Name="Points" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ScheduleId" Type="int" Nullable="false" />
           <Property Name="CompetitorId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Sponsorship">
+          <Key>
+            <PropertyRef Name="SponsorId" />
+            <PropertyRef Name="CategoryOfSponsorshipId" />
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="SponsorId" Type="int" Nullable="false" />
+          <Property Name="CategoryOfSponsorshipId" Type="int" Nullable="false" />
+          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Count" Type="int" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -269,6 +297,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sponsorship_CategoryOfSponsorship">
+          <End Role="CategoryOfSponsorship" Type="Self.CategoryOfSponsorship" Multiplicity="1" />
+          <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryOfSponsorship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="CategoryOfSponsorshipId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sponsorship_EventCompetition">
+          <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+          <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventCompetition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sponsorship_Sponsor">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+          <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="SponsorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Town_Country1">
           <End Role="Country" Type="Self.Country" Multiplicity="1" />
           <End Role="Town" Type="Self.Town" Multiplicity="*" />
@@ -355,6 +419,7 @@
         </Association>
         <EntityContainer Name="Хранилище WSChina2020BaseComp03ModelContainer">
           <EntitySet Name="CategoryOfCompetition" EntityType="Self.CategoryOfCompetition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryOfSponsorship" EntityType="Self.CategoryOfSponsorship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Competitior" EntityType="Self.Competitior" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
@@ -364,6 +429,8 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScheduleOfCompetitor" EntityType="Self.ScheduleOfCompetitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -412,6 +479,18 @@
             <End Role="Schedule" EntitySet="Schedule" />
             <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitor" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_CategoryOfSponsorship" Association="Self.FK_Sponsorship_CategoryOfSponsorship">
+            <End Role="CategoryOfSponsorship" EntitySet="CategoryOfSponsorship" />
+            <End Role="Sponsorship" EntitySet="Sponsorship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_EventCompetition" Association="Self.FK_Sponsorship_EventCompetition">
+            <End Role="EventCompetition" EntitySet="EventCompetition" />
+            <End Role="Sponsorship" EntitySet="Sponsorship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_Sponsor" Association="Self.FK_Sponsorship_Sponsor">
+            <End Role="Sponsor" EntitySet="Sponsor" />
+            <End Role="Sponsorship" EntitySet="Sponsorship" />
+          </AssociationSet>
           <AssociationSet Name="FK_Town_Country1" Association="Self.FK_Town_Country1">
             <End Role="Country" EntitySet="Country" />
             <End Role="Town" EntitySet="Town" />
@@ -447,6 +526,7 @@
       <Schema Namespace="WSChina2020BaseComp03Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="WSChina2020BaseComp03Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CategoryOfCompetitions" EntityType="WSChina2020BaseComp03Model.CategoryOfCompetition" />
+          <EntitySet Name="CategoryOfSponsorships" EntityType="WSChina2020BaseComp03Model.CategoryOfSponsorship" />
           <EntitySet Name="Competitions" EntityType="WSChina2020BaseComp03Model.Competition" />
           <EntitySet Name="Competitiors" EntityType="WSChina2020BaseComp03Model.Competitior" />
           <EntitySet Name="Countries" EntityType="WSChina2020BaseComp03Model.Country" />
@@ -456,6 +536,8 @@
           <EntitySet Name="Roles" EntityType="WSChina2020BaseComp03Model.Role" />
           <EntitySet Name="Schedules" EntityType="WSChina2020BaseComp03Model.Schedule" />
           <EntitySet Name="ScheduleOfCompetitors" EntityType="WSChina2020BaseComp03Model.ScheduleOfCompetitor" />
+          <EntitySet Name="Sponsors" EntityType="WSChina2020BaseComp03Model.Sponsor" />
+          <EntitySet Name="Sponsorships" EntityType="WSChina2020BaseComp03Model.Sponsorship" />
           <EntitySet Name="sysdiagrams" EntityType="WSChina2020BaseComp03Model.sysdiagram" />
           <EntitySet Name="Towns" EntityType="WSChina2020BaseComp03Model.Town" />
           <EntitySet Name="Users" EntityType="WSChina2020BaseComp03Model.User" />
@@ -463,6 +545,10 @@
           <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition">
             <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetitions" />
             <End Role="Competition" EntitySet="Competitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_CategoryOfSponsorship" Association="WSChina2020BaseComp03Model.FK_Sponsorship_CategoryOfSponsorship">
+            <End Role="CategoryOfSponsorship" EntitySet="CategoryOfSponsorships" />
+            <End Role="Sponsorship" EntitySet="Sponsorships" />
           </AssociationSet>
           <AssociationSet Name="FK_Competitior_Competition" Association="WSChina2020BaseComp03Model.FK_Competitior_Competition">
             <End Role="Competition" EntitySet="Competitions" />
@@ -512,6 +598,10 @@
             <End Role="Town" EntitySet="Towns" />
             <End Role="EventCompetition" EntitySet="EventCompetitions" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_EventCompetition" Association="WSChina2020BaseComp03Model.FK_Sponsorship_EventCompetition">
+            <End Role="EventCompetition" EntitySet="EventCompetitions" />
+            <End Role="Sponsorship" EntitySet="Sponsorships" />
+          </AssociationSet>
           <AssociationSet Name="FK_User_Gender" Association="WSChina2020BaseComp03Model.FK_User_Gender">
             <End Role="Gender" EntitySet="Genders" />
             <End Role="User" EntitySet="Users" />
@@ -532,6 +622,10 @@
             <End Role="Schedule" EntitySet="Schedules" />
             <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitors" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sponsorship_Sponsor" Association="WSChina2020BaseComp03Model.FK_Sponsorship_Sponsor">
+            <End Role="Sponsor" EntitySet="Sponsors" />
+            <End Role="Sponsorship" EntitySet="Sponsorships" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CategoryOfCompetition">
           <Key>
@@ -540,6 +634,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Competitions" Relationship="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition" FromRole="CategoryOfCompetition" ToRole="Competition" />
+        </EntityType>
+        <EntityType Name="CategoryOfSponsorship">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Sponsorships" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_CategoryOfSponsorship" FromRole="CategoryOfSponsorship" ToRole="Sponsorship" />
         </EntityType>
         <EntityType Name="Competition">
           <Key>
@@ -591,6 +694,7 @@
           <Property Name="TownId" Type="Int32" Nullable="false" />
           <Property Name="NumberOfMember" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Town" Relationship="WSChina2020BaseComp03Model.FK_EventCompetition_Town" FromRole="EventCompetition" ToRole="Town" />
+          <NavigationProperty Name="Sponsorships" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_EventCompetition" FromRole="EventCompetition" ToRole="Sponsorship" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -643,6 +747,30 @@
           <Property Name="CompetitorId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Competitior" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior" FromRole="ScheduleOfCompetitor" ToRole="Competitior" />
           <NavigationProperty Name="Schedule" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule" FromRole="ScheduleOfCompetitor" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Sponsorships" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_Sponsor" FromRole="Sponsor" ToRole="Sponsorship" />
+        </EntityType>
+        <EntityType Name="Sponsorship">
+          <Key>
+            <PropertyRef Name="SponsorId" />
+            <PropertyRef Name="CategoryOfSponsorshipId" />
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="SponsorId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryOfSponsorshipId" Type="Int32" Nullable="false" />
+          <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CategoryOfSponsorship" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_CategoryOfSponsorship" FromRole="Sponsorship" ToRole="CategoryOfSponsorship" />
+          <NavigationProperty Name="EventCompetition" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_EventCompetition" FromRole="Sponsorship" ToRole="EventCompetition" />
+          <NavigationProperty Name="Sponsor" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_Sponsor" FromRole="Sponsorship" ToRole="Sponsor" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -710,6 +838,18 @@
             </Principal>
             <Dependent Role="Competition">
               <PropertyRef Name="CategoryOfCompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sponsorship_CategoryOfSponsorship">
+          <End Type="WSChina2020BaseComp03Model.CategoryOfSponsorship" Role="CategoryOfSponsorship" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Sponsorship" Role="Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryOfSponsorship">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="CategoryOfSponsorshipId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -857,6 +997,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sponsorship_EventCompetition">
+          <End Type="WSChina2020BaseComp03Model.EventCompetition" Role="EventCompetition" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Sponsorship" Role="Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventCompetition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_User_Gender">
           <End Type="WSChina2020BaseComp03Model.Gender" Role="Gender" Multiplicity="1" />
           <End Type="WSChina2020BaseComp03Model.User" Role="User" Multiplicity="*" />
@@ -917,6 +1069,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sponsorship_Sponsor">
+          <End Type="WSChina2020BaseComp03Model.Sponsor" Role="Sponsor" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Sponsorship" Role="Sponsorship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sponsorship">
+              <PropertyRef Name="SponsorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -926,6 +1090,15 @@
           <EntitySetMapping Name="CategoryOfCompetitions">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.CategoryOfCompetition">
               <MappingFragment StoreEntitySet="CategoryOfCompetition">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryOfSponsorships">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.CategoryOfSponsorship">
+              <MappingFragment StoreEntitySet="CategoryOfSponsorship">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -1015,6 +1188,26 @@
                 <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsors">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Sponsor">
+              <MappingFragment StoreEntitySet="Sponsor">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsorships">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Sponsorship">
+              <MappingFragment StoreEntitySet="Sponsorship">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="CategoryOfSponsorshipId" ColumnName="CategoryOfSponsorshipId" />
+                <ScalarProperty Name="SponsorId" ColumnName="SponsorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

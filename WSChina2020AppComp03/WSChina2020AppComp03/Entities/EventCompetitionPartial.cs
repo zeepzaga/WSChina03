@@ -65,5 +65,13 @@ namespace WSChina2020AppComp03.Entities
             }
             set { }
         }
+
+        public string YearCountryTown
+        {
+            get
+            {
+                return $"{Year} — WorldSkills {Town.Country.Name} {Town.Name}";
+            }
+        }
     }
 }
