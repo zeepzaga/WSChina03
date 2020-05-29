@@ -165,5 +165,13 @@ namespace WSChina2020AppComp03.Entities
                 return result;
             }
         }
+        public decimal FullPriceOneCategory
+        {
+            get
+            {
+                return UnitPrice * Count;
+                
+            }
+        }
     }
 }

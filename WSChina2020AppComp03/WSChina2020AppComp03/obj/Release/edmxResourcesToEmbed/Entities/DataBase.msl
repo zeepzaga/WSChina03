@@ -117,6 +117,7 @@
     <EntitySetMapping Name="Sponsorships">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Sponsorship">
         <MappingFragment StoreEntitySet="Sponsorship">
+          <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
           <ScalarProperty Name="EventId" ColumnName="EventId" />
           <ScalarProperty Name="Count" ColumnName="Count" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />

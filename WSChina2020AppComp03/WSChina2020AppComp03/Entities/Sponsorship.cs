@@ -19,8 +19,10 @@ namespace WSChina2020AppComp03.Entities
         public decimal UnitPrice { get; set; }
         public int Count { get; set; }
         public int EventId { get; set; }
+        public int CompetitionId { get; set; }
     
         public virtual CategoryOfSponsorship CategoryOfSponsorship { get; set; }
+        public virtual Competition Competition { get; set; }
         public virtual EventCompetition EventCompetition { get; set; }
         public virtual Sponsor Sponsor { get; set; }
     }

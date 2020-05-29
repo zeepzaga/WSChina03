@@ -106,12 +106,14 @@
       <PropertyRef Name="SponsorId" />
       <PropertyRef Name="CategoryOfSponsorshipId" />
       <PropertyRef Name="EventId" />
+      <PropertyRef Name="CompetitionId" />
     </Key>
     <Property Name="SponsorId" Type="int" Nullable="false" />
     <Property Name="CategoryOfSponsorshipId" Type="int" Nullable="false" />
     <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Count" Type="int" Nullable="false" />
     <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -304,6 +306,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Sponsorship_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sponsorship">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Sponsorship_EventCompetition">
     <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
     <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
@@ -476,6 +490,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Sponsorship_CategoryOfSponsorship" Association="Self.FK_Sponsorship_CategoryOfSponsorship">
       <End Role="CategoryOfSponsorship" EntitySet="CategoryOfSponsorship" />
+      <End Role="Sponsorship" EntitySet="Sponsorship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sponsorship_Competition" Association="Self.FK_Sponsorship_Competition">
+      <End Role="Competition" EntitySet="Competition" />
       <End Role="Sponsorship" EntitySet="Sponsorship" />
     </AssociationSet>
     <AssociationSet Name="FK_Sponsorship_EventCompetition" Association="Self.FK_Sponsorship_EventCompetition">

@@ -38,7 +38,7 @@ namespace WSChina2020AppComp03.Pages.Coordinator
 
         private void BtnView_Click(object sender, RoutedEventArgs e)
         {
-
+            AppData.MainFrame.Navigate(new SponsorshipViewPage());
         }
     }
 }
