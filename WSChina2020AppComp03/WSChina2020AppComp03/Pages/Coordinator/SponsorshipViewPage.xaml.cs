@@ -67,16 +67,18 @@ namespace WSChina2020AppComp03.Pages.Coordinator
 
             }
         }
-        private class Competition
+        private class Competition //Класс для ComboBox компетенции
         {
             public string Name { get; set; }
         }
 
-        private class Event //Класс для комбобокса
+        private class Event //Класс для комбобокса Event
         {
             public string Name { get; set; }
         }
-
+        /// <summary>
+        /// Обработка кнопки "Search"
+        /// </summary>
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
             sponsorshipsBuffer = sponsorships;
@@ -92,6 +94,9 @@ namespace WSChina2020AppComp03.Pages.Coordinator
             DgSponsorship.ItemsSource = null;
             DgSponsorship.ItemsSource = sponsorshipsBuffer;
         }
+        /// <summary>
+        /// Обработка кнопки "Export"
+        /// </summary>
         private void BtnExport_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new ExportSponsorshipDetail(sponsorshipsBuffer));

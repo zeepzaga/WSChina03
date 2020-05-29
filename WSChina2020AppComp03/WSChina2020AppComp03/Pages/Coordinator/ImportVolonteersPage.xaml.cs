@@ -169,6 +169,7 @@ namespace WSChina2020AppComp03.Pages.Coordinator
                     }
                 }
                 catch { MessageBox.Show(""); }
+                _workbook.Close();
                 backgroundWorker.ReportProgress((int)(100 / _totalRecord * row));
             }
         }
