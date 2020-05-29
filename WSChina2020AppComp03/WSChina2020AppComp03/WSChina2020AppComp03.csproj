@@ -201,6 +201,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Coordinator\SponsorshipManagmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Coordinator\SponsorshipStatisticsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -266,6 +270,9 @@
     </Compile>
     <Compile Include="Pages\Coordinator\ImportVolonteersPage.xaml.cs">
       <DependentUpon>ImportVolonteersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Coordinator\SponsorshipManagmentPage.xaml.cs">
+      <DependentUpon>SponsorshipManagmentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Coordinator\SponsorshipStatisticsPage.xaml.cs">
       <DependentUpon>SponsorshipStatisticsPage.xaml</DependentUpon>

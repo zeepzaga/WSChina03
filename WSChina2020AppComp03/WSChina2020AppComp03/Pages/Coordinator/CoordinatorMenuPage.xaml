@@ -15,7 +15,6 @@
         </Grid.RowDefinitions>
         <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="10">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Width="500" Text="{Binding HelloPerson}" Style="{StaticResource StyleTblTitle}" TextAlignment="Center" TextWrapping="Wrap"></TextBlock>
                 <Button Margin="10" Name="BtnVolonteer" Click="BtnVolonteer_Click" Height="60" Width="300">Volunteer Managment</Button>
                 <Button Margin="10" Name="BtnSponship" Click="BtnSponship_Click" Height="60" Width="300">Sponsorship Managment</Button>
                 <Button Margin="10" Name="BtnComp" Click="BtnComp_Click" Height="60" Width="300">Competition Service</Button>

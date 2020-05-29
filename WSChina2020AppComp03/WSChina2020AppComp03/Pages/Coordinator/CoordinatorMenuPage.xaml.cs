@@ -42,7 +42,7 @@ namespace WSChina2020AppComp03.Pages.Coordinator
         /// <param name="e"></param>
         private void BtnSponship_Click(object sender, RoutedEventArgs e)
         {
-            AppData.MainFrame.Navigate(new SponsorshipStatisticsPage());
+            AppData.MainFrame.Navigate(new SponsorshipManagmentPage());
 
         }
         /// <summary>
