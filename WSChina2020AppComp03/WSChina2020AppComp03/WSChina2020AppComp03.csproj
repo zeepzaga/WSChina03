@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
@@ -58,9 +59,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -205,6 +208,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Coordinator\SponsorshipCahrtPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Coordinator\SponsorshipManagmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +288,9 @@
     </Compile>
     <Compile Include="Pages\Coordinator\ImportVolonteersPage.xaml.cs">
       <DependentUpon>ImportVolonteersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Coordinator\SponsorshipCahrtPage.xaml.cs">
+      <DependentUpon>SponsorshipCahrtPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Coordinator\SponsorshipManagmentPage.xaml.cs">
       <DependentUpon>SponsorshipManagmentPage.xaml</DependentUpon>

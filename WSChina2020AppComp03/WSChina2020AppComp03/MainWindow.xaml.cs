@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using WSChina2020AppComp03.Entities;
 using WSChina2020AppComp03.Pages;
+using WSChina2020AppComp03.Pages.Coordinator;
 
 namespace WSChina2020AppComp03
 {
@@ -32,7 +33,7 @@ namespace WSChina2020AppComp03
             timer.Tick += Timer_Tick;
             timer.Start();
             AppData.MainFrame = MainFrame;
-            AppData.MainFrame.Navigate(new MainScreenPage());
+            AppData.MainFrame.Navigate(new CoordinatorMenuPage());
         }
         /// <summary>
         /// Во время тика таймера происходит обновление нижней строчки

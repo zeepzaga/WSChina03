@@ -1,0 +1,39 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Coordinator.SponsorshipCahrtPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:chart ="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Coordinator"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SponsorshipCahrtPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource StyleTblTitle}" HorizontalAlignment="Center" Margin="10" VerticalAlignment="Center">Sponsorship Chart</TextBlock>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1" Margin="10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <WindowsFormsHost Margin="5">
+                    <chart:Chart  x:Name="ChartSponsorship"></chart:Chart>
+                </WindowsFormsHost>
+                <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="5" Grid.Column="1">
+                    <ItemsControl x:Name="ICYears" Width="200">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Click="CheckBox_Click" IsChecked="True" Content="{Binding Key}"></CheckBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
