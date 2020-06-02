@@ -30,7 +30,7 @@ namespace WSChina2020AppComp03.Pages.Coordinator
 
             ChartSponsorship.ChartAreas.Add(new ChartArea("Main"));
 
-            var currentSponsorship = new Series("Amount(Million)")
+            var currentSponsorship = new Series("Amount(Million)¥")
             {
                 IsValueShownAsLabel = true
             };

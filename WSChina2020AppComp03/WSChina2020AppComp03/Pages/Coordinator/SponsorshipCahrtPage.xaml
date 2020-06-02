@@ -22,7 +22,11 @@
                     <ColumnDefinition Width="auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <WindowsFormsHost Margin="5">
-                    <chart:Chart  x:Name="ChartSponsorship"></chart:Chart>
+                    <chart:Chart  x:Name="ChartSponsorship">
+                        <chart:Chart.Legends>
+                            <chart:Legend Alignment="Center"></chart:Legend>
+                        </chart:Chart.Legends>
+                    </chart:Chart>
                 </WindowsFormsHost>
                 <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="5" Grid.Column="1">
                     <ItemsControl x:Name="ICYears" Width="200">
