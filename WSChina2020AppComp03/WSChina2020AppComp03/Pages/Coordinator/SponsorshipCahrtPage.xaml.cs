@@ -35,7 +35,14 @@ namespace WSChina2020AppComp03.Pages.Coordinator
                 IsValueShownAsLabel = true
             };
             ChartSponsorship.Series.Add(currentSponsorship);
-            sponsorships = AppData.Context.Sponsorships.ToList();
+            try
+            {
+                sponsorships = AppData.Context.Sponsorships.ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Data Base Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             ICYears.ItemsSource = sponsorships.OrderBy(p=>p.EventCompetition.Year).GroupBy(p => p.EventCompetition.Year);
             sponsorshipsChart.AddRange(sponsorships);
             UpdateChart();

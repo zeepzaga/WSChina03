@@ -30,8 +30,15 @@ namespace WSChina2020AppComp03.Pages.Coordinator
         public CompetitionServicePage()
         {
             InitializeComponent();
-            competitionServicesList = AppData.Context.CompetitionServices.ToList();
-            LVService.ItemsSource = AppData.Context.ServiceTypes.ToList();
+            try
+            {
+                competitionServicesList = AppData.Context.CompetitionServices.ToList();
+                LVService.ItemsSource = AppData.Context.ServiceTypes.ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Data Base Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             LoadCanvas();
         }
         /// <summary>
