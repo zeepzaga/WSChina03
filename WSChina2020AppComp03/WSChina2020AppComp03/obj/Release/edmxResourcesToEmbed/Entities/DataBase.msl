@@ -30,6 +30,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="CompetitionServices">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.CompetitionService">
+        <MappingFragment StoreEntitySet="CompetitionService">
+          <ScalarProperty Name="CoordinateY" ColumnName="CoordinateY" />
+          <ScalarProperty Name="CoordinateX" ColumnName="CoordinateX" />
+          <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Competitiors">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competitior">
         <MappingFragment StoreEntitySet="Competitior">
@@ -101,6 +111,15 @@
           <ScalarProperty Name="CompetitorId" ColumnName="CompetitorId" />
           <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
           <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceTypes">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.ServiceType">
+        <MappingFragment StoreEntitySet="ServiceType">
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

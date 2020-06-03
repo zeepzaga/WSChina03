@@ -40,7 +40,9 @@ namespace WSChina2020AppComp03.Pages.Coordinator
             sponsorshipsChart.AddRange(sponsorships);
             UpdateChart();
         }
-
+        /// <summary>
+        /// Проверка на вывод
+        /// </summary>
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
             if ((sender as CheckBox).IsChecked == true)
@@ -56,6 +58,9 @@ namespace WSChina2020AppComp03.Pages.Coordinator
             }
             UpdateChart();
         }
+        /// <summary>
+        /// Метод обновляющий Chart
+        /// </summary>
         private void UpdateChart()
         {
             var currentSeries = ChartSponsorship.Series.FirstOrDefault();

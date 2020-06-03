@@ -52,8 +52,7 @@ namespace WSChina2020AppComp03.Pages.Coordinator
         /// <param name="e"></param>
         private void BtnComp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            AppData.MainFrame.Navigate(new CompetitionServicePage());
         }
     }
 }
