@@ -178,6 +178,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Admin\CompetitionEventPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\EventManagmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\ViewRegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\CompetitionWsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,6 +283,15 @@
     </Compile>
     <Compile Include="Pages\Admin\AdministratorMenuPage.xaml.cs">
       <DependentUpon>AdministratorMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\CompetitionEventPage.xaml.cs">
+      <DependentUpon>CompetitionEventPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\EventManagmentPage.xaml.cs">
+      <DependentUpon>EventManagmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\ViewRegistrationPage.xaml.cs">
+      <DependentUpon>ViewRegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CompetitionWsPage.xaml.cs">
       <DependentUpon>CompetitionWsPage.xaml</DependentUpon>

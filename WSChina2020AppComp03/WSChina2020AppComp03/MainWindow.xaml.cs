@@ -33,7 +33,7 @@ namespace WSChina2020AppComp03
             timer.Tick += Timer_Tick;
             timer.Start();
             AppData.MainFrame = MainFrame;
-            AppData.MainFrame.Navigate(new CoordinatorMenuPage());
+            AppData.MainFrame.Navigate(new MainScreenPage());
         }
         /// <summary>
         /// Во время тика таймера происходит обновление нижней строчки

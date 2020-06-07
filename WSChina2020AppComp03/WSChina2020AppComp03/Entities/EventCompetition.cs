@@ -17,15 +17,22 @@ namespace WSChina2020AppComp03.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EventCompetition()
         {
+            this.Competitiors = new HashSet<Competitior>();
+            this.Judgers = new HashSet<Judger>();
             this.Sponsorships = new HashSet<Sponsorship>();
         }
     
         public int Id { get; set; }
-        public int Year { get; set; }
         public int TownId { get; set; }
         public int NumberOfMember { get; set; }
+        public System.DateTime DateStart { get; set; }
+        public System.DateTime DateEnd { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Competitior> Competitiors { get; set; }
         public virtual Town Town { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Judger> Judgers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sponsorship> Sponsorships { get; set; }
     }

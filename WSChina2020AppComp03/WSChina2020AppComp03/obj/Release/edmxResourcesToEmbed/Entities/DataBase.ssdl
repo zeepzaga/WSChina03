@@ -43,6 +43,7 @@
     <Property Name="CompetitionId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="CountryId" Type="int" Nullable="false" />
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -56,9 +57,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Year" Type="int" Nullable="false" />
     <Property Name="TownId" Type="int" Nullable="false" />
     <Property Name="NumberOfMember" Type="int" Nullable="false" />
+    <Property Name="DateStart" Type="date" Nullable="false" />
+    <Property Name="DateEnd" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Gender">
     <Key>
@@ -75,6 +77,7 @@
     <Property Name="CountryId" Type="int" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
     <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -227,6 +230,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Competitior_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Competitior">
+        <PropertyRef Name="EventCompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Competitior_User1">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
@@ -272,6 +287,18 @@
       </Principal>
       <Dependent Role="Judgers">
         <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Judgers_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Judgers">
+        <PropertyRef Name="EventCompetitionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -491,6 +518,10 @@
       <End Role="Country" EntitySet="Country" />
       <End Role="Competitior" EntitySet="Competitior" />
     </AssociationSet>
+    <AssociationSet Name="FK_Competitior_EventCompetition" Association="Self.FK_Competitior_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
+      <End Role="Competitior" EntitySet="Competitior" />
+    </AssociationSet>
     <AssociationSet Name="FK_Competitior_User1" Association="Self.FK_Competitior_User1">
       <End Role="User" EntitySet="User" />
       <End Role="Competitior" EntitySet="Competitior" />
@@ -505,6 +536,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_Judgers_Country" Association="Self.FK_Judgers_Country">
       <End Role="Country" EntitySet="Country" />
+      <End Role="Judgers" EntitySet="Judgers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Judgers_EventCompetition" Association="Self.FK_Judgers_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
       <End Role="Judgers" EntitySet="Judgers" />
     </AssociationSet>
     <AssociationSet Name="FK_Judgers_User" Association="Self.FK_Judgers_User">

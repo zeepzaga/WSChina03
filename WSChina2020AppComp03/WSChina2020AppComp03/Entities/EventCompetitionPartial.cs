@@ -70,8 +70,32 @@ namespace WSChina2020AppComp03.Entities
         {
             get
             {
-                return $"{Year} — WorldSkills {Town.Country.Name} {Town.Name}";
+                return $"{DateStart.Year} — WorldSkills {Town.Country.Name} {Town.Name}";
             }
         }
+        public string YearCountryTownWithEnter
+        {
+            get
+            {
+                return $"{DateStart.Year} —\n WorldSkills {Town.Country.Name} {Town.Name}";
+            }
+        }
+
+        public int Year
+        {
+            get
+            {
+                return DateStart.Year;
+            }
+        }
+
+        public string Duration
+        {
+            get
+            {
+                return $"{DateStart.ToShortDateString()} — {DateEnd.ToShortDateString()}";
+            }
+        }
+        
     }
 }

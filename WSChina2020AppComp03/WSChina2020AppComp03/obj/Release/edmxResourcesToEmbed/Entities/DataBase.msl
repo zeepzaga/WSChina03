@@ -43,6 +43,7 @@
     <EntitySetMapping Name="Competitiors">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competitior">
         <MappingFragment StoreEntitySet="Competitior">
+          <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
           <ScalarProperty Name="CountryId" ColumnName="CountryId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
@@ -61,9 +62,10 @@
     <EntitySetMapping Name="EventCompetitions">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.EventCompetition">
         <MappingFragment StoreEntitySet="EventCompetition">
+          <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+          <ScalarProperty Name="DateStart" ColumnName="DateStart" />
           <ScalarProperty Name="NumberOfMember" ColumnName="NumberOfMember" />
           <ScalarProperty Name="TownId" ColumnName="TownId" />
-          <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -79,6 +81,7 @@
     <EntitySetMapping Name="Judgers">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Judger">
         <MappingFragment StoreEntitySet="Judgers">
+          <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
           <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="CountryId" ColumnName="CountryId" />

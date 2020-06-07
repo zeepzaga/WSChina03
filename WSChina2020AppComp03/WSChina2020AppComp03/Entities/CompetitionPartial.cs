@@ -27,5 +27,19 @@ namespace WSChina2020AppComp03.Entities
                 return $"{Id} — {Name}";
             }
         }
+        //public int CompetitiorCount
+        //{
+        //    get
+        //    {
+        //        return Competitiors.Count;
+        //    }
+        //}
+        //public int JudgersCount
+        //{
+        //    get
+        //    {
+        //        return Judgers.Count;
+        //    }
+        //}
     }
 }

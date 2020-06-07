@@ -29,17 +29,13 @@ namespace WSChina2020AppComp03.Pages.Admin
         /// <summary>
         /// Обработчик клика кнопки "Event Managmen"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnEvent_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            AppData.MainFrame.Navigate(new EventManagmentPage());
         }
         /// <summary>
         /// Обработчик клика кнопки "Competitor Managment"
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnComp_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
