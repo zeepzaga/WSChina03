@@ -19,16 +19,23 @@
                 <TabItem.Header>
                     <TextBlock Style="{StaticResource StyleTbBody}">By Skills</TextBlock>
                 </TabItem.Header>
-                <DataGrid Margin="5" AutoGenerateColumns="False" CanUserAddRows="False" Name="DgBySkills" IsReadOnly="True">
+                <DataGrid CanUserSortColumns="False" CanUserResizeColumns="False" Margin="5 5 5 0" AutoGenerateColumns="False" CanUserAddRows="False" Name="DgBySkills" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Skill}" Header="Skills" Width="1.5*"></DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding CompetitiorProvinces}" Header="Competitiors 'Provinces" Width="1.5*"></DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding NumberOfCompetitiors}" Width="*">
+                        <DataGridTextColumn Binding="{Binding Skill}" Header="Skills" Width="1.5*">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
-                                    <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding CompetitiorProvinces}" Header="Competitiors 'Provinces" Width="1.5*">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding NumberOfCompetitiors}" Width="*">
                             <DataGridTextColumn.Header>
                                 <TextBlock TextWrapping="Wrap">Number of Competitors</TextBlock>
                             </DataGridTextColumn.Header>
@@ -36,13 +43,13 @@
                         <DataGridTextColumn Binding="{Binding JudgerProvinces}" Header="Judgers'Provinces" Width="1.5*">
                             <DataGridTextColumn.ElementStyle>
                                 <Style TargetType="TextBlock">
-                                    <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                                    <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
                         <DataGridTextColumn Binding="{Binding NumberOfJudgers}"  Width="*">
                             <DataGridTextColumn.Header>
-                                <TextBlock TextWrapping="Wrap">Number of Competitors</TextBlock>
+                                <TextBlock TextWrapping="Wrap">Number of Judgers</TextBlock>
                             </DataGridTextColumn.Header>
                         </DataGridTextColumn>
                     </DataGrid.Columns>
@@ -52,6 +59,35 @@
                 <TabItem.Header>
                     <TextBlock Style="{StaticResource StyleTbBody}">By Province</TextBlock>
                 </TabItem.Header>
+                <DataGrid CanUserSortColumns="False" CanUserResizeColumns="False" Margin="5 5 5 0" AutoGenerateColumns="False" CanUserAddRows="False" Name="DgByProvince" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Province}" Header="Province" Width="1.5*"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding CompetitiorSkills}" Header="Competition 'Skills" Width="1.5*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding NumberOfCompetitiors}" Width="*">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock TextWrapping="Wrap">Number of Competitors</TextBlock>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding JudgerSkills}" Header="Judgers'Skills" Width="1.5*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding NumberOfJudgers}"  Width="*">
+                                <DataGridTextColumn.Header>
+                                    <TextBlock TextWrapping="Wrap">Number of Judgers</TextBlock>
+                                </DataGridTextColumn.Header>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
             </TabItem>
         </TabControl>
     </Grid>

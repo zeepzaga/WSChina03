@@ -26,6 +26,8 @@ namespace WSChina2020AppComp03.Pages.Admin
         public CompetitionEventPage()
         {
             InitializeComponent();
+            BtnRegistration.IsEnabled = false;
+            BtnEdit.IsEnabled = false;
             try
             {
                 eventCompetitionsList = AppData.Context.EventCompetitions.ToList();
@@ -36,35 +38,48 @@ namespace WSChina2020AppComp03.Pages.Admin
             }
             UpdateDataGrid();
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку Edit
+        /// </summary>
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("The functionality is being developed", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку View Registration
+        /// </summary>
         private void BtnRegistration_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new ViewRegistrationPage(@event));
         }
-
+        /// <summary>
+        /// Обработка нажатия на кнопку +Add an Event
+        /// </summary>
         private void BtnAddEvent_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("The functionality is being developed", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-
+        /// <summary>
+        /// Обработка ввода текста в TextBox
+        /// </summary>
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             UpdateDataGrid();
         }
-
+        /// <summary>
+        /// Обработка смены выбора внутри DataGrid
+        /// </summary>
         private void DgEvent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if ((DgEvent.SelectedItem as EventCompetition).DateStart > DateTime.Now) BtnEdit.IsEnabled = true;
             else BtnEdit.IsEnabled = false;
             @event = DgEvent.SelectedItem as EventCompetition;
+            BtnRegistration.IsEnabled = true;
         }
-
+        /// <summary>
+        /// Метод позволяющий обновлять DataGrid
+        /// </summary>
         private void UpdateDataGrid()
         {
             DgEvent.ItemsSource = eventCompetitionsList.Where(p => p.YearCountryTown.Contains(TbSearch.Text));

@@ -19,7 +19,7 @@
                 <StackPanel>
                     <TextBlock FontSize="34" TextWrapping="Wrap" Foreground="White" Width="400" TextAlignment="Center" Style="{StaticResource StyleTblTitle}">Skills Competition Managment System 2021</TextBlock>
                     <TextBlock Margin="0" HorizontalAlignment="Center" Style="{StaticResource StyleTblTitle}">Shang Hai, China</TextBlock>
-                    <TextBlock Margin="0" HorizontalAlignment="Center" Style="{StaticResource StyleTblTitle}">Tuesday September 23 2016</TextBlock>
+                    <TextBlock Margin="0" HorizontalAlignment="Center" Style="{StaticResource StyleTblTitle}">Tuesday August 22 2021</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Grid>

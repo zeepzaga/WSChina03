@@ -25,12 +25,16 @@ namespace WSChina2020AppComp03.Pages.Admin
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        ///  Обработка нажатия на кнопку Competition Event
+        /// </summary>
         private void BtnEvent_Click(object sender, RoutedEventArgs e)
         {
             AppData.MainFrame.Navigate(new CompetitionEventPage());
         }
-
+        /// <summary>
+        ///  Обработка нажатия на кнопку Competiton Skills
+        /// </summary>
         private void BtnComp_Click(object sender, RoutedEventArgs e)
         {
 

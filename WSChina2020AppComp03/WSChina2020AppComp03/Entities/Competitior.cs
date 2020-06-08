@@ -23,12 +23,12 @@ namespace WSChina2020AppComp03.Entities
         public int Id { get; set; }
         public int CompetitionId { get; set; }
         public int UserId { get; set; }
-        public int CountryId { get; set; }
+        public int TownId { get; set; }
         public int EventCompetitionId { get; set; }
     
         public virtual Competition Competition { get; set; }
-        public virtual Country Country { get; set; }
         public virtual EventCompetition EventCompetition { get; set; }
+        public virtual Town Town { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ScheduleOfCompetitor> ScheduleOfCompetitors { get; set; }
