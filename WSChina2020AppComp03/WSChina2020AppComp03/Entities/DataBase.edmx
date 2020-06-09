@@ -31,6 +31,14 @@
           <Property Name="WorkShopLayout" Type="varbinary(max)" />
           <Property Name="Infrastructure" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="CompetitionOfEventCompetition">
+          <Key>
+            <PropertyRef Name="EventCompetitionId" />
+            <PropertyRef Name="CompetitionId" />
+          </Key>
+          <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+          <Property Name="CompetitionId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="CompetitionService">
           <Key>
             <PropertyRef Name="Id" />
@@ -196,6 +204,30 @@
             </Principal>
             <Dependent Role="Competition">
               <PropertyRef Name="CategoryOfCompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompetitionOfEventCompetition_Competition">
+          <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+          <End Role="CompetitionOfEventCompetition" Type="Self.CompetitionOfEventCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Competition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompetitionOfEventCompetition">
+              <PropertyRef Name="CompetitionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompetitionOfEventCompetition_EventCompetition">
+          <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+          <End Role="CompetitionOfEventCompetition" Type="Self.CompetitionOfEventCompetition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventCompetition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompetitionOfEventCompetition">
+              <PropertyRef Name="EventCompetitionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -491,6 +523,7 @@
           <EntitySet Name="CategoryOfCompetition" EntityType="Self.CategoryOfCompetition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryOfSponsorship" EntityType="Self.CategoryOfSponsorship" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompetitionOfEventCompetition" EntityType="Self.CompetitionOfEventCompetition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompetitionService" EntityType="Self.CompetitionService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Competitior" EntityType="Self.Competitior" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
@@ -510,6 +543,14 @@
           <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="Self.FK_Competition_CategoryOfCompetition">
             <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetition" />
             <End Role="Competition" EntitySet="Competition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompetitionOfEventCompetition_Competition" Association="Self.FK_CompetitionOfEventCompetition_Competition">
+            <End Role="Competition" EntitySet="Competition" />
+            <End Role="CompetitionOfEventCompetition" EntitySet="CompetitionOfEventCompetition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompetitionOfEventCompetition_EventCompetition" Association="Self.FK_CompetitionOfEventCompetition_EventCompetition">
+            <End Role="EventCompetition" EntitySet="EventCompetition" />
+            <End Role="CompetitionOfEventCompetition" EntitySet="CompetitionOfEventCompetition" />
           </AssociationSet>
           <AssociationSet Name="FK_CompetitionService_ServiceType" Association="Self.FK_CompetitionService_ServiceType">
             <End Role="ServiceType" EntitySet="ServiceType" />
@@ -732,6 +773,10 @@
             <End Role="Sponsor" EntitySet="Sponsors" />
             <End Role="Sponsorship" EntitySet="Sponsorships" />
           </AssociationSet>
+          <AssociationSet Name="CompetitionOfEventCompetition" Association="WSChina2020BaseComp03Model.CompetitionOfEventCompetition">
+            <End Role="Competition" EntitySet="Competitions" />
+            <End Role="EventCompetition" EntitySet="EventCompetitions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CategoryOfCompetition">
           <Key>
@@ -766,6 +811,7 @@
           <NavigationProperty Name="Schedules" Relationship="WSChina2020BaseComp03Model.FK_Schedule_Competition" FromRole="Competition" ToRole="Schedule" />
           <NavigationProperty Name="Sponsorships" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_Competition" FromRole="Competition" ToRole="Sponsorship" />
           <NavigationProperty Name="Volunteers" Relationship="WSChina2020BaseComp03Model.FK_Volunteer_Competition" FromRole="Competition" ToRole="Volunteer" />
+          <NavigationProperty Name="EventCompetitions" Relationship="WSChina2020BaseComp03Model.CompetitionOfEventCompetition" FromRole="Competition" ToRole="EventCompetition" />
         </EntityType>
         <EntityType Name="CompetitionService">
           <Key>
@@ -815,6 +861,7 @@
           <NavigationProperty Name="Town" Relationship="WSChina2020BaseComp03Model.FK_EventCompetition_Town" FromRole="EventCompetition" ToRole="Town" />
           <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_EventCompetition" FromRole="EventCompetition" ToRole="Judger" />
           <NavigationProperty Name="Sponsorships" Relationship="WSChina2020BaseComp03Model.FK_Sponsorship_EventCompetition" FromRole="EventCompetition" ToRole="Sponsorship" />
+          <NavigationProperty Name="Competitions" Relationship="WSChina2020BaseComp03Model.CompetitionOfEventCompetition" FromRole="EventCompetition" ToRole="Competition" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -1265,6 +1312,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CompetitionOfEventCompetition">
+          <End Type="WSChina2020BaseComp03Model.Competition" Role="Competition" Multiplicity="*" />
+          <End Type="WSChina2020BaseComp03Model.EventCompetition" Role="EventCompetition" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1469,6 +1520,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="CompetitionOfEventCompetition" TypeName="WSChina2020BaseComp03Model.CompetitionOfEventCompetition" StoreEntitySet="CompetitionOfEventCompetition">
+            <EndProperty Name="EventCompetition">
+              <ScalarProperty Name="Id" ColumnName="EventCompetitionId" />
+            </EndProperty>
+            <EndProperty Name="Competition">
+              <ScalarProperty Name="Id" ColumnName="CompetitionId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

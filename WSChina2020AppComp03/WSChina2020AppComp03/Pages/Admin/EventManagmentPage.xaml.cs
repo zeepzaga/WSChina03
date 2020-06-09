@@ -37,7 +37,7 @@ namespace WSChina2020AppComp03.Pages.Admin
         /// </summary>
         private void BtnComp_Click(object sender, RoutedEventArgs e)
         {
-
+            AppData.MainFrame.Navigate(new CompetitionSkillsPage(null));
         }
     }
 }

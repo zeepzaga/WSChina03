@@ -76,3 +76,7 @@ C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\EventManagmentPage.baml
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\ViewRegistrationPage.g.cs
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\ViewRegistrationPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\CompetitionSkillsPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\CompetitionSkillsPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\AddSkillsPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\AddSkillsPage.baml

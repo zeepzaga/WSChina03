@@ -1,0 +1,30 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Admin.CompetitionSkillsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="CompetitionSkillsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Style="{StaticResource StyleTblTitle}" Margin="20" HorizontalAlignment="Center">Competition Skills</TextBlock>
+            <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource StyleTbBody}" VerticalAlignment="Center">Event:</TextBlock>
+                <ComboBox DisplayMemberPath="YearCountryTown" x:Name="CbEvent" Width="450"></ComboBox>
+                <Button x:Name="BtnSearch" Click="BtnSearch_Click" Margin="5" Width="100">Search</Button>
+            </StackPanel>
+            <TextBlock  Style="{StaticResource StyleTbBody}" Margin="20 10 10 10">Skills in the selected event</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Style="{StaticResource StyleTbBody}" Margin="5 5 5 0" Name="TblTotalSkills"></TextBlock>
+        </StackPanel>
+        <WebBrowser x:Name="WebMain" Grid.Row="1" Margin="10 0 10 10" IsHitTestVisible="False"></WebBrowser>
+        <Button Grid.Row="2" Width="100" HorizontalAlignment="Right" Name="BtnAddSkills" Click="BtnAddSkills_Click" Margin="5">Add Skills</Button>
+    </Grid>
+</Page>

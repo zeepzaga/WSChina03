@@ -199,5 +199,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="CompetitionOfEventCompetition" TypeName="WSChina2020BaseComp03Model.CompetitionOfEventCompetition" StoreEntitySet="CompetitionOfEventCompetition">
+      <EndProperty Name="EventCompetition">
+        <ScalarProperty Name="Id" ColumnName="EventCompetitionId" />
+      </EndProperty>
+      <EndProperty Name="Competition">
+        <ScalarProperty Name="Id" ColumnName="CompetitionId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
