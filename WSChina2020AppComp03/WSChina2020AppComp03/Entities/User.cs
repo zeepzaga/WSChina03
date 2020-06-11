@@ -21,7 +21,7 @@ namespace WSChina2020AppComp03.Entities
             this.Judgers = new HashSet<Judger>();
         }
     
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -32,6 +32,9 @@ namespace WSChina2020AppComp03.Entities
         public string Email { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Phone { get; set; }
+        public string Organization { get; set; }
+        public string ContactAddress { get; set; }
+        public Nullable<int> TownId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Competitior> Competitiors { get; set; }
@@ -39,5 +42,6 @@ namespace WSChina2020AppComp03.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Judger> Judgers { get; set; }
         public virtual Role Role { get; set; }
+        public virtual Town Town { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace WSChina2020AppComp03.Entities
         public string Description { get; set; }
         public byte[] WorkShopLayout { get; set; }
         public byte[] Infrastructure { get; set; }
+        public Nullable<bool> IsIndividual { get; set; }
     
         public virtual CategoryOfCompetition CategoryOfCompetition { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -25,6 +25,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
     <Property Name="WorkShopLayout" Type="varbinary(max)" />
     <Property Name="Infrastructure" Type="varbinary(max)" />
+    <Property Name="IsIndividual" Type="bit" />
   </EntityType>
   <EntityType Name="CompetitionOfEventCompetition">
     <Key>
@@ -47,11 +48,11 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="8" Nullable="false" />
     <Property Name="CompetitionId" Type="int" Nullable="false" />
-    <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="TownId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+    <Property Name="TownId" Type="int" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -83,7 +84,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TownId" Type="int" Nullable="false" />
-    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="CompetitionId" Type="int" Nullable="false" />
     <Property Name="EventCompetitionId" Type="int" Nullable="false" />
   </EntityType>
@@ -98,7 +99,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="8" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DateTimeStart" Type="datetime" Nullable="false" />
     <Property Name="DateTimeEnd" Type="datetime" Nullable="false" />
@@ -111,7 +112,7 @@
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Points" Type="decimal" Precision="18" Scale="2" />
     <Property Name="ScheduleId" Type="int" Nullable="false" />
-    <Property Name="CompetitorId" Type="int" Nullable="false" />
+    <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
   </EntityType>
   <EntityType Name="ServiceType">
     <Key>
@@ -165,7 +166,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -176,6 +177,9 @@
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="DateOfBirth" Type="date" />
     <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Organization" Type="nvarchar(max)" />
+    <Property Name="ContactAddress" Type="nvarchar(max)" />
+    <Property Name="TownId" Type="int" />
   </EntityType>
   <EntityType Name="Volunteer">
     <Key>
@@ -263,7 +267,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Competitior_Town">
-    <End Role="Town" Type="Self.Town" Multiplicity="1" />
+    <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
     <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Town">
@@ -274,7 +278,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Competitior_User1">
+  <Association Name="FK_Competitior_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
     <ReferentialConstraint>
@@ -466,6 +470,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_User_Town">
+    <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Town">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="TownId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Volunteer_Competition">
     <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
     <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
@@ -563,7 +579,7 @@
       <End Role="Town" EntitySet="Town" />
       <End Role="Competitior" EntitySet="Competitior" />
     </AssociationSet>
-    <AssociationSet Name="FK_Competitior_User1" Association="Self.FK_Competitior_User1">
+    <AssociationSet Name="FK_Competitior_User" Association="Self.FK_Competitior_User">
       <End Role="User" EntitySet="User" />
       <End Role="Competitior" EntitySet="Competitior" />
     </AssociationSet>
@@ -625,6 +641,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Town" Association="Self.FK_User_Town">
+      <End Role="Town" EntitySet="Town" />
       <End Role="User" EntitySet="User" />
     </AssociationSet>
     <AssociationSet Name="FK_Volunteer_Competition" Association="Self.FK_Volunteer_Competition">

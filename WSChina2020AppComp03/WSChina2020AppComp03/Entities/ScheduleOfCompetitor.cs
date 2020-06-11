@@ -17,7 +17,7 @@ namespace WSChina2020AppComp03.Entities
         public int Id { get; set; }
         public Nullable<decimal> Points { get; set; }
         public int ScheduleId { get; set; }
-        public int CompetitorId { get; set; }
+        public string CompetitorId { get; set; }
     
         public virtual Competitior Competitior { get; set; }
         public virtual Schedule Schedule { get; set; }

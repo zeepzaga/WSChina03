@@ -30,6 +30,7 @@
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="WorkShopLayout" Type="varbinary(max)" />
           <Property Name="Infrastructure" Type="varbinary(max)" />
+          <Property Name="IsIndividual" Type="bit" />
         </EntityType>
         <EntityType Name="CompetitionOfEventCompetition">
           <Key>
@@ -52,11 +53,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="8" Nullable="false" />
           <Property Name="CompetitionId" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="TownId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
           <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+          <Property Name="TownId" Type="int" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -88,7 +89,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TownId" Type="int" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
           <Property Name="CompetitionId" Type="int" Nullable="false" />
           <Property Name="EventCompetitionId" Type="int" Nullable="false" />
         </EntityType>
@@ -103,7 +104,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="8" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DateTimeStart" Type="datetime" Nullable="false" />
           <Property Name="DateTimeEnd" Type="datetime" Nullable="false" />
@@ -116,7 +117,7 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Points" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ScheduleId" Type="int" Nullable="false" />
-          <Property Name="CompetitorId" Type="int" Nullable="false" />
+          <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
         </EntityType>
         <EntityType Name="ServiceType">
           <Key>
@@ -170,7 +171,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="18" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -181,6 +182,9 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="date" />
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Organization" Type="nvarchar(max)" />
+          <Property Name="ContactAddress" Type="nvarchar(max)" />
+          <Property Name="TownId" Type="int" />
         </EntityType>
         <EntityType Name="Volunteer">
           <Key>
@@ -268,7 +272,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Competitior_Town">
-          <End Role="Town" Type="Self.Town" Multiplicity="1" />
+          <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
           <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Town">
@@ -279,7 +283,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Competitior_User1">
+        <Association Name="FK_Competitior_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
           <ReferentialConstraint>
@@ -471,6 +475,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Town">
+          <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TownId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Volunteer_Competition">
           <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
           <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
@@ -568,7 +584,7 @@
             <End Role="Town" EntitySet="Town" />
             <End Role="Competitior" EntitySet="Competitior" />
           </AssociationSet>
-          <AssociationSet Name="FK_Competitior_User1" Association="Self.FK_Competitior_User1">
+          <AssociationSet Name="FK_Competitior_User" Association="Self.FK_Competitior_User">
             <End Role="User" EntitySet="User" />
             <End Role="Competitior" EntitySet="Competitior" />
           </AssociationSet>
@@ -630,6 +646,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Town" Association="Self.FK_User_Town">
+            <End Role="Town" EntitySet="Town" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="FK_Volunteer_Competition" Association="Self.FK_Volunteer_Competition">
@@ -713,7 +733,7 @@
             <End Role="Town" EntitySet="Towns" />
             <End Role="Competitior" EntitySet="Competitiors" />
           </AssociationSet>
-          <AssociationSet Name="FK_Competitior_User1" Association="WSChina2020BaseComp03Model.FK_Competitior_User1">
+          <AssociationSet Name="FK_Competitior_User" Association="WSChina2020BaseComp03Model.FK_Competitior_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Competitior" EntitySet="Competitiors" />
           </AssociationSet>
@@ -773,6 +793,10 @@
             <End Role="Sponsor" EntitySet="Sponsors" />
             <End Role="Sponsorship" EntitySet="Sponsorships" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Town" Association="WSChina2020BaseComp03Model.FK_User_Town">
+            <End Role="Town" EntitySet="Towns" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="CompetitionOfEventCompetition" Association="WSChina2020BaseComp03Model.CompetitionOfEventCompetition">
             <End Role="Competition" EntitySet="Competitions" />
             <End Role="EventCompetition" EntitySet="EventCompetitions" />
@@ -805,6 +829,7 @@
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="WorkShopLayout" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Infrastructure" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsIndividual" Type="Boolean" />
           <NavigationProperty Name="CategoryOfCompetition" Relationship="WSChina2020BaseComp03Model.FK_Competition_CategoryOfCompetition" FromRole="Competition" ToRole="CategoryOfCompetition" />
           <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Competition" FromRole="Competition" ToRole="Competitior" />
           <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Competition" FromRole="Competition" ToRole="Judger" />
@@ -827,15 +852,15 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="CompetitionId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="TownId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="EventCompetitionId" Type="Int32" Nullable="false" />
+          <Property Name="TownId" Type="Int32" />
           <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Competition" FromRole="Competitior" ToRole="Competition" />
           <NavigationProperty Name="EventCompetition" Relationship="WSChina2020BaseComp03Model.FK_Competitior_EventCompetition" FromRole="Competitior" ToRole="EventCompetition" />
           <NavigationProperty Name="Town" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Town" FromRole="Competitior" ToRole="Town" />
-          <NavigationProperty Name="User" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User1" FromRole="Competitior" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User" FromRole="Competitior" ToRole="User" />
           <NavigationProperty Name="ScheduleOfCompetitors" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior" FromRole="Competitior" ToRole="ScheduleOfCompetitor" />
         </EntityType>
         <EntityType Name="Country">
@@ -878,7 +903,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TownId" Type="Int32" Nullable="false" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="CompetitionId" Type="Int32" Nullable="false" />
           <Property Name="EventCompetitionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Competition" FromRole="Judger" ToRole="Competition" />
@@ -898,7 +923,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateTimeStart" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DateTimeEnd" Type="DateTime" Nullable="false" Precision="3" />
@@ -913,7 +938,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Points" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ScheduleId" Type="Int32" Nullable="false" />
-          <Property Name="CompetitorId" Type="Int32" Nullable="false" />
+          <Property Name="CompetitorId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Competitior" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior" FromRole="ScheduleOfCompetitor" ToRole="Competitior" />
           <NavigationProperty Name="Schedule" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule" FromRole="ScheduleOfCompetitor" ToRole="Schedule" />
         </EntityType>
@@ -974,12 +999,13 @@
           <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp03Model.FK_Town_Country1" FromRole="Town" ToRole="Country" />
           <NavigationProperty Name="EventCompetitions" Relationship="WSChina2020BaseComp03Model.FK_EventCompetition_Town" FromRole="Town" ToRole="EventCompetition" />
           <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Town2" FromRole="Town" ToRole="Judger" />
+          <NavigationProperty Name="Users" Relationship="WSChina2020BaseComp03Model.FK_User_Town" FromRole="Town" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -990,10 +1016,14 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User1" FromRole="User" ToRole="Competitior" />
+          <Property Name="Organization" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TownId" Type="Int32" />
+          <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User" FromRole="User" ToRole="Competitior" />
           <NavigationProperty Name="Gender" Relationship="WSChina2020BaseComp03Model.FK_User_Gender" FromRole="User" ToRole="Gender" />
           <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_User" FromRole="User" ToRole="Judger" />
           <NavigationProperty Name="Role" Relationship="WSChina2020BaseComp03Model.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Town" Relationship="WSChina2020BaseComp03Model.FK_User_Town" FromRole="User" ToRole="Town" />
         </EntityType>
         <EntityType Name="Volunteer">
           <Key>
@@ -1121,7 +1151,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Competitior_Town">
-          <End Type="WSChina2020BaseComp03Model.Town" Role="Town" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.Town" Role="Town" Multiplicity="0..1" />
           <End Type="WSChina2020BaseComp03Model.Competitior" Role="Competitior" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Town">
@@ -1132,7 +1162,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Competitior_User1">
+        <Association Name="FK_Competitior_User">
           <End Type="WSChina2020BaseComp03Model.User" Role="User" Multiplicity="1" />
           <End Type="WSChina2020BaseComp03Model.Competitior" Role="Competitior" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1312,6 +1342,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Town">
+          <End Type="WSChina2020BaseComp03Model.Town" Role="Town" Multiplicity="0..1" />
+          <End Type="WSChina2020BaseComp03Model.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TownId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="CompetitionOfEventCompetition">
           <End Type="WSChina2020BaseComp03Model.Competition" Role="Competition" Multiplicity="*" />
           <End Type="WSChina2020BaseComp03Model.EventCompetition" Role="EventCompetition" Multiplicity="*" />
@@ -1342,6 +1384,7 @@
           <EntitySetMapping Name="Competitions">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competition">
               <MappingFragment StoreEntitySet="Competition">
+                <ScalarProperty Name="IsIndividual" ColumnName="IsIndividual" />
                 <ScalarProperty Name="Infrastructure" ColumnName="Infrastructure" />
                 <ScalarProperty Name="WorkShopLayout" ColumnName="WorkShopLayout" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -1364,8 +1407,8 @@
           <EntitySetMapping Name="Competitiors">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competitior">
               <MappingFragment StoreEntitySet="Competitior">
-                <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
                 <ScalarProperty Name="TownId" ColumnName="TownId" />
+                <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -1492,6 +1535,9 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="TownId" ColumnName="TownId" />
+                <ScalarProperty Name="ContactAddress" ColumnName="ContactAddress" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
                 <ScalarProperty Name="Email" ColumnName="Email" />

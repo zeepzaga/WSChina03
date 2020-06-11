@@ -20,7 +20,7 @@ namespace WSChina2020AppComp03.Entities
             this.ScheduleOfCompetitors = new HashSet<ScheduleOfCompetitor>();
         }
     
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public System.DateTime DateTimeStart { get; set; }
         public System.DateTime DateTimeEnd { get; set; }

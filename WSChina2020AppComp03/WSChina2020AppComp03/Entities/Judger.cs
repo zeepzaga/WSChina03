@@ -16,7 +16,7 @@ namespace WSChina2020AppComp03.Entities
     {
         public int Id { get; set; }
         public int TownId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int CompetitionId { get; set; }
         public int EventCompetitionId { get; set; }
     

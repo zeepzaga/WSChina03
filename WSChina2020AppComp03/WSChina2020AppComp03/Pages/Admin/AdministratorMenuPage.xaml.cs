@@ -38,7 +38,7 @@ namespace WSChina2020AppComp03.Pages.Admin
         /// </summary>
         private void BtnComp_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            AppData.MainFrame.Navigate(new CompetitorManagmentPage());
         }
     }
 }
