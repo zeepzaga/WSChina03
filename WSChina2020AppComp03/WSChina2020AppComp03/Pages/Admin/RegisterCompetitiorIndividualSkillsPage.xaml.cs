@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -78,15 +79,18 @@ namespace WSChina2020AppComp03.Pages.Admin
             else
             {
                 string error = "";
+                String[] words = TbName.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if (words.Count()==0) error += "• Not Correct Name\n";
                 if (String.IsNullOrWhiteSpace(TbIdNumber.Text)) error += "• Not Correct IdNUmber\n";
                 if (String.IsNullOrWhiteSpace(TbName.Text)) error += "• Not Correct Name\n";
                 if (CbProvince.SelectedIndex < 0) error += "• Not Correct Province\n";
                 if (String.IsNullOrWhiteSpace(TbPhone.Text)) error += "• Not Correct Phone\n";
                 if (String.IsNullOrWhiteSpace(TbOrganization.Text)) error += "• Not Correct Organization\n";
+                if (String.IsNullOrWhiteSpace(TbOrganization.Text)) error += "• Not Correct Organization\n";
+                if (!(Regex.IsMatch(TbEmail.Text, @"^[\w-\.]+@([\w-]+\.)+[\w-]{1,4}$"))) error += "• Not Correct Email\n";
                 if (String.IsNullOrWhiteSpace(error))
                 {
                     User user = null;
-                    String[] words = TbName.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     string name = words[1];
                     string lastName = words[2];
                     string patronymic = TbName.Text.Replace($"{Name} {lastName}", "");
