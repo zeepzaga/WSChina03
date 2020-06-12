@@ -20,7 +20,7 @@ namespace WSChina2020AppComp03.Entities
                 string GenderUser = "";
                 if (hour >= 0 && hour < 5) timeDay = "Night";
                 else if (hour >= 5 && hour < 12) timeDay = "Morning";
-                else if (hour >= 12 && hour < 17) timeDay = "Afternoon";
+                else if (hour >= 12 && hour <= 17) timeDay = "Afternoon";
                 else if (hour >= 18) timeDay = "Afternoon";
                 switch (GenderId)
                 {

@@ -60,8 +60,8 @@
                             <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Contact Address:</TextBlock>
                             <TextBox x:Name="TbAddress"></TextBox>
                         </StackPanel>
-                        <Border Width="300" BorderBrush="Black" BorderThickness="1" Margin="10" Height="Auto">
-                            <Image Height="150" Source="{Binding }" x:Name="ImgPgoto" Width="300" Margin="0"></Image>
+                        <Border Background="Transparent" Width="300" BorderBrush="Black" BorderThickness="1" Margin="10" Height="Auto">
+                            <Image Source="{Binding}" Height="150" x:Name="ImgPgoto" Width="300" Margin="0"></Image>
                         </Border>
                         <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
                             <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Photo:</TextBlock>
@@ -74,8 +74,8 @@
             <StackPanel>
                 <Border Height="300" BorderThickness="1" BorderBrush="Black">
                     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <TextBlock x:Name="TblEvent" Style="{StaticResource StyleTbBody}" Width="320"></TextBlock>
-                        <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" x:Name="TblEvent" Style="{StaticResource StyleTbBody}" Width="320"></TextBlock>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                             <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Skill:</TextBlock>
                             <TextBlock x:Name="TblSkills" Style="{StaticResource StyleTbBody}" Width="260"></TextBlock>
                         </StackPanel>

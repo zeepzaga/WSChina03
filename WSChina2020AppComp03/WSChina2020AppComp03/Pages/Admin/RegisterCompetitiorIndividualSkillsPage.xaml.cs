@@ -28,6 +28,7 @@ namespace WSChina2020AppComp03.Pages.Admin
         List<Competitior> competitiorsList = new List<Competitior>();
         Competition _competition;
         int genderId = 0;
+        byte[] photo = null;
         EventCompetition _event;
         public RegisterCompetitiorIndividualSkillsPage(Competition competition, EventCompetition @event)
         {
@@ -66,7 +67,8 @@ namespace WSChina2020AppComp03.Pages.Admin
             };
             if (openFileDialog.ShowDialog() == true)
             {
-                byte[] file = File.ReadAllBytes(openFileDialog.FileName);
+                photo = File.ReadAllBytes(openFileDialog.FileName);
+                ImgPgoto.DataContext = photo;
             }
         }
 
@@ -80,7 +82,7 @@ namespace WSChina2020AppComp03.Pages.Admin
             {
                 string error = "";
                 String[] words = TbName.Text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                if (words.Count()==0) error += "• Not Correct Name\n";
+                if (words.Count() == 0) error += "• Not Correct Name\n";
                 if (String.IsNullOrWhiteSpace(TbIdNumber.Text)) error += "• Not Correct IdNUmber\n";
                 if (String.IsNullOrWhiteSpace(TbName.Text)) error += "• Not Correct Name\n";
                 if (CbProvince.SelectedIndex < 0) error += "• Not Correct Province\n";
@@ -102,7 +104,7 @@ namespace WSChina2020AppComp03.Pages.Admin
                         LastName = lastName,
                         Patronymic = patronymic,
                         GenderId = genderId,
-                        Photo = ImgPgoto.DataContext as byte[] == null ?  null : ImgPgoto.DataContext as byte[],
+                        Photo = photo == null ? null : photo,
                         Email = TbEmail.Text,
                         DateOfBirth = DateTime.ParseExact(TblBirh.Text.Substring(6, 8), "yyyyMdd", null),
                         Phone = TbPhone.Text,
@@ -125,73 +127,73 @@ namespace WSChina2020AppComp03.Pages.Admin
                     AppData.MainFrame.GoBack();
                 }
                 else
-            {
-                MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-    }
-
-    private void BtnCancel_Click(object sender, RoutedEventArgs e)
-    {
-        if (MessageBox.Show("Cancel action", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-        {
-            AppData.MainFrame.GoBack();
-        }
-    }
-
-    private void TbIdNumber_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        BtnRegister.IsEnabled = true;
-        if (TbIdNumber.Text.Length == 18)
-        {
-
-            var user = usersList.FirstOrDefault(p => p.Id.ToString() == TbIdNumber.Text);
-            var competitior = competitiorsList.FirstOrDefault(p => p.User == user);
-            if (competitior != null)
-            {
-                MessageBox.Show("A user with this Id is already registered as a member", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                BtnRegister.IsEnabled = false;
-            }
-            else if (user != null)
-            {
-                TbName.Text = $"{user.Name} {user.LastName} {user.Patronymic}";
-                TblGender.Text = $"{user.Gender.Name}";
-                TbOrganization.Text = $"{user.Organization}";
-                TbAddress.Text = $"{user.ContactAddress}";
-                TbEmail.Text = $"{user.Email}";
-                TbPhone.Text = $"{user.Phone}";
-                TblBirh.Text = $"{user.DateOfBirth}";
-                ImgPgoto.DataContext = user.Photo;
-                CbProvince.SelectedItem = user.Town;
-            }
-            else
-            {
-                try
                 {
-                    string year = "";
-                    string month = "";
-                    string day = "";
-                    if (double.Parse(TbIdNumber.Text.Substring(16, 1)) % 2 == 0)
-                    {
-                        TblGender.Text = "Female";
-                        genderId = 2;
-                    }
-                    else
-                    {
-                        genderId = 1;
-                        TblGender.Text = "Male";
-                    }
-                    year = TbIdNumber.Text.Substring(6, 4);
-                    month = TbIdNumber.Text.Substring(10, 2);
-                    day = TbIdNumber.Text.Substring(12, 2);
-                    TblBirh.Text = $"{year}-{month}-{day}";
-                }
-                catch
-                {
-
+                    MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
+
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Cancel action", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                AppData.MainFrame.GoBack();
+            }
+        }
+
+        private void TbIdNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            BtnRegister.IsEnabled = true;
+            if (TbIdNumber.Text.Length == 18)
+            {
+
+                var user = usersList.FirstOrDefault(p => p.Id.ToString() == TbIdNumber.Text);
+                var competitior = competitiorsList.FirstOrDefault(p => p.User == user);
+                if (competitior != null)
+                {
+                    MessageBox.Show("A user with this Id is already registered as a member", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    BtnRegister.IsEnabled = false;
+                }
+                else if (user != null)
+                {
+                    TbName.Text = $"{user.Name} {user.LastName} {user.Patronymic}";
+                    TblGender.Text = $"{user.Gender.Name}";
+                    TbOrganization.Text = $"{user.Organization}";
+                    TbAddress.Text = $"{user.ContactAddress}";
+                    TbEmail.Text = $"{user.Email}";
+                    TbPhone.Text = $"{user.Phone}";
+                    TblBirh.Text = $"{user.DateOfBirth}";
+                    ImgPgoto.DataContext = user.Photo;
+                    CbProvince.SelectedItem = user.Town;
+                }
+                else
+                {
+                    try
+                    {
+                        string year = "";
+                        string month = "";
+                        string day = "";
+                        if (double.Parse(TbIdNumber.Text.Substring(16, 1)) % 2 == 0)
+                        {
+                            TblGender.Text = "Female";
+                            genderId = 2;
+                        }
+                        else
+                        {
+                            genderId = 1;
+                            TblGender.Text = "Male";
+                        }
+                        year = TbIdNumber.Text.Substring(6, 4);
+                        month = TbIdNumber.Text.Substring(10, 2);
+                        day = TbIdNumber.Text.Substring(12, 2);
+                        TblBirh.Text = $"{year}-{month}-{day}";
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+        }
     }
-}
 }
