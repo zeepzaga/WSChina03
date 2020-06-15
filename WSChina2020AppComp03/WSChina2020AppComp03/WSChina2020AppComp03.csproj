@@ -70,6 +70,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\TeamCompetition.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddNewMemberWindow.xaml.cs">
+      <DependentUpon>AddNewMemberWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -198,6 +204,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Admin\RegiserCompetitiorTeamSkills.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Admin\RegisterCompetitiorIndividualSkillsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -290,6 +300,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\AddNewMemberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AboutShanghaiPage.xaml.cs">
@@ -318,6 +332,9 @@
     </Compile>
     <Compile Include="Pages\Admin\EventManagmentPage.xaml.cs">
       <DependentUpon>EventManagmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\RegiserCompetitiorTeamSkills.xaml.cs">
+      <DependentUpon>RegiserCompetitiorTeamSkills.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Admin\RegisterCompetitiorIndividualSkillsPage.xaml.cs">
       <DependentUpon>RegisterCompetitiorIndividualSkillsPage.xaml</DependentUpon>

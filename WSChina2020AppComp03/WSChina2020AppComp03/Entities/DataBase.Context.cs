@@ -41,6 +41,7 @@ namespace WSChina2020AppComp03.Entities
         public virtual DbSet<Sponsor> Sponsors { get; set; }
         public virtual DbSet<Sponsorship> Sponsorships { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TeamCompetition> TeamCompetitions { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Volunteer> Volunteers { get; set; }

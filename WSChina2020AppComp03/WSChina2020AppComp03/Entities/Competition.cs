@@ -21,6 +21,7 @@ namespace WSChina2020AppComp03.Entities
             this.Judgers = new HashSet<Judger>();
             this.Schedules = new HashSet<Schedule>();
             this.Sponsorships = new HashSet<Sponsorship>();
+            this.TeamCompetitions = new HashSet<TeamCompetition>();
             this.Volunteers = new HashSet<Volunteer>();
             this.EventCompetitions = new HashSet<EventCompetition>();
         }
@@ -42,6 +43,8 @@ namespace WSChina2020AppComp03.Entities
         public virtual ICollection<Schedule> Schedules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sponsorship> Sponsorships { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TeamCompetition> TeamCompetitions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Volunteer> Volunteers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

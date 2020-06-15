@@ -38,6 +38,16 @@ namespace WSChina2020AppComp03.Pages.Admin
             int i = 1;
             string competitiorRegNumber = "";
             string competitionNumber = "";
+            try
+            {
+                usersList = AppData.Context.Users.Where(p => p.RoleId == 1).ToList();
+                competitiorsList = AppData.Context.Competitiors.ToList();
+                CbProvince.ItemsSource = AppData.Context.Towns.ToList();
+            }
+            catch
+            {
+                MessageBox.Show("Data Base Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             foreach (var item in competitiorsList.Where(p => p.EventCompetitionId == @event.Id && p.CompetitionId == competition.Id))
             {
                 i++;
@@ -53,9 +63,6 @@ namespace WSChina2020AppComp03.Pages.Admin
             TbCompetitorNumber.Text = $"{@event.DateStart.Year}{competitionNumber}{competitiorRegNumber}";
             _competition = competition;
             _event = @event;
-            usersList = AppData.Context.Users.Where(p => p.RoleId == 1).ToList();
-            competitiorsList = AppData.Context.Competitiors.ToList();
-            CbProvince.ItemsSource = AppData.Context.Towns.ToList();
         }
 
         private void BtnBrowse_Click(object sender, RoutedEventArgs e)
@@ -92,39 +99,46 @@ namespace WSChina2020AppComp03.Pages.Admin
                 if (!(Regex.IsMatch(TbEmail.Text, @"^[\w-\.]+@([\w-]+\.)+[\w-]{1,4}$"))) error += "• Not Correct Email\n";
                 if (String.IsNullOrWhiteSpace(error))
                 {
-                    User user = null;
-                    string name = words[1];
-                    string lastName = words[2];
-                    string patronymic = TbName.Text.Replace($"{Name} {lastName}", "");
-                    AppData.Context.Users.Add(user = new User
+                    try
                     {
-                        Id = TbIdNumber.Text,
-                        Password = TbIdNumber.Text.Substring(13, 4),
-                        Name = name,
-                        LastName = lastName,
-                        Patronymic = patronymic,
-                        GenderId = genderId,
-                        Photo = photo == null ? null : photo,
-                        Email = TbEmail.Text,
-                        DateOfBirth = DateTime.ParseExact(TblBirh.Text.Substring(6, 8), "yyyyMdd", null),
-                        Phone = TbPhone.Text,
-                        Organization = TbOrganization.Text,
-                        ContactAddress = TbAddress.Text,
-                        TownId = (CbProvince.SelectedItem as Town).Id,
-                        RoleId = 1
-                    });
-                    AppData.Context.SaveChanges();
-                    AppData.Context.Competitiors.Add(new Competitior
+                        User user = null;
+                        string name = words[1];
+                        string lastName = words[2];
+                        string patronymic = TbName.Text.Replace($"{Name} {lastName}", "");
+                        AppData.Context.Users.Add(user = new User
+                        {
+                            Id = TbIdNumber.Text,
+                            Password = TbIdNumber.Text.Substring(13, 4),
+                            Name = name,
+                            LastName = lastName,
+                            Patronymic = patronymic,
+                            GenderId = genderId,
+                            Photo = photo == null ? null : photo,
+                            Email = TbEmail.Text,
+                            DateOfBirth = DateTime.ParseExact(TblBirh.Text.Substring(6, 8), "yyyyMdd", null),
+                            Phone = TbPhone.Text,
+                            Organization = TbOrganization.Text,
+                            ContactAddress = TbAddress.Text,
+                            TownId = (CbProvince.SelectedItem as Town).Id,
+                            RoleId = 1
+                        });
+                        AppData.Context.SaveChanges();
+                        AppData.Context.Competitiors.Add(new Competitior
+                        {
+                            Id = TbCompetitorNumber.Text,
+                            CompetitionId = _competition.Id,
+                            EventCompetitionId = _event.Id,
+                            TownId = (CbProvince.SelectedItem as Town).Id,
+                            UserId = user.Id
+                        });
+                        AppData.Context.SaveChanges();
+                        MessageBox.Show("All done", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
+                        AppData.MainFrame.GoBack();
+                    }
+                    catch
                     {
-                        Id = TbCompetitorNumber.Text,
-                        CompetitionId = _competition.Id,
-                        EventCompetitionId = _event.Id,
-                        TownId = (CbProvince.SelectedItem as Town).Id,
-                        UserId = user.Id
-                    });
-                    AppData.Context.SaveChanges();
-                    MessageBox.Show("All done", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
-                    AppData.MainFrame.GoBack();
+                        MessageBox.Show("Unknown Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
