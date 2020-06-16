@@ -145,18 +145,18 @@ namespace WSChina2020AppComp03.Windows
                     User user = null;
                     string name = words[0];
                     string lastName = words[1];
-                    string patronymic = TbName.Text.Replace($"{Name} {lastName}", "");
+                    string patronymic = TbName.Text.Replace($"{name} {lastName}", "");
                     AppData.Context.Users.Add(user = new User
                     {
                         Id = TbIdNumber.Text,
-                        Password = TbIdNumber.Text.Substring(13, 4),
+                        Password = TbIdNumber.Text.Substring(14, 4),
                         Name = name,
                         LastName = lastName,
                         Patronymic = patronymic,
                         GenderId = genderId,
                         Photo = photo == null ? null : photo,
                         Email = TbEmail.Text,
-                        DateOfBirth = DateTime.ParseExact(TblBirh.Text.Substring(6, 8), "yyyyMdd", null),
+                        DateOfBirth = DateTime.ParseExact(TblBirh.Text, "yyyy-mm-dd", null),
                         Phone = TbPhone.Text,
                         Organization = TbOrganization.Text,
                         ContactAddress = TbAddress.Text,
@@ -184,9 +184,9 @@ namespace WSChina2020AppComp03.Windows
                     MessageBox.Show("All done", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Unknown Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
