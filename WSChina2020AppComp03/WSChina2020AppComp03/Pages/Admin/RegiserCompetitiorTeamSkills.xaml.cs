@@ -44,14 +44,15 @@ namespace WSChina2020AppComp03.Pages.Admin
             Windows.AddNewMemberWindow memberWindow = new Windows.AddNewMemberWindow(_competition, _event, teamId);
             memberWindow.Owner = MainWindow.GetWindow(this);
             memberWindow.ShowDialog();
+            AppData.Context.SaveChanges();
             DgMember.ItemsSource = null;
             competitiorsList = null;
             foreach (var competitiors in AppData.Context.TeamCompetitions.ToList().Where(p => p.TeamId == teamId).ToList())
             {
+                var a = competitiors.Competitior;
                 competitiorsList.Add(competitiors.Competitior);
             }
             DgMember.ItemsSource = competitiorsList;
-
         }
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
