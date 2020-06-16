@@ -30,8 +30,8 @@
             </ItemsControl>
             <TextBlock Style="{StaticResource StyleTbBody}" HorizontalAlignment="Center" Width="800">You have registration a team succefully! You can print competitior card or continue to register.</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Height="50" Margin="20" Width="200">Print Competitior Card</Button>
-                <Button Height="50" Margin="20" Width="200">Continue to Register</Button>
+                <Button x:Name="BtnPrint" Click="BtnPrint_Click" Height="50" Margin="20" Width="200">Print Competitior Card</Button>
+                <Button x:Name="BtnContinue" Click="BtnContinue_Click" Height="50" Margin="20" Width="200">Continue to Register</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -1,0 +1,22 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Admin.RegisterSuccessfullyIndividualPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Admin"
+      xmlns:control="clr-namespace:WSChina2020AppComp03.Controls"
+      mc:Ignorable="d"  
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegisterSuccessfullyIndividualPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <control:RegistrationSuccessfulyControl x:Name="MainControl"></control:RegistrationSuccessfulyControl>
+            <TextBlock Style="{StaticResource StyleTbBody}" Width="600" TextWrapping="WrapWithOverflow" TextAlignment="Center">You have registred competitior successfully! You can print competitior card or continue to register.</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BtnPrint" Click="BtnPrint_Click" Height="50" Margin="20" Width="200">Print Competitior Card</Button>
+                <Button x:Name="BtnContinue" Click="BtnContinue_Click" Height="50" Margin="20" Width="200">Continue to Register</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

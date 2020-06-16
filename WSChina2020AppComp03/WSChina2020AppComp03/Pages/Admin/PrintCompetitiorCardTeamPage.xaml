@@ -1,0 +1,23 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Admin.PrintCompetitiorCardTeamPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Admin"
+      xmlns:control="clr-namespace:WSChina2020AppComp03.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="PrintCompetitiorCardTeamPage">
+
+    <Grid>
+        <Button HorizontalAlignment="Left" Name="BtnPrint" Click="BtnPrint_Click" VerticalAlignment="Bottom" Width="100" Margin="10">Print</Button>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Name="BtnReturn" Click="BtnReturn_Click" Width="100" Margin="10">Return</Button>
+        <ItemsControl Height="450" Width="650" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="Print" BorderBrush="Black" BorderThickness="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <control:PrintCompetitiorCardTeamControl></control:PrintCompetitiorCardTeamControl>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Page>

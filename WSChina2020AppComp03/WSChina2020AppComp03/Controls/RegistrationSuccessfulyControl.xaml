@@ -9,8 +9,10 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Image Source="{Binding User.Photo}" Margin="5" Height="150" Width="150"></Image>
-                <TextBlock Style="{StaticResource StyleTbBody}" HorizontalAlignment="Center" TextDecorations="UnderLine" Foreground="Blue" Cursor="Hand">Download Photo</TextBlock>
+                <Border Margin="5" Height="150" Width="150" BorderBrush="Black" BorderThickness="1">
+                    <Image x:Name="ImgPhoto" Source="{Binding User.Photo}"  ></Image>
+                </Border>
+                <TextBlock Style="{StaticResource StyleTbBody}" Name="TblDownloadPhoto" MouseLeftButtonDown="TblDownloadPhoto_MouseLeftButtonDown" HorizontalAlignment="Center" TextDecorations="UnderLine" Foreground="Blue" Cursor="Hand">Download Photo</TextBlock>
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
@@ -27,7 +29,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold" Width="150" TextWrapping="WrapWithOverflow" TextAlignment="Right">Gender:</TextBlock>
-                    <TextBlock Text="{Binding User.GenderName}" Style="{StaticResource StyleTbBody}" VerticalAlignment="Center" Width="150" TextWrapping="WrapWithOverflow"></TextBlock>
+                    <TextBlock Text="{Binding GenderOfCompetitior}" Style="{StaticResource StyleTbBody}" VerticalAlignment="Center" Width="150" TextWrapping="WrapWithOverflow"></TextBlock>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

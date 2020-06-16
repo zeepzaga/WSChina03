@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="WSChina2020AppComp03.Controls.PrintCompetitiorCardTeamControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WSChina2020AppComp03.Controls"
+             mc:Ignorable="d" Height="450" Width="650">
+    <Grid>
+        <StackPanel>
+            <Image Height="100" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/WSChina2020AppComp03;component/Resourses/wslogo.png"></Image>
+            <TextBlock Style="{StaticResource StyleTblTitle}" HorizontalAlignment="Center" FontSize="40">The Worldskills China 2021</TextBlock>
+            <Border Height="150" Width="150" BorderBrush="Black" BorderThickness="1">
+                <Image Margin="0" Name="ImgPhoto"></Image>
+            </Border>
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Style="{StaticResource StyleTbBody}"  FontWeight="Bold">Name:</TextBlock>
+                    <Grid>
+                        <TextBlock x:Name="TblName" Style="{StaticResource StyleTbBody}"  TextDecorations="Underline" Width="500"></TextBlock>
+                        <TextBlock Style="{StaticResource StyleTbBody}" Text="___________________________________________________" TextDecorations="Underline" Width="500"></TextBlock>
+                    </Grid>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource StyleTbBody}"  FontWeight="Bold">Skills:</TextBlock>
+                    <Grid HorizontalAlignment="Right">
+                        <TextBlock Style="{StaticResource StyleTbBody}" Name="TblSkill"  TextDecorations="Underline" Width="500"></TextBlock>
+                        <TextBlock  Style="{StaticResource StyleTbBody}" Text="___________________________________________________" TextDecorations="Underline" Width="500" Grid.ColumnSpan="2"></TextBlock>
+                    </Grid>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <TextBlock TextWrapping="WrapWithOverflow" Width="100" Style="{StaticResource StyleTbBody}"  FontWeight="Bold">Competitior Number:</TextBlock>
+                    <Grid VerticalAlignment="Center">
+                        <TextBlock x:Name="TblCompNumber" Style="{StaticResource StyleTbBody}" Text="{Binding Name}" TextDecorations="Underline" Width="500"></TextBlock>
+                        <TextBlock Style="{StaticResource StyleTbBody}" Text="___________________________________________________" TextDecorations="Underline" Width="500"></TextBlock>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

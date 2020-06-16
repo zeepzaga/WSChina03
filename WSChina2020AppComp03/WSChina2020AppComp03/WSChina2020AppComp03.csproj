@@ -70,15 +70,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\PrintCompetitiorCardTeamControl.xaml.cs">
+      <DependentUpon>PrintCompetitiorCardTeamControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RegistrationSuccessfulyControl.xaml.cs">
       <DependentUpon>RegistrationSuccessfulyControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Entities\TeamCompetition.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Admin\PrintCompetitiorCardPage.xaml.cs">
+      <DependentUpon>PrintCompetitiorCardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\PrintCompetitiorCardTeamPage.xaml.cs">
+      <DependentUpon>PrintCompetitiorCardTeamPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\RegisterSuccessfullyIndividualPage.xaml.cs">
+      <DependentUpon>RegisterSuccessfullyIndividualPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Admin\RegisterSuccessfulyTeamPage.xaml.cs">
       <DependentUpon>RegisterSuccessfulyTeamPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\PrintCompetitiorCardTeamControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\RegistrationSuccessfulyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,11 +227,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Admin\PrintCompetitiorCardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\PrintCompetitiorCardTeamPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Admin\RegiserCompetitiorTeamSkills.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Admin\RegisterCompetitiorIndividualSkillsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\RegisterSuccessfullyIndividualPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

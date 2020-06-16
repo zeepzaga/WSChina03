@@ -16,5 +16,12 @@ namespace WSChina2020AppComp03.Entities
             }
             set { }
         }
+        public string GenderOfCompetitior
+        {
+            get
+            {
+                return User.Gender.Name;
+            }
+        }
     }
 }

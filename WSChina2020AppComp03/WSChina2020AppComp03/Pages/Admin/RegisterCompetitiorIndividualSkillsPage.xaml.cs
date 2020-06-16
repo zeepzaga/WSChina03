@@ -124,7 +124,8 @@ namespace WSChina2020AppComp03.Pages.Admin
                             RoleId = 1
                         });
                         AppData.Context.SaveChanges();
-                        AppData.Context.Competitiors.Add(new Competitior
+                        Competitior competitior;
+                        AppData.Context.Competitiors.Add(competitior = new Competitior
                         {
                             Id = TbCompetitorNumber.Text,
                             CompetitionId = _competition.Id,
@@ -133,7 +134,7 @@ namespace WSChina2020AppComp03.Pages.Admin
                         });
                         AppData.Context.SaveChanges();
                         MessageBox.Show("All done", "Information", MessageBoxButton.OK, MessageBoxImage.Error);
-                        AppData.MainFrame.GoBack();
+                        AppData.MainFrame.Navigate(new RegisterSuccessfullyIndividualPage(competitior));
                     }
                     catch
                     {
