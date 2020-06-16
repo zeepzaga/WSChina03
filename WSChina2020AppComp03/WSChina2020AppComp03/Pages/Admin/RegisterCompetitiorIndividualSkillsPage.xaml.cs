@@ -102,8 +102,8 @@ namespace WSChina2020AppComp03.Pages.Admin
                     try
                     {
                         User user = null;
-                        string name = words[1];
-                        string lastName = words[2];
+                        string name = words[0];
+                        string lastName = words[1];
                         string patronymic = TbName.Text.Replace($"{Name} {lastName}", "");
                         AppData.Context.Users.Add(user = new User
                         {

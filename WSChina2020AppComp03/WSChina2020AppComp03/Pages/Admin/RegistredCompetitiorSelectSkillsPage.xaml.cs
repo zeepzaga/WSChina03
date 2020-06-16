@@ -36,7 +36,14 @@ namespace WSChina2020AppComp03.Pages.Admin
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
-            AppData.MainFrame.Navigate(new RegisterCompetitiorIndividualSkillsPage(CbSkills.SelectedItem as Competition, @event));
+            if ((CbSkills.SelectedItem as Competition).IsIndividual == true)
+            {
+                AppData.MainFrame.Navigate(new RegisterCompetitiorIndividualSkillsPage(CbSkills.SelectedItem as Competition, @event));
+            }
+            else
+            {
+                AppData.MainFrame.Navigate(new RegiserCompetitiorTeamSkills(CbSkills.SelectedItem as Competition, @event));
+            }
         }
     }
 }

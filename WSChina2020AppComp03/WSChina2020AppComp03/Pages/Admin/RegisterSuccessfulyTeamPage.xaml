@@ -1,0 +1,38 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Admin.RegisterSuccessfulyTeamPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Admin"
+      xmlns:controls ="clr-namespace:WSChina2020AppComp03.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="RegisterSuccessfulyTeamPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource StyleTblTitle}" HorizontalAlignment="Center" FontSize="30">Register Successfuly!</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Skills: </TextBlock>
+                <TextBlock Style="{StaticResource StyleTbBody}"></TextBlock>
+            </StackPanel>
+            <ItemsControl x:Name="ICCompetitiors" HorizontalAlignment="Center" VerticalAlignment="Center" Height="150" Width="900" BorderBrush="Black" BorderThickness="1">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Margin="5"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <controls:RegistrationSuccessfulyControl></controls:RegistrationSuccessfulyControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <TextBlock Style="{StaticResource StyleTbBody}" HorizontalAlignment="Center" Width="800">You have registration a team succefully! You can print competitior card or continue to register.</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Height="50" Margin="20" Width="200">Print Competitior Card</Button>
+                <Button Height="50" Margin="20" Width="200">Continue to Register</Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

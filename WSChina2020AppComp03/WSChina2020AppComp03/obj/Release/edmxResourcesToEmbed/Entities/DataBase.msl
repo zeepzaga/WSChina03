@@ -160,6 +160,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TeamCompetitions">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.TeamCompetition">
+        <MappingFragment StoreEntitySet="TeamCompetition">
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="CompetitorId" ColumnName="CompetitorId" />
+          <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Towns">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Town">
         <MappingFragment StoreEntitySet="Town">

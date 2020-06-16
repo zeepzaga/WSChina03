@@ -70,12 +70,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\RegistrationSuccessfulyControl.xaml.cs">
+      <DependentUpon>RegistrationSuccessfulyControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entities\TeamCompetition.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\RegisterSuccessfulyTeamPage.xaml.cs">
+      <DependentUpon>RegisterSuccessfulyTeamPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddNewMemberWindow.xaml.cs">
       <DependentUpon>AddNewMemberWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\RegistrationSuccessfulyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -209,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Admin\RegisterCompetitiorIndividualSkillsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Admin\RegisterSuccessfulyTeamPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

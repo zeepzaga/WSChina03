@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="CategoryOfSponsorship">
@@ -49,7 +49,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="nvarchar" MaxLength="8" Nullable="false" />
-    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" />
     <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="EventCompetitionId" Type="int" Nullable="false" />
     <Property Name="TownId" Type="int" />
@@ -154,6 +154,15 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="TeamCompetition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="TeamId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="Town">
     <Key>
       <PropertyRef Name="Id" />
@@ -194,7 +203,7 @@
     <Property Name="CompetitionId" Type="int" Nullable="false" />
     <Property Name="Age" Type="int" />
   </EntityType>
-  <Association Name="FK_Competition_CategoryOfCompetition">
+  <Association Name="FK_Competition_CategoryOfCompetition1">
     <End Role="CategoryOfCompetition" Type="Self.CategoryOfCompetition" Multiplicity="1" />
     <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
     <ReferentialConstraint>
@@ -243,7 +252,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Competitior_Competition">
-    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
     <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Competition">
@@ -434,6 +443,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TeamCompetition_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="TeamCompetition" Type="Self.TeamCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeamCompetition">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeamCompetition_Competitior">
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="1" />
+    <End Role="TeamCompetition" Type="Self.TeamCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competitior">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeamCompetition">
+        <PropertyRef Name="CompetitorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Town_Country1">
     <End Role="Country" Type="Self.Country" Multiplicity="1" />
     <End Role="Town" Type="Self.Town" Multiplicity="*" />
@@ -548,10 +581,11 @@
     <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeamCompetition" EntityType="Self.TeamCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="Self.FK_Competition_CategoryOfCompetition">
+    <AssociationSet Name="FK_Competition_CategoryOfCompetition1" Association="Self.FK_Competition_CategoryOfCompetition1">
       <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetition" />
       <End Role="Competition" EntitySet="Competition" />
     </AssociationSet>
@@ -630,6 +664,14 @@
     <AssociationSet Name="FK_Sponsorship_Sponsor" Association="Self.FK_Sponsorship_Sponsor">
       <End Role="Sponsor" EntitySet="Sponsor" />
       <End Role="Sponsorship" EntitySet="Sponsorship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeamCompetition_Competition" Association="Self.FK_TeamCompetition_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="TeamCompetition" EntitySet="TeamCompetition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeamCompetition_Competitior" Association="Self.FK_TeamCompetition_Competitior">
+      <End Role="Competitior" EntitySet="Competitior" />
+      <End Role="TeamCompetition" EntitySet="TeamCompetition" />
     </AssociationSet>
     <AssociationSet Name="FK_Town_Country1" Association="Self.FK_Town_Country1">
       <End Role="Country" EntitySet="Country" />
