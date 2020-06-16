@@ -20,12 +20,34 @@ namespace WSChina2020AppComp03.Entities
                 return count;
             }
         }
+        public string IsTeam
+        {
+            get
+            {
+                if (IsIndividual == false)
+                {
+                    return "YES";
+                }
+                else
+                {
+                    return "NO";
+                }
+            }
+        }
         public string FullCompetition
         {
             get
             {
-                return $"{Id} — {Name}";
+                if(Id.ToString().Length<2)
+                {
+                return $"0{Id} — {Name}";
+                }
+                else
+                {
+                    return $"{Id} — {Name}";
+                }
             }
+            set { }
         }
         //public int CompetitiorCount
         //{

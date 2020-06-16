@@ -129,7 +129,6 @@ namespace WSChina2020AppComp03.Pages.Admin
                             Id = TbCompetitorNumber.Text,
                             CompetitionId = _competition.Id,
                             EventCompetitionId = _event.Id,
-                            TownId = (CbProvince.SelectedItem as Town).Id,
                             UserId = user.Id
                         });
                         AppData.Context.SaveChanges();

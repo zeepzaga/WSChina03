@@ -44,7 +44,6 @@
     <EntitySetMapping Name="Competitiors">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competitior">
         <MappingFragment StoreEntitySet="Competitior">
-          <ScalarProperty Name="TownId" ColumnName="TownId" />
           <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />

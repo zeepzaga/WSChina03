@@ -14,27 +14,92 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock Style="{StaticResource StyleTblTitle}" HorizontalAlignment="Center">Registrer Competitior-Team Skills</TextBlock>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1">
+        <Border Width="900" x:Name="BorderAddMember" Visibility="Collapsed" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1" Grid.RowSpan="2">
+            <Grid>
+                <TextBlock x:Name="TblClose" MouseLeftButtonDown="TblClose_MouseLeftButtonDown" Style="{StaticResource StyleTblTitle}" Foreground="Red" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,0">x</TextBlock>
+                <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource StyleTblTitle}" HorizontalAlignment="Center">Add a new Member</TextBlock>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="0 0 5 0">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock TextAlignment="Right" Style="{StaticResource StyleTbBody}" FontWeight="Bold" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Width="100">Competitior Number:</TextBlock>
+                                    <TextBox x:Name="TbCompetitorNumber" VerticalAlignment="Center" IsEnabled="False"></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock TextAlignment="Right" Style="{StaticResource StyleTbBody}" FontWeight="Bold" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Width="100">IdNumber:</TextBlock>
+                                    <TextBox TextChanged="TbIdNumber_TextChanged" x:Name="TbIdNumber" VerticalAlignment="Center"></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock TextAlignment="Right" Style="{StaticResource StyleTbBody}" FontWeight="Bold" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Width="100">Name:</TextBlock>
+                                    <TextBox x:Name="TbName" VerticalAlignment="Center" IsEnabled="True"></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock TextAlignment="Right" Style="{StaticResource StyleTbBody}" FontWeight="Bold" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Width="100">Gender:</TextBlock>
+                                    <TextBlock x:Name="TblGender" Style="{StaticResource StyleTbBody}" Width="150" VerticalAlignment="Center" IsEnabled="False"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock TextAlignment="Right" Style="{StaticResource StyleTbBody}" FontWeight="Bold" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Width="120">Date Of Birth:</TextBlock>
+                                    <TextBlock x:Name="TblBirh" Style="{StaticResource StyleTbBody}" Width="150" VerticalAlignment="Center" IsEnabled="False"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock TextAlignment="Right" Style="{StaticResource StyleTbBody}" FontWeight="Bold" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Width="120">Province:</TextBlock>
+                                    <ComboBox Name="CbProvince" DisplayMemberPath="Name" Width="150" VerticalAlignment="Center"></ComboBox>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock TextAlignment="Right" Style="{StaticResource StyleTbBody}" FontWeight="Bold" TextWrapping="WrapWithOverflow" VerticalAlignment="Center" Width="120">Email:</TextBlock>
+                                    <TextBox x:Name="TbEmail" Width="150" VerticalAlignment="Center"></TextBox>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel VerticalAlignment="Center">
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Phone:</TextBlock>
+                                    <TextBox x:Name="TbPhone"></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Organization:</TextBlock>
+                                    <TextBox x:Name="TbOrganization"></TextBox>
+                                </StackPanel>
+                                <StackPanel Margin="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Contact Address:</TextBlock>
+                                    <TextBox x:Name="TbAddress"></TextBox>
+                                </StackPanel>
+                                <Border Background="Transparent" Width="300" BorderBrush="Black" BorderThickness="1" Margin="10" Height="Auto">
+                                    <Image Source="{Binding}" Height="150" x:Name="ImgPgoto" Width="300" Margin="0"></Image>
+                                </Border>
+                                <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Photo:</TextBlock>
+                                    <TextBox x:Name="TbPhoto" IsReadOnly="True"></TextBox>
+                                    <Button Margin="5" Name="BtnBrowse" Click="BtnBrowse_Click" Width="100">Browse</Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <Button HorizontalAlignment="Right" Name="BtnSumbit" Click="BtnSumbit_Click" Margin="5" Width="100" Height="30">Sumbit</Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <StackPanel Visibility="Visible" Name="StackPanelMain" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1">
             <Border Margin="5" BorderBrush="Black" BorderThickness="1" Grid.Row="1">
                 <StackPanel>
                     <TextBlock Style="{StaticResource StyleTbBody}">Team Member:</TextBlock>
                     <DataGrid x:Name="DgMember" AutoGenerateColumns="False" CanUserAddRows="False" FontSize="14" Margin="5" Width="600" Height="300">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Id}" Width="*">
+                            <DataGridTextColumn Binding="{Binding CompetitiorNumber}" Width="*">
                                 <DataGridTextColumn.Header>
                                     <TextBlock TextWrapping="WrapWithOverflow">Competitior Number</TextBlock>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding User.FullName}" Width="*" Header="Name">
+                            <DataGridTextColumn Binding="{Binding Name}" Width="*" Header="Name">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding User.GenderName}" Width="*" Header="Gender"></DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding Town.Name}" Width="*" Header="Province"></DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding User.Id}" Width="*" Header="IdNumber"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Gender}" Width="*" Header="Gender"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Province}" Width="*" Header="Province"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding IdNumber}" Width="*" Header="IdNumber"></DataGridTextColumn>
                             <DataGridTemplateColumn Width="100">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

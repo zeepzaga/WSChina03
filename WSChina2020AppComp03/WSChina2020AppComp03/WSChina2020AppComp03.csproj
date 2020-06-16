@@ -79,9 +79,6 @@
     <Compile Include="Pages\Admin\RegisterSuccessfulyTeamPage.xaml.cs">
       <DependentUpon>RegisterSuccessfulyTeamPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AddNewMemberWindow.xaml.cs">
-      <DependentUpon>AddNewMemberWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="Controls\RegistrationSuccessfulyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -230,6 +227,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Admin\ViewCompetitiorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Admin\ViewRegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -314,10 +315,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddNewMemberWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AboutShanghaiPage.xaml.cs">
@@ -355,6 +352,9 @@
     </Compile>
     <Compile Include="Pages\Admin\RegistredCompetitiorSelectSkillsPage.xaml.cs">
       <DependentUpon>RegistredCompetitiorSelectSkillsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Admin\ViewCompetitiorPage.xaml.cs">
+      <DependentUpon>ViewCompetitiorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Admin\ViewRegistrationPage.xaml.cs">
       <DependentUpon>ViewRegistrationPage.xaml</DependentUpon>
@@ -483,6 +483,7 @@
     <Folder Include="Resourses\AboutWsChinaPage\Accession\" />
     <Folder Include="Resourses\AboutWsChinaPage\Commeitte\" />
     <Folder Include="Resourses\AboutWsChinaPage\Partisipation\" />
+    <Folder Include="Windows\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entities\DataBase.Context.tt">

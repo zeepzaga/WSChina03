@@ -45,7 +45,7 @@ namespace WSChina2020AppComp03.Pages.Admin
                 countJudger = 0;
                 isNull = true;
                 int i = 0; //переменная позволяющая не ставить запятую после последнего слова в списке
-                foreach (var competitor in competitiorsList.Where(p => p.EventCompetition == @event && p.Competition == competition).GroupBy(p=>p.Town.Name))
+                foreach (var competitor in competitiorsList.Where(p => p.EventCompetition == @event && p.Competition == competition).GroupBy(p=>p.User.Town.Name))
                 {
                     if (i != 0)
                     {
@@ -97,7 +97,7 @@ namespace WSChina2020AppComp03.Pages.Admin
                 countJudger = 0;
                 isNull = true;
                 int i = 0;
-                foreach (var competitor in competitiorsList.Where(p => p.EventCompetition == @event && p.Town == province).GroupBy(p=>p.Competition.FullCompetition))
+                foreach (var competitor in competitiorsList.Where(p => p.EventCompetition == @event && p.User.Town == province).GroupBy(p=>p.Competition.FullCompetition))
                 {
                     if (i != 0)
                     {

@@ -33,7 +33,7 @@ namespace WSChina2020AppComp03.Pages.Admin
 
         private void BtnViewCompetitior_Click(object sender, RoutedEventArgs e)
         {
-
+            AppData.MainFrame.Navigate(new ViewCompetitiorPage());
         }
     }
 }

@@ -17,7 +17,6 @@ namespace WSChina2020AppComp03.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Town()
         {
-            this.Competitiors = new HashSet<Competitior>();
             this.EventCompetitions = new HashSet<EventCompetition>();
             this.Judgers = new HashSet<Judger>();
             this.Users = new HashSet<User>();
@@ -27,8 +26,6 @@ namespace WSChina2020AppComp03.Entities
         public string Name { get; set; }
         public int CountryId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Competitior> Competitiors { get; set; }
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EventCompetition> EventCompetitions { get; set; }

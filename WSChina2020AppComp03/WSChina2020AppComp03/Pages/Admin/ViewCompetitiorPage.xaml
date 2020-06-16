@@ -1,0 +1,80 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Admin.ViewCompetitiorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Admin"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1000"
+      Title="ViewCompetitiorPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource StyleTblTitle}" FontSize="30" FontWeight="Bold">View Competitior</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" FontWeight="Bold">Event:</TextBlock>
+                        <ComboBox DisplayMemberPath="YearCountryTown" Name="CbEvent" Width="250"></ComboBox>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" FontWeight="Bold">Name:</TextBlock>
+                        <TextBox Name="TbName" Width="250"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" FontWeight="Bold">Skills:</TextBlock>
+                        <ComboBox DisplayMemberPath="FullCompetition" Name="CbSkill" Width="200"></ComboBox>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" FontWeight="Bold">Gender:</TextBlock>
+                        <ComboBox DisplayMemberPath="Name" Name="CbGender" Width="200"></ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" FontWeight="Bold">IdNumber:</TextBlock>
+                        <TextBox Name="TbIdNumber" Width="150"></TextBox>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource StyleTbBody}" FontWeight="Bold">Province:</TextBlock>
+                        <ComboBox DisplayMemberPath="Name" Name="CbProvince" Width="150"></ComboBox>
+                    </StackPanel>
+                </StackPanel>
+                <Button Margin="5" Width="100" Name="BtnSearch" Click="BtnSearch_Click" VerticalAlignment="Top" Content="Search"/>
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Center" Style="{StaticResource StyleTbBody}" Margin="5 20 5 0"></TextBlock>
+        </StackPanel>
+        <TextBlock x:Name="TblNoData" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource StyleTblTitle}" Grid.Row="1" FontSize="50">No Data For this Filter</TextBlock>
+        <DataGrid SelectionChanged="DgCompetitiors_SelectionChanged" AutoGenerateColumns="False" Name="DgCompetitiors" HorizontalScrollBarVisibility="Auto"  CanUserAddRows="False" Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" CanUserResize="False" Binding="{Binding EventCompetition.YearCountryTown}" Header="Event">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" CanUserResize="False" Binding="{Binding Competition.FullCompetition}" Header="Skills">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="WrapWithOverflow"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding User.FullName}" Header="Name"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding User.Gender.Name}" Header="Gender"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding User.Id}" Header="IdNumber"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding User.Town.Name}" Header="Province"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding Competition.IsTeam}" Header="Team"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnEdit" Click="BtnEdit_Click" Margin="5 5 10 5" Width="100" VerticalAlignment="Top" Grid.Row="2" HorizontalAlignment="Right" Content="Edit"/>
+    </Grid>
+</Page>

@@ -61,10 +61,6 @@
       <End Role="EventCompetition" EntitySet="EventCompetitions" />
       <End Role="Competitior" EntitySet="Competitiors" />
     </AssociationSet>
-    <AssociationSet Name="FK_Competitior_Town" Association="WSChina2020BaseComp03Model.FK_Competitior_Town">
-      <End Role="Town" EntitySet="Towns" />
-      <End Role="Competitior" EntitySet="Competitiors" />
-    </AssociationSet>
     <AssociationSet Name="FK_Competitior_User" Association="WSChina2020BaseComp03Model.FK_Competitior_User">
       <End Role="User" EntitySet="Users" />
       <End Role="Competitior" EntitySet="Competitiors" />
@@ -193,10 +189,8 @@
     <Property Name="CompetitionId" Type="Int32" />
     <Property Name="UserId" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
     <Property Name="EventCompetitionId" Type="Int32" Nullable="false" />
-    <Property Name="TownId" Type="Int32" />
     <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Competition" FromRole="Competitior" ToRole="Competition" />
     <NavigationProperty Name="EventCompetition" Relationship="WSChina2020BaseComp03Model.FK_Competitior_EventCompetition" FromRole="Competitior" ToRole="EventCompetition" />
-    <NavigationProperty Name="Town" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Town" FromRole="Competitior" ToRole="Town" />
     <NavigationProperty Name="User" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User" FromRole="Competitior" ToRole="User" />
     <NavigationProperty Name="ScheduleOfCompetitors" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior" FromRole="Competitior" ToRole="ScheduleOfCompetitor" />
     <NavigationProperty Name="TeamCompetitions" Relationship="WSChina2020BaseComp03Model.FK_TeamCompetition_Competitior" FromRole="Competitior" ToRole="TeamCompetition" />
@@ -344,7 +338,6 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CountryId" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Competitiors" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Town" FromRole="Town" ToRole="Competitior" />
     <NavigationProperty Name="Country" Relationship="WSChina2020BaseComp03Model.FK_Town_Country1" FromRole="Town" ToRole="Country" />
     <NavigationProperty Name="EventCompetitions" Relationship="WSChina2020BaseComp03Model.FK_EventCompetition_Town" FromRole="Town" ToRole="EventCompetition" />
     <NavigationProperty Name="Judgers" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Town2" FromRole="Town" ToRole="Judger" />
@@ -508,18 +501,6 @@
       </Principal>
       <Dependent Role="Competitior">
         <PropertyRef Name="EventCompetitionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Competitior_Town">
-    <End Type="WSChina2020BaseComp03Model.Town" Role="Town" Multiplicity="0..1" />
-    <End Type="WSChina2020BaseComp03Model.Competitior" Role="Competitior" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Town">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Competitior">
-        <PropertyRef Name="TownId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

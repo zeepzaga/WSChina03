@@ -52,7 +52,6 @@
     <Property Name="CompetitionId" Type="int" />
     <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="EventCompetitionId" Type="int" Nullable="false" />
-    <Property Name="TownId" Type="int" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -272,18 +271,6 @@
       </Principal>
       <Dependent Role="Competitior">
         <PropertyRef Name="EventCompetitionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Competitior_Town">
-    <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
-    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Town">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Competitior">
-        <PropertyRef Name="TownId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -607,10 +594,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Competitior_EventCompetition" Association="Self.FK_Competitior_EventCompetition">
       <End Role="EventCompetition" EntitySet="EventCompetition" />
-      <End Role="Competitior" EntitySet="Competitior" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Competitior_Town" Association="Self.FK_Competitior_Town">
-      <End Role="Town" EntitySet="Town" />
       <End Role="Competitior" EntitySet="Competitior" />
     </AssociationSet>
     <AssociationSet Name="FK_Competitior_User" Association="Self.FK_Competitior_User">

@@ -45,13 +45,5 @@ namespace WSChina2020AppComp03.Entities
             }
             set { }
         }
-        public string GenderName
-        {
-            get
-            {
-                return Gender.Name;
-            }
-            set { }
-        }
     }
 }
