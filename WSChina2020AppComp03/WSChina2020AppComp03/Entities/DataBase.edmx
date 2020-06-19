@@ -57,6 +57,7 @@
           <Property Name="CompetitionId" Type="int" />
           <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
           <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+          <Property Name="StationNumber" Type="int" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -91,6 +92,7 @@
           <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
           <Property Name="CompetitionId" Type="int" Nullable="false" />
           <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+          <Property Name="IsMain" Type="bit" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -113,7 +115,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Points" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ScheduleId" Type="int" Nullable="false" />
           <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
@@ -887,6 +889,7 @@
           <Property Name="CompetitionId" Type="Int32" />
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="EventCompetitionId" Type="Int32" Nullable="false" />
+          <Property Name="StationNumber" Type="Int32" />
           <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Competitior_Competition" FromRole="Competitior" ToRole="Competition" />
           <NavigationProperty Name="EventCompetition" Relationship="WSChina2020BaseComp03Model.FK_Competitior_EventCompetition" FromRole="Competitior" ToRole="EventCompetition" />
           <NavigationProperty Name="User" Relationship="WSChina2020BaseComp03Model.FK_Competitior_User" FromRole="Competitior" ToRole="User" />
@@ -936,6 +939,7 @@
           <Property Name="UserId" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="true" />
           <Property Name="CompetitionId" Type="Int32" Nullable="false" />
           <Property Name="EventCompetitionId" Type="Int32" Nullable="false" />
+          <Property Name="IsMain" Type="Boolean" />
           <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Competition" FromRole="Judger" ToRole="Competition" />
           <NavigationProperty Name="EventCompetition" Relationship="WSChina2020BaseComp03Model.FK_Judgers_EventCompetition" FromRole="Judger" ToRole="EventCompetition" />
           <NavigationProperty Name="Town" Relationship="WSChina2020BaseComp03Model.FK_Judgers_Town2" FromRole="Judger" ToRole="Town" />
@@ -965,7 +969,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Points" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="ScheduleId" Type="Int32" Nullable="false" />
           <Property Name="CompetitorId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
@@ -1459,6 +1463,7 @@
           <EntitySetMapping Name="Competitiors">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Competitior">
               <MappingFragment StoreEntitySet="Competitior">
+                <ScalarProperty Name="StationNumber" ColumnName="StationNumber" />
                 <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
@@ -1496,6 +1501,7 @@
           <EntitySetMapping Name="Judgers">
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Judger">
               <MappingFragment StoreEntitySet="Judgers">
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
                 <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
                 <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />

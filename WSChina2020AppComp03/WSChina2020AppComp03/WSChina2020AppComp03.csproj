@@ -327,6 +327,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Judger\DrawLotsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Judger\JudgerMenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -434,6 +438,9 @@
     </Compile>
     <Compile Include="Pages\HistoryOfWsPage.xaml.cs">
       <DependentUpon>HistoryOfWsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Judger\DrawLotsPage.xaml.cs">
+      <DependentUpon>DrawLotsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Judger\JudgerMenuPage.xaml.cs">
       <DependentUpon>JudgerMenuPage.xaml</DependentUpon>

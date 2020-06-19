@@ -103,3 +103,5 @@ C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\PrintCompetitiorCardPage.baml
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Controls\PrintCompetitiorCardTeamControl.baml
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Admin\PrintCompetitiorCardTeamPage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Judger\DrawLotsPage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Judger\DrawLotsPage.baml

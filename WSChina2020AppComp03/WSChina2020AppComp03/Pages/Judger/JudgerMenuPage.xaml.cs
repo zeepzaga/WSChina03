@@ -41,8 +41,7 @@ namespace WSChina2020AppComp03.Pages.Judger
 
         private void BtnDraw_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Be under development", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            AppData.MainFrame.Navigate(new DrawLotsPage());
         }
     }
 }

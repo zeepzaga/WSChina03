@@ -52,6 +52,7 @@
     <Property Name="CompetitionId" Type="int" />
     <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+    <Property Name="StationNumber" Type="int" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -86,6 +87,7 @@
     <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="CompetitionId" Type="int" Nullable="false" />
     <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+    <Property Name="IsMain" Type="bit" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -108,7 +110,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Points" Type="decimal" Precision="18" Scale="2" />
     <Property Name="ScheduleId" Type="int" Nullable="false" />
     <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
