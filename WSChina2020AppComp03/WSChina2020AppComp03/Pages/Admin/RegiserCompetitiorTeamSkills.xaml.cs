@@ -269,6 +269,7 @@ namespace WSChina2020AppComp03.Pages.Admin
                             CompetitionId = _competition.Id,
                             CompetitorId = competitior.Id,
                             TeamId = teamId,
+                            EventCompetitionId = _event.Id
                         });
                         AppData.Context.SaveChanges();
                         MessageBox.Show("All done", "Information", MessageBoxButton.OK, MessageBoxImage.Error);

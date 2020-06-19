@@ -25,8 +25,10 @@ namespace WSChina2020AppComp03.Entities
         public System.DateTime DateTimeStart { get; set; }
         public System.DateTime DateTimeEnd { get; set; }
         public int CompetitionId { get; set; }
+        public Nullable<int> EventCompetitionId { get; set; }
     
         public virtual Competition Competition { get; set; }
+        public virtual EventCompetition EventCompetition { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ScheduleOfCompetitor> ScheduleOfCompetitors { get; set; }
     }

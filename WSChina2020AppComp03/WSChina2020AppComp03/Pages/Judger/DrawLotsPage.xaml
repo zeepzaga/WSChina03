@@ -24,7 +24,7 @@
             </StackPanel>
             <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold" Name="TblTotal" HorizontalAlignment="Center" Margin="5 5 5 0"></TextBlock>
         </StackPanel>
-        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" x:Name="DgCompetitiors" Grid.Row="1" Margin="10 5 10 5">
+        <DataGrid IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" x:Name="DgCompetitiors" Grid.Row="1" Margin="10 5 10 5">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="2*" Header="Competitior Number" Binding="{Binding Id}"></DataGridTextColumn>
                 <DataGridTextColumn Width="2*" Header="Competitior Name" Binding="{Binding User.FullName}"></DataGridTextColumn>

@@ -18,8 +18,11 @@ namespace WSChina2020AppComp03.Entities
         public int CompetitionId { get; set; }
         public string CompetitorId { get; set; }
         public int TeamId { get; set; }
+        public Nullable<int> StationNumber { get; set; }
+        public int EventCompetitionId { get; set; }
     
         public virtual Competition Competition { get; set; }
         public virtual Competitior Competitior { get; set; }
+        public virtual EventCompetition EventCompetition { get; set; }
     }
 }

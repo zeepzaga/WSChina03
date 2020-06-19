@@ -19,7 +19,7 @@ namespace WSChina2020AppComp03.Entities
         public string UserId { get; set; }
         public int CompetitionId { get; set; }
         public int EventCompetitionId { get; set; }
-        public Nullable<bool> IsMain { get; set; }
+        public bool IsMain { get; set; }
     
         public virtual Competition Competition { get; set; }
         public virtual EventCompetition EventCompetition { get; set; }

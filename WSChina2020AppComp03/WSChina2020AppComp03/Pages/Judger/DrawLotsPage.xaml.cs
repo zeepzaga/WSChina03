@@ -63,27 +63,36 @@ namespace WSChina2020AppComp03.Pages.Judger
         /// </summary>
         private void BtnDrawLots_Click(object sender, RoutedEventArgs e)
         {
-            var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
-            if (AppData.Context.Competitiors.ToList().
-                Where(p => p.EventCompetitionId == judger.EventCompetitionId && p.CompetitionId == judger.CompetitionId && p.StationNumber == null).
-                ToList().Count == 0) //Если у всех участников есть номера
+            try
             {
-                MessageBox.Show("All competitior have a station number", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
+                var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
+                if (AppData.Context.Competitiors.ToList().
+                    Where(p => p.EventCompetitionId == judger.EventCompetitionId && p.CompetitionId == judger.CompetitionId && p.StationNumber == null).
+                    ToList().Count == 0) //Если у всех участников есть номера
+                {
+                    MessageBox.Show("All competitior have a station number", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                Random random = new Random();
+                foreach (var competitior in AppData.Context.Competitiors.ToList().
+                    Where(p => p.EventCompetitionId == judger.EventCompetitionId && p.CompetitionId == judger.CompetitionId && p.StationNumber == null).ToList())
+                {
+                    int index; // переменная хранящая выпавший индекс
+                    index = random.Next(0, stationNumbersList.Count);  //получение случайного индекса
+                    competitior.StationNumber = stationNumbersList[index]; // присваивание номера участника
+                    stationNumbersList.RemoveAt(index); // удаление использованного номера из листа с номерами
+                    AppData.Context.SaveChanges();
+                }
+                DgCompetitiors.ItemsSource = null;
+                DgCompetitiors.ItemsSource = AppData.Context.Competitiors.ToList().
+                    Where(p => p.EventCompetitionId == judger.EventCompetitionId && p.CompetitionId == judger.CompetitionId).ToList(); // Обновелние DataGrid
             }
-            Random random = new Random();
-            foreach (var competitior in AppData.Context.Competitiors.ToList().
-                Where(p => p.EventCompetitionId == judger.EventCompetitionId && p.CompetitionId == judger.CompetitionId && p.StationNumber == null).ToList())
+            catch
             {
-                int index; // переменная хранящая выпавший индекс
-                index = random.Next(0, stationNumbersList.Count);  //получение случайного индекса
-                competitior.StationNumber = stationNumbersList[index]; // присваивание номера участника
-                stationNumbersList.RemoveAt(index); // удаление использованного номера из листа с номерами
-                AppData.Context.SaveChanges();
+
+                MessageBox.Show("Data Base Error", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                BtnDrawLots.IsEnabled = false;
             }
-            DgCompetitiors.ItemsSource = null;
-            DgCompetitiors.ItemsSource = AppData.Context.Competitiors.ToList().
-                Where(p => p.EventCompetitionId == judger.EventCompetitionId && p.CompetitionId == judger.CompetitionId).ToList(); // Обновелние DataGrid
         }
     }
 }

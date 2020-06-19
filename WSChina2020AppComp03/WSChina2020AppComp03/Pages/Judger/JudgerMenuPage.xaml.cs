@@ -41,7 +41,20 @@ namespace WSChina2020AppComp03.Pages.Judger
 
         private void BtnDraw_Click(object sender, RoutedEventArgs e)
         {
-            AppData.MainFrame.Navigate(new DrawLotsPage());
+            var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
+            bool isIdividual = AppData.Context.Competitions.ToList().FirstOrDefault(p => p.Id == judger.CompetitionId).IsIndividual;
+
+            switch (isIdividual)
+            {
+                case true:
+                    AppData.MainFrame.Navigate(new DrawLotsPage());
+                    break;
+                case false:
+                    AppData.MainFrame.Navigate(new TeamDrawLotsPage());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

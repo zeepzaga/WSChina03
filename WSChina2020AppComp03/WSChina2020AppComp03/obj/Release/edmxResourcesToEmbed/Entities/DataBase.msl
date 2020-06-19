@@ -102,6 +102,7 @@
     <EntitySetMapping Name="Schedules">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.Schedule">
         <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
           <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
           <ScalarProperty Name="DateTimeEnd" ColumnName="DateTimeEnd" />
           <ScalarProperty Name="DateTimeStart" ColumnName="DateTimeStart" />
@@ -164,6 +165,8 @@
     <EntitySetMapping Name="TeamCompetitions">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.TeamCompetition">
         <MappingFragment StoreEntitySet="TeamCompetition">
+          <ScalarProperty Name="EventCompetitionId" ColumnName="EventCompetitionId" />
+          <ScalarProperty Name="StationNumber" ColumnName="StationNumber" />
           <ScalarProperty Name="TeamId" ColumnName="TeamId" />
           <ScalarProperty Name="CompetitorId" ColumnName="CompetitorId" />
           <ScalarProperty Name="CompetitionId" ColumnName="CompetitionId" />
