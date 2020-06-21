@@ -20,12 +20,12 @@ namespace WSChina2020AppComp03.Entities
             this.ScheduleOfCompetitors = new HashSet<ScheduleOfCompetitor>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public System.DateTime DateTimeStart { get; set; }
         public System.DateTime DateTimeEnd { get; set; }
         public int CompetitionId { get; set; }
-        public Nullable<int> EventCompetitionId { get; set; }
+        public int EventCompetitionId { get; set; }
     
         public virtual Competition Competition { get; set; }
         public virtual EventCompetition EventCompetition { get; set; }

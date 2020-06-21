@@ -267,12 +267,12 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="DateTimeStart" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="DateTimeEnd" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CompetitionId" Type="Int32" Nullable="false" />
-    <Property Name="EventCompetitionId" Type="Int32" />
+    <Property Name="EventCompetitionId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Schedule_Competition" FromRole="Schedule" ToRole="Competition" />
     <NavigationProperty Name="EventCompetition" Relationship="WSChina2020BaseComp03Model.FK_Schedule_EventCompetition" FromRole="Schedule" ToRole="EventCompetition" />
     <NavigationProperty Name="ScheduleOfCompetitors" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule" FromRole="Schedule" ToRole="ScheduleOfCompetitor" />
@@ -618,7 +618,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Schedule_EventCompetition">
-    <End Type="WSChina2020BaseComp03Model.EventCompetition" Role="EventCompetition" Multiplicity="0..1" />
+    <End Type="WSChina2020BaseComp03Model.EventCompetition" Role="EventCompetition" Multiplicity="1" />
     <End Type="WSChina2020BaseComp03Model.Schedule" Role="Schedule" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="EventCompetition">
@@ -721,7 +721,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ScheduleOfCompetitor">
-        <PropertyRef Name="CompetitorId" />
+        <PropertyRef Name="ScheduleId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

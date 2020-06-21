@@ -100,12 +100,12 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DateTimeStart" Type="datetime" Nullable="false" />
     <Property Name="DateTimeEnd" Type="datetime" Nullable="false" />
     <Property Name="CompetitionId" Type="int" Nullable="false" />
-    <Property Name="EventCompetitionId" Type="int" />
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ScheduleOfCompetitor">
     <Key>
@@ -364,7 +364,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Schedule_EventCompetition">
-    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="0..1" />
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
     <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="EventCompetition">
@@ -395,7 +395,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ScheduleOfCompetitor">
-        <PropertyRef Name="CompetitorId" />
+        <PropertyRef Name="ScheduleId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

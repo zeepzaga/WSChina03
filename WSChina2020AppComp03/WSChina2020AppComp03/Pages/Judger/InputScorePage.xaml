@@ -21,35 +21,35 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Border Height="300" VerticalAlignment="Center" HorizontalAlignment="Center" Width="700" BorderBrush="Black" BorderThickness="1" Margin="10 5 5 50">
-                    <DataGrid x:Name="DgScore" FontSize="14" Margin="20" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
+                    <DataGrid SelectionChanged="DgScore_SelectionChanged" x:Name="DgScore" FontSize="14" Margin="20" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="2*">
+                            <DataGridTextColumn Binding="{Binding CompetitiorNumber}" Width="2*">
                                 <DataGridTextColumn.Header>
                                     <TextBlock>Competition Number</TextBlock>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Width="*" Header="Name"></DataGridTextColumn>
-                            <DataGridTextColumn Width="*" Header="Province"></DataGridTextColumn>
-                            <DataGridTextColumn Width="0.5*">
+                            <DataGridTextColumn Binding="{Binding Name}" Width="*" Header="Name"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Province}" Width="*" Header="Province"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding StationNumber}" Width="0.5*">
                                 <DataGridTextColumn.Header>
                                     <TextBlock Style="{StaticResource StyleTbBody}" Margin="0" TextWrapping="WrapWithOverflow" FontSize="14">Station Number</TextBlock>
                                 </DataGridTextColumn.Header>
                             </DataGridTextColumn>
-                            <DataGridTextColumn Width="0.5*" Header="Score"></DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Score}" Width="0.5*" Header="Score"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Border>
                 <Border Margin="10" BorderThickness="1" Width="250" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <StackPanel>
-                        <TextBlock Margin="5" Style="{StaticResource StyleTbBody}" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock x:Name="TblName" Margin="5" Style="{StaticResource StyleTbBody}" HorizontalAlignment="Center"></TextBlock>
                         <ScrollViewer Margin="5" Height="200">
                             <StackPanel>
-                                <ItemsControl>
+                                <ItemsControl x:Name="ICSchedule">
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel HorizontalAlignment="Center" Margin="5" Orientation="Horizontal">
-                                                <TextBlock Style="{StaticResource StyleTbBody}" Text="{Binding Name}"></TextBlock>
-                                                <TextBox TextChanged="TextBox_TextChanged" Text="{Binding Points}" Width="100"></TextBox>
+                                                <TextBlock Style="{StaticResource StyleTbBody}" Text="{Binding Name, StringFormat={}{0}:}"></TextBlock>
+                                                <TextBox PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged" Text="{Binding Points}" Width="100"></TextBox>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
@@ -58,7 +58,7 @@
                             </StackPanel>
                         </ScrollViewer>
                         <TextBox Height="50" IsEnabled="False" Margin="20" x:Name="TblTotalScore" FontSize="40" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
-                        <Button x:Name="BtnSave" Height="30" Width="100" Margin="20 20 20 5">Save</Button>
+                        <Button Click="BtnSave_Click" x:Name="BtnSave" Height="30" Width="100" Margin="20 20 20 5">Save</Button>
                     </StackPanel>
                 </Border>
             </StackPanel>

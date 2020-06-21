@@ -344,6 +344,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Judger\TeamInputScorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\LoginScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -459,6 +463,9 @@
     </Compile>
     <Compile Include="Pages\Judger\TeamDrawLotsPage.xaml.cs">
       <DependentUpon>TeamDrawLotsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Judger\TeamInputScorePage.xaml.cs">
+      <DependentUpon>TeamInputScorePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginScreenPage.xaml.cs">
       <DependentUpon>LoginScreenPage.xaml</DependentUpon>
