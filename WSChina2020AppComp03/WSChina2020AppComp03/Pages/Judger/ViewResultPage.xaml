@@ -1,0 +1,32 @@
+﻿<Page x:Class="WSChina2020AppComp03.Pages.Judger.ViewResultPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WSChina2020AppComp03.Pages.Judger"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="ViewResultPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="20 20 20 0">
+            <TextBlock Style="{StaticResource StyleTblTitle}" HorizontalAlignment="Center" FontSize="30">View Result</TextBlock>
+            <StackPanel Margin="0 20 5 5" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Event:</TextBlock>
+                <TextBlock Style="{StaticResource StyleTbBody}" x:Name="TblEvent" Width="400"></TextBlock>
+                <TextBlock Style="{StaticResource StyleTbBody}" FontWeight="Bold">Skill:</TextBlock>
+                <TextBlock Style="{StaticResource StyleTbBody}" x:Name="TblSkill" Width="300"></TextBlock>
+            </StackPanel>
+            <StackPanel  Margin="5 5 5 0" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Margin="5 5 10 5" Style="{StaticResource StyleTbBody}" FontWeight="Bold" Name="TblTotalRcord"></TextBlock>
+                <TextBlock Margin="10 5 5 5" Style="{StaticResource StyleTbBody}" FontWeight="Bold" Name="TblAvarageScore"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <DataGrid x:Name="DgResults" Grid.Row="1" Margin="10 5 10 5" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"></DataGrid>
+    </Grid>
+</Page>

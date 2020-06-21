@@ -30,7 +30,6 @@ namespace WSChina2020AppComp03.Pages.Judger
             try
             {
                 judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id); // Присвоение эксперту его компетенции
-                var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
                 if (!judger.IsMain)
                 {
                     MessageBox.Show("You need to be the chief expert to change the results", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
