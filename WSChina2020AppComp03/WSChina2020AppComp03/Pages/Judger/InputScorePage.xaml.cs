@@ -27,6 +27,11 @@ namespace WSChina2020AppComp03.Pages.Judger
         {
             InitializeComponent();
             var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
+            if (!judger.IsMain)
+            {
+                MessageBox.Show("You need to be the chief expert to change the results", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                BtnSave.IsEnabled = false;
+            }
             TblEvent.Text = judger.EventCompetition.YearCountryTown;
             TblSkill.Text = judger.Competition.FullCompetition;
             UpdateData();
