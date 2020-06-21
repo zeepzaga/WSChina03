@@ -37,6 +37,7 @@ namespace WSChina2020AppComp03.Entities
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<ScheduleOfCompetitor> ScheduleOfCompetitors { get; set; }
+        public virtual DbSet<ScheduleOfTeam> ScheduleOfTeams { get; set; }
         public virtual DbSet<ServiceType> ServiceTypes { get; set; }
         public virtual DbSet<Sponsor> Sponsors { get; set; }
         public virtual DbSet<Sponsorship> Sponsorships { get; set; }

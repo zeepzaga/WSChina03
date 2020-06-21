@@ -76,6 +76,9 @@
     <Compile Include="Controls\RegistrationSuccessfulyControl.xaml.cs">
       <DependentUpon>RegistrationSuccessfulyControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ScheduleOfTeam.cs">
+      <DependentUpon>DataBase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\TeamCompetition.cs">
       <DependentUpon>DataBase.tt</DependentUpon>
     </Compile>

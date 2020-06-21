@@ -15,7 +15,7 @@ namespace WSChina2020AppComp03.Entities
     public partial class ScheduleOfCompetitor
     {
         public int Id { get; set; }
-        public Nullable<decimal> Points { get; set; }
+        public decimal Points { get; set; }
         public int ScheduleId { get; set; }
         public string CompetitorId { get; set; }
     

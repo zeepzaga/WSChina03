@@ -35,15 +35,24 @@ namespace WSChina2020AppComp03.Pages.Judger
 
         private void BtnInput_Click(object sender, RoutedEventArgs e)
         {
-            AppData.MainFrame.Navigate(new InputScorePage());
-
+            var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
+            bool isIdividual = AppData.Context.Competitions.ToList().FirstOrDefault(p => p.Id == judger.CompetitionId).IsIndividual;
+            switch (isIdividual)
+            {
+                case true:
+                    AppData.MainFrame.Navigate(new InputScorePage());
+                    break;
+                case false:
+                    AppData.MainFrame.Navigate(new TeamInputScorePage());
+                    break;
+                default:
+                    break;
+            }
         }
-
         private void BtnDraw_Click(object sender, RoutedEventArgs e)
         {
             var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
             bool isIdividual = AppData.Context.Competitions.ToList().FirstOrDefault(p => p.Id == judger.CompetitionId).IsIndividual;
-
             switch (isIdividual)
             {
                 case true:

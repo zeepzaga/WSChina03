@@ -110,11 +110,22 @@
   <EntityType Name="ScheduleOfCompetitor">
     <Key>
       <PropertyRef Name="Id" />
+      <PropertyRef Name="ScheduleId" />
+      <PropertyRef Name="CompetitorId" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Points" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Points" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ScheduleId" Type="int" Nullable="false" />
     <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleOfTeam">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Points" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" Nullable="false" />
+    <Property Name="TeamId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ServiceType">
     <Key>
@@ -399,6 +410,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ScheduleOfTeam_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="ScheduleOfTeam" Type="Self.ScheduleOfTeam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleOfTeam">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Sponsorship_CategoryOfSponsorship">
     <End Role="CategoryOfSponsorship" Type="Self.CategoryOfSponsorship" Multiplicity="1" />
     <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
@@ -593,6 +616,7 @@
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ScheduleOfCompetitor" EntityType="Self.ScheduleOfCompetitor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleOfTeam" EntityType="Self.ScheduleOfTeam" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" Schema="dbo" store:Type="Tables" />
@@ -664,6 +688,10 @@
     <AssociationSet Name="FK_ScheduleOfCompetitor_Schedule" Association="Self.FK_ScheduleOfCompetitor_Schedule">
       <End Role="Schedule" EntitySet="Schedule" />
       <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleOfTeam_Schedule" Association="Self.FK_ScheduleOfTeam_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleOfTeam" EntitySet="ScheduleOfTeam" />
     </AssociationSet>
     <AssociationSet Name="FK_Sponsorship_CategoryOfSponsorship" Association="Self.FK_Sponsorship_CategoryOfSponsorship">
       <End Role="CategoryOfSponsorship" EntitySet="CategoryOfSponsorship" />

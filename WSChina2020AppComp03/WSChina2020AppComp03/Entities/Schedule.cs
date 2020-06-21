@@ -18,6 +18,7 @@ namespace WSChina2020AppComp03.Entities
         public Schedule()
         {
             this.ScheduleOfCompetitors = new HashSet<ScheduleOfCompetitor>();
+            this.ScheduleOfTeams = new HashSet<ScheduleOfTeam>();
         }
     
         public int Id { get; set; }
@@ -31,5 +32,7 @@ namespace WSChina2020AppComp03.Entities
         public virtual EventCompetition EventCompetition { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ScheduleOfCompetitor> ScheduleOfCompetitors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ScheduleOfTeam> ScheduleOfTeams { get; set; }
     }
 }

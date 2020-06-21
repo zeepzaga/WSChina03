@@ -115,11 +115,22 @@
         <EntityType Name="ScheduleOfCompetitor">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="CompetitorId" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Points" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Points" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="ScheduleId" Type="int" Nullable="false" />
           <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScheduleOfTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Points" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ScheduleId" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ServiceType">
           <Key>
@@ -404,6 +415,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ScheduleOfTeam_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+          <End Role="ScheduleOfTeam" Type="Self.ScheduleOfTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScheduleOfTeam">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sponsorship_CategoryOfSponsorship">
           <End Role="CategoryOfSponsorship" Type="Self.CategoryOfSponsorship" Multiplicity="1" />
           <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
@@ -598,6 +621,7 @@
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ScheduleOfCompetitor" EntityType="Self.ScheduleOfCompetitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduleOfTeam" EntityType="Self.ScheduleOfTeam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" Schema="dbo" store:Type="Tables" />
@@ -669,6 +693,10 @@
           <AssociationSet Name="FK_ScheduleOfCompetitor_Schedule" Association="Self.FK_ScheduleOfCompetitor_Schedule">
             <End Role="Schedule" EntitySet="Schedule" />
             <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleOfTeam_Schedule" Association="Self.FK_ScheduleOfTeam_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="ScheduleOfTeam" EntitySet="ScheduleOfTeam" />
           </AssociationSet>
           <AssociationSet Name="FK_Sponsorship_CategoryOfSponsorship" Association="Self.FK_Sponsorship_CategoryOfSponsorship">
             <End Role="CategoryOfSponsorship" EntitySet="CategoryOfSponsorship" />
@@ -748,6 +776,7 @@
           <EntitySet Name="Roles" EntityType="WSChina2020BaseComp03Model.Role" />
           <EntitySet Name="Schedules" EntityType="WSChina2020BaseComp03Model.Schedule" />
           <EntitySet Name="ScheduleOfCompetitors" EntityType="WSChina2020BaseComp03Model.ScheduleOfCompetitor" />
+          <EntitySet Name="ScheduleOfTeams" EntityType="WSChina2020BaseComp03Model.ScheduleOfTeam" />
           <EntitySet Name="ServiceTypes" EntityType="WSChina2020BaseComp03Model.ServiceType" />
           <EntitySet Name="Sponsors" EntityType="WSChina2020BaseComp03Model.Sponsor" />
           <EntitySet Name="Sponsorships" EntityType="WSChina2020BaseComp03Model.Sponsorship" />
@@ -863,6 +892,10 @@
           <AssociationSet Name="FK_ScheduleOfCompetitor_Schedule" Association="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule">
             <End Role="Schedule" EntitySet="Schedules" />
             <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleOfTeam_Schedule" Association="WSChina2020BaseComp03Model.FK_ScheduleOfTeam_Schedule">
+            <End Role="Schedule" EntitySet="Schedules" />
+            <End Role="ScheduleOfTeam" EntitySet="ScheduleOfTeams" />
           </AssociationSet>
           <AssociationSet Name="FK_Sponsorship_Sponsor" Association="WSChina2020BaseComp03Model.FK_Sponsorship_Sponsor">
             <End Role="Sponsor" EntitySet="Sponsors" />
@@ -1011,17 +1044,30 @@
           <NavigationProperty Name="Competition" Relationship="WSChina2020BaseComp03Model.FK_Schedule_Competition" FromRole="Schedule" ToRole="Competition" />
           <NavigationProperty Name="EventCompetition" Relationship="WSChina2020BaseComp03Model.FK_Schedule_EventCompetition" FromRole="Schedule" ToRole="EventCompetition" />
           <NavigationProperty Name="ScheduleOfCompetitors" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule" FromRole="Schedule" ToRole="ScheduleOfCompetitor" />
+          <NavigationProperty Name="ScheduleOfTeams" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfTeam_Schedule" FromRole="Schedule" ToRole="ScheduleOfTeam" />
         </EntityType>
         <EntityType Name="ScheduleOfCompetitor">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="ScheduleId" />
+            <PropertyRef Name="CompetitorId" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Points" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Points" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="ScheduleId" Type="Int32" Nullable="false" />
           <Property Name="CompetitorId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Competitior" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Competitior" FromRole="ScheduleOfCompetitor" ToRole="Competitior" />
           <NavigationProperty Name="Schedule" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfCompetitor_Schedule" FromRole="ScheduleOfCompetitor" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="ScheduleOfTeam">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Points" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="WSChina2020BaseComp03Model.FK_ScheduleOfTeam_Schedule" FromRole="ScheduleOfTeam" ToRole="Schedule" />
         </EntityType>
         <EntityType Name="ServiceType">
           <Key>
@@ -1460,6 +1506,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ScheduleOfTeam_Schedule">
+          <End Type="WSChina2020BaseComp03Model.Schedule" Role="Schedule" Multiplicity="1" />
+          <End Type="WSChina2020BaseComp03Model.ScheduleOfTeam" Role="ScheduleOfTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ScheduleOfTeam">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sponsorship_Sponsor">
           <End Type="WSChina2020BaseComp03Model.Sponsor" Role="Sponsor" Multiplicity="1" />
           <End Type="WSChina2020BaseComp03Model.Sponsorship" Role="Sponsorship" Multiplicity="*" />
@@ -1608,6 +1666,16 @@
             <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.ScheduleOfCompetitor">
               <MappingFragment StoreEntitySet="ScheduleOfCompetitor">
                 <ScalarProperty Name="CompetitorId" ColumnName="CompetitorId" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduleOfTeams">
+            <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.ScheduleOfTeam">
+              <MappingFragment StoreEntitySet="ScheduleOfTeam">
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
                 <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
                 <ScalarProperty Name="Points" ColumnName="Points" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

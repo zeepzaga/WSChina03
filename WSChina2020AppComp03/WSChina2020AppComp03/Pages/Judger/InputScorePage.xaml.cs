@@ -21,8 +21,8 @@ namespace WSChina2020AppComp03.Pages.Judger
     /// </summary>
     public partial class InputScorePage : Page
     {
-        List<TableScore> tableScoresList = new List<TableScore>();
-        List<CompetitiorPoints> competitiorPointsList = new List<CompetitiorPoints>();
+        List<TableScore> tableScoresList = new List<TableScore>(); // Лист для таблицы
+        List<CompetitiorPoints> competitiorPointsList = new List<CompetitiorPoints>(); // Лист для рещультатов выбранного полбзователя
         public InputScorePage()
         {
             InitializeComponent();
@@ -31,27 +31,22 @@ namespace WSChina2020AppComp03.Pages.Judger
             TblSkill.Text = judger.Competition.FullCompetition;
             UpdateData();
         }
-
+        /// <summary>
+        /// Обработка изменения данных в поле для ввода результатов
+        /// </summary>
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
                 var tbx = sender as TextBox;
-                if (tbx.SelectedText.Length == tbx.Text.Length)
+                if(tbx.Text=="0")
                 {
-                    tbx.Text = ".";
+                    tbx.Text = "0.00";
                 }
                 if (!tbx.Text.Contains('.'))
                     Dispatcher.BeginInvoke(new Action(() => tbx.Undo()));
                 CompetitiorPoints model = competitiorPointsList.FirstOrDefault(p => p == ((sender as TextBox).DataContext as CompetitiorPoints));
-                if (tbx.Text == ".")
-                {
-                    model.Points = 0;
-                }
-                else
-                {
-                    model.Points = Convert.ToDecimal((sender as TextBox).Text.Replace(".", ","));
-                }
+                model.Points = Convert.ToDecimal((sender as TextBox).Text.Replace(".", ","));
                 TblTotalScore.Text = $"{competitiorPointsList.Sum(p => p.Points)}";
             }
             catch
@@ -59,6 +54,9 @@ namespace WSChina2020AppComp03.Pages.Judger
 
             }
         }
+        /// <summary>
+        /// Класс для правильного отображения данных в таблице
+        /// </summary>
         private class TableScore
         {
             public string CompetitiorNumber { get; set; }
@@ -67,7 +65,9 @@ namespace WSChina2020AppComp03.Pages.Judger
             public string StationNumber { get; set; }
             public string Score { get; set; }
         }
-
+        /// <summary>
+        /// Класс для хранения результатов выюранного юзера
+        /// </summary>
         private class CompetitiorPoints
         {
             public string Name { get; set; }
@@ -75,50 +75,79 @@ namespace WSChina2020AppComp03.Pages.Judger
             public decimal Points { get; set; }
             public string CompetitiorNumber { get; set; }
         }
-
+        /// <summary>
+        /// Обработка кнопки сохранения
+        /// </summary>
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var item in competitiorPointsList)
+            try
             {
-                var scheduleOfCompetitior = AppData.Context.ScheduleOfCompetitors.ToList().
-                    FirstOrDefault(p => p.CompetitorId == item.CompetitiorNumber && p.ScheduleId == item.ScheduleId);
-                scheduleOfCompetitior.Points = item.Points;
+                if (decimal.Parse(TblTotalScore.Text.Replace(".", ",")) <= 100)
+                {
+                    foreach (var item in competitiorPointsList)
+                    {
+                        var scheduleOfCompetitior = AppData.Context.ScheduleOfCompetitors.ToList().
+                            FirstOrDefault(p => p.CompetitorId == item.CompetitiorNumber && p.ScheduleId == item.ScheduleId);
+                        scheduleOfCompetitior.Points = item.Points;
+                    }
+                    AppData.Context.SaveChanges();
+                    UpdateData();
+                }
+                else
+                {
+                    MessageBox.Show("Maximum number of points is 100", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            AppData.Context.SaveChanges();
-            UpdateData();
+            catch
+            {
+                MessageBox.Show("Data Base Error", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
         }
+        /// <summary>
+        /// Обновление данных в таблице
+        /// </summary>
         private void UpdateData()
         {
-            tableScoresList.Clear();
-            var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
-            decimal score = 0;
-            foreach (var competitior in AppData.Context.Competitiors.ToList().Where(p => p.CompetitionId == judger.CompetitionId
-            && p.EventCompetitionId == judger.EventCompetitionId))
+            try
             {
-                string StringScore = "";
-                foreach (var point in AppData.Context.ScheduleOfCompetitors.ToList().Where(p => p.CompetitorId == competitior.Id))
+                tableScoresList.Clear();
+                var judger = AppData.Context.Judgers.ToList().FirstOrDefault(p => p.UserId == AppData.CurrentUser.Id);
+                decimal score = 0;
+                foreach (var competitior in AppData.Context.Competitiors.ToList().Where(p => p.CompetitionId == judger.CompetitionId
+                && p.EventCompetitionId == judger.EventCompetitionId))
                 {
-                    score += Convert.ToDecimal(point.Points);
+                    string StringScore = "";
+                    foreach (var point in AppData.Context.ScheduleOfCompetitors.ToList().Where(p => p.CompetitorId == competitior.Id))
+                    {
+                        score += Convert.ToDecimal(point.Points);
+                    }
+                    StringScore = score.ToString("f2");
+                    if (score == 0)
+                    {
+                        StringScore = "--";
+                    }
+                    tableScoresList.Add(new TableScore
+                    {
+                        CompetitiorNumber = competitior.Id.ToString(),
+                        Name = competitior.FullName,
+                        Province = competitior.User.Town.Name,
+                        StationNumber = competitior.StationNumber.ToString(),
+                        Score = StringScore
+                    });
+                    score = 0;
                 }
-                StringScore = score.ToString("f2");
-                if (score == 0)
-                {
-                    StringScore = "--";
-                }
-                tableScoresList.Add(new TableScore
-                {
-                    CompetitiorNumber = competitior.Id.ToString(),
-                    Name = competitior.FullName,
-                    Province = competitior.User.Town.Name,
-                    StationNumber = competitior.StationNumber.ToString(),
-                    Score = StringScore
-                });
-                score = 0;
+                DgScore.ItemsSource = null;
+                DgScore.ItemsSource = tableScoresList;
             }
-            DgScore.ItemsSource = null;
-            DgScore.ItemsSource = tableScoresList;
+            catch
+            {
+                MessageBox.Show("Data Base Error", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
-
+        /// <summary>
+        /// Обработка выбора участника из списка
+        /// </summary>
         private void DgScore_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -147,7 +176,7 @@ namespace WSChina2020AppComp03.Pages.Judger
                             {
                                 Name = schedule.Name,
                                 CompetitiorNumber = competitior.Id,
-                                Points = Convert.ToDecimal(item.Points),
+                                Points = item.Points,
                                 ScheduleId = schedule.Id
                             });
                         }
@@ -163,11 +192,25 @@ namespace WSChina2020AppComp03.Pages.Judger
                 MessageBox.Show("Unknown Error", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        /// <summary>
+        /// Метод позволяющий вводить только цифры
+        /// </summary>
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!Char.IsDigit(e.Text, 0))
             {
                 e.Handled = true;
+            }
+        }
+        /// <summary>
+        /// Метод загрузки текстбокса, для нормального отображения данных
+        /// </summary>
+        private void TextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            var tbx = sender as TextBox;
+            if (tbx.Text == "0")
+            {
+                tbx.Text = "0.00";
             }
         }
     }

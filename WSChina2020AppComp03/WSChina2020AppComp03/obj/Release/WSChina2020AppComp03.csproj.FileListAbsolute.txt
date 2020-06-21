@@ -109,3 +109,5 @@ C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Judger\TeamDrawLotsPage.baml
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Judger\InputScorePage.g.cs
 C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Judger\InputScorePage.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Judger\TeamInputScorePage.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WSChina2020AppComp03\obj\Release\Pages\Judger\TeamInputScorePage.baml

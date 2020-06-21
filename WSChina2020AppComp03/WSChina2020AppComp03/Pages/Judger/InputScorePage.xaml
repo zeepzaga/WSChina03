@@ -49,12 +49,11 @@
                                         <DataTemplate>
                                             <StackPanel HorizontalAlignment="Center" Margin="5" Orientation="Horizontal">
                                                 <TextBlock Style="{StaticResource StyleTbBody}" Text="{Binding Name, StringFormat={}{0}:}"></TextBlock>
-                                                <TextBox PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged" Text="{Binding Points}" Width="100"></TextBox>
+                                                <TextBox Loaded="TextBox_Loaded" PreviewTextInput="TextBox_PreviewTextInput" TextChanged="TextBox_TextChanged" Text="{Binding Points}" Width="100"></TextBox>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
-
                             </StackPanel>
                         </ScrollViewer>
                         <TextBox Height="50" IsEnabled="False" Margin="20" x:Name="TblTotalScore" FontSize="40" TextAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>

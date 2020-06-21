@@ -121,6 +121,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ScheduleOfTeams">
+      <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.ScheduleOfTeam">
+        <MappingFragment StoreEntitySet="ScheduleOfTeam">
+          <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ServiceTypes">
       <EntityTypeMapping TypeName="WSChina2020BaseComp03Model.ServiceType">
         <MappingFragment StoreEntitySet="ServiceType">
