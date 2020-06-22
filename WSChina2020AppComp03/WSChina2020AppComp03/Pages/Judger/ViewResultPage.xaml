@@ -27,6 +27,14 @@
                 <TextBlock Margin="10 5 5 5" Style="{StaticResource StyleTbBody}" FontWeight="Bold" Name="TblAvarageScore"></TextBlock>
             </StackPanel>
         </StackPanel>
-        <DataGrid x:Name="DgResults" Grid.Row="1" Margin="10 5 10 5" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True"></DataGrid>
+        <DataGrid x:Name="DgResults" Grid.Row="1" Margin="10 5 10 5" AutoGenerateColumns="False" CanUserAddRows="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="0.4*" Header="Rank" Binding="{Binding Rank}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Competition Number" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Name" Binding="{Binding User.FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Station Number" Binding="{Binding StationNumber}"></DataGridTextColumn>
+                <DataGridTextColumn Width="0.5*" Header="Total Score" Binding="{Binding TotalScore}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

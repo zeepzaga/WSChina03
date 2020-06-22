@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSChina2020AppComp03", "WSChina2020AppComp03\WSChina2020AppComp03.csproj", "{607BD4F1-A57B-43B2-861F-A65011C9DF5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfBubbles_Zakharov", "WpfBubbles_Zakharov\WpfBubbles_Zakharov.csproj", "{E6EA7E41-AD56-42FC-8AC6-ED1D49FECFEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{607BD4F1-A57B-43B2-861F-A65011C9DF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{607BD4F1-A57B-43B2-861F-A65011C9DF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{607BD4F1-A57B-43B2-861F-A65011C9DF5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6EA7E41-AD56-42FC-8AC6-ED1D49FECFEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6EA7E41-AD56-42FC-8AC6-ED1D49FECFEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6EA7E41-AD56-42FC-8AC6-ED1D49FECFEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6EA7E41-AD56-42FC-8AC6-ED1D49FECFEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -23,5 +23,24 @@ namespace WSChina2020AppComp03.Entities
                 return User.Gender.Name;
             }
         }
+        public List<ScheduleOfCompetitor> Modules
+        {
+            get
+            {
+                return ScheduleOfCompetitors.ToList();
+            }
+            set { }
+        }
+
+        public string Rank
+        {
+            get;
+            set;
+        }
+        public string TotalScore
+        {
+            get { return (ScheduleOfCompetitors.Sum(p => p.Points).ToString("f2")); }
+            set { }
+        }
     }
 }

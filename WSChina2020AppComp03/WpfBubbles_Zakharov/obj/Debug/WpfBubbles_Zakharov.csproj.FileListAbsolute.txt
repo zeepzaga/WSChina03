@@ -1,0 +1,15 @@
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\bin\Debug\WpfBubbles_Zakharov.exe.config
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\bin\Debug\WpfBubbles_Zakharov.exe
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\bin\Debug\WpfBubbles_Zakharov.pdb
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov.csprojAssemblyReference.cache
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\MainWindow.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\App.g.cs
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov_MarkupCompile.cache
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov_MarkupCompile.lref
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\MainWindow.baml
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov.g.resources
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov.Properties.Resources.resources
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov.csproj.GenerateResource.cache
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov.csproj.CoreCompileInputs.cache
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov.exe
+C:\Users\danil\source\repos\WSChina03\WSChina2020AppComp03\WpfBubbles_Zakharov\obj\Debug\WpfBubbles_Zakharov.pdb

@@ -4,8 +4,16 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryOfSponsorship">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Competition">
     <Key>
@@ -15,6 +23,36 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CategoryOfCompetitionId" Type="int" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="WorkShopLayout" Type="varbinary(max)" />
+    <Property Name="Infrastructure" Type="varbinary(max)" />
+    <Property Name="IsIndividual" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompetitionOfEventCompetition">
+    <Key>
+      <PropertyRef Name="EventCompetitionId" />
+      <PropertyRef Name="CompetitionId" />
+    </Key>
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CompetitionService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+    <Property Name="CoordinateX" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CoordinateY" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Competitior">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+    <Property Name="StationNumber" Type="int" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -28,9 +66,10 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Year" Type="int" Nullable="false" />
     <Property Name="TownId" Type="int" Nullable="false" />
     <Property Name="NumberOfMember" Type="int" Nullable="false" />
+    <Property Name="DateStart" Type="date" Nullable="false" />
+    <Property Name="DateEnd" Type="date" Nullable="false" />
   </EntityType>
   <EntityType Name="Gender">
     <Key>
@@ -39,12 +78,84 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="Judgers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TownId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="18" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+    <Property Name="IsMain" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateTimeStart" Type="datetime" Nullable="false" />
+    <Property Name="DateTimeEnd" Type="datetime" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleOfCompetitor">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ScheduleId" />
+      <PropertyRef Name="CompetitorId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Points" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" Nullable="false" />
+    <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleOfTeam">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Points" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" Nullable="false" />
+    <Property Name="TeamId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Image" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Sponsor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Sponsorship">
+    <Key>
+      <PropertyRef Name="SponsorId" />
+      <PropertyRef Name="CategoryOfSponsorshipId" />
+      <PropertyRef Name="EventId" />
+      <PropertyRef Name="CompetitionId" />
+    </Key>
+    <Property Name="SponsorId" Type="int" Nullable="false" />
+    <Property Name="CategoryOfSponsorshipId" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="EventId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -55,6 +166,17 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TeamCompetition">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="CompetitorId" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="TeamId" Type="int" Nullable="false" />
+    <Property Name="StationNumber" Type="int" />
+    <Property Name="EventCompetitionId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Town">
     <Key>
@@ -68,15 +190,35 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="nvarchar" MaxLength="18" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
     <Property Name="GenderId" Type="int" Nullable="false" />
     <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="varbinary(max)" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Organization" Type="nvarchar(max)" />
+    <Property Name="ContactAddress" Type="nvarchar(max)" />
+    <Property Name="TownId" Type="int" />
   </EntityType>
-  <Association Name="FK_Competition_CategoryOfCompetition">
+  <EntityType Name="Volunteer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RepresentCountryId" Type="int" Nullable="false" />
+    <Property Name="BornCountryId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GenderId" Type="int" Nullable="false" />
+    <Property Name="CompetitionId" Type="int" Nullable="false" />
+    <Property Name="Age" Type="int" />
+  </EntityType>
+  <Association Name="FK_Competition_CategoryOfCompetition1">
     <End Role="CategoryOfCompetition" Type="Self.CategoryOfCompetition" Multiplicity="1" />
     <End Role="Competition" Type="Self.Competition" Multiplicity="*" />
     <ReferentialConstraint>
@@ -85,6 +227,78 @@
       </Principal>
       <Dependent Role="Competition">
         <PropertyRef Name="CategoryOfCompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompetitionOfEventCompetition_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="CompetitionOfEventCompetition" Type="Self.CompetitionOfEventCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompetitionOfEventCompetition">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompetitionOfEventCompetition_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="CompetitionOfEventCompetition" Type="Self.CompetitionOfEventCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompetitionOfEventCompetition">
+        <PropertyRef Name="EventCompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompetitionService_ServiceType">
+    <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="1" />
+    <End Role="CompetitionService" Type="Self.CompetitionService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CompetitionService">
+        <PropertyRef Name="ServiceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competitior_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="0..1" />
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Competitior">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competitior_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Competitior">
+        <PropertyRef Name="EventCompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Competitior_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Competitior">
+        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -97,6 +311,198 @@
       </Principal>
       <Dependent Role="EventCompetition">
         <PropertyRef Name="TownId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Judgers_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Judgers">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Judgers_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Judgers">
+        <PropertyRef Name="EventCompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Judgers_Town2">
+    <End Role="Town" Type="Self.Town" Multiplicity="1" />
+    <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Town">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Judgers">
+        <PropertyRef Name="TownId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Judgers_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Judgers" Type="Self.Judgers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Judgers">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule">
+        <PropertyRef Name="EventCompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleOfCompetitor_Competitior">
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="1" />
+    <End Role="ScheduleOfCompetitor" Type="Self.ScheduleOfCompetitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competitior">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleOfCompetitor">
+        <PropertyRef Name="CompetitorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleOfCompetitor_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="ScheduleOfCompetitor" Type="Self.ScheduleOfCompetitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleOfCompetitor">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleOfTeam_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="ScheduleOfTeam" Type="Self.ScheduleOfTeam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ScheduleOfTeam">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sponsorship_CategoryOfSponsorship">
+    <End Role="CategoryOfSponsorship" Type="Self.CategoryOfSponsorship" Multiplicity="1" />
+    <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryOfSponsorship">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sponsorship">
+        <PropertyRef Name="CategoryOfSponsorshipId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sponsorship_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sponsorship">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sponsorship_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sponsorship">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sponsorship_Sponsor">
+    <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+    <End Role="Sponsorship" Type="Self.Sponsorship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sponsor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sponsorship">
+        <PropertyRef Name="SponsorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeamCompetition_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="TeamCompetition" Type="Self.TeamCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeamCompetition">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeamCompetition_Competitior">
+    <End Role="Competitior" Type="Self.Competitior" Multiplicity="1" />
+    <End Role="TeamCompetition" Type="Self.TeamCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competitior">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeamCompetition">
+        <PropertyRef Name="CompetitorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TeamCompetition_EventCompetition">
+    <End Role="EventCompetition" Type="Self.EventCompetition" Multiplicity="1" />
+    <End Role="TeamCompetition" Type="Self.TeamCompetition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EventCompetition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TeamCompetition">
+        <PropertyRef Name="EventCompetitionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -136,23 +542,184 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_User_Town">
+    <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Town">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="TownId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Competition">
+    <End Role="Competition" Type="Self.Competition" Multiplicity="1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Competition">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="CompetitionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="RepresentCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Country1">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="BornCountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Volunteer_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Volunteer" Type="Self.Volunteer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Volunteer">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище WSChina2020BaseComp03ModelContainer">
     <EntitySet Name="CategoryOfCompetition" EntityType="Self.CategoryOfCompetition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryOfSponsorship" EntityType="Self.CategoryOfSponsorship" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Competition" EntityType="Self.Competition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompetitionOfEventCompetition" EntityType="Self.CompetitionOfEventCompetition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CompetitionService" EntityType="Self.CompetitionService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Competitior" EntityType="Self.Competitior" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EventCompetition" EntityType="Self.EventCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Judgers" EntityType="Self.Judgers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleOfCompetitor" EntityType="Self.ScheduleOfCompetitor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleOfTeam" EntityType="Self.ScheduleOfTeam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sponsorship" EntityType="Self.Sponsorship" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeamCompetition" EntityType="Self.TeamCompetition" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Competition_CategoryOfCompetition" Association="Self.FK_Competition_CategoryOfCompetition">
+    <EntitySet Name="Volunteer" EntityType="Self.Volunteer" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Competition_CategoryOfCompetition1" Association="Self.FK_Competition_CategoryOfCompetition1">
       <End Role="CategoryOfCompetition" EntitySet="CategoryOfCompetition" />
       <End Role="Competition" EntitySet="Competition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompetitionOfEventCompetition_Competition" Association="Self.FK_CompetitionOfEventCompetition_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="CompetitionOfEventCompetition" EntitySet="CompetitionOfEventCompetition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompetitionOfEventCompetition_EventCompetition" Association="Self.FK_CompetitionOfEventCompetition_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
+      <End Role="CompetitionOfEventCompetition" EntitySet="CompetitionOfEventCompetition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompetitionService_ServiceType" Association="Self.FK_CompetitionService_ServiceType">
+      <End Role="ServiceType" EntitySet="ServiceType" />
+      <End Role="CompetitionService" EntitySet="CompetitionService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competitior_Competition" Association="Self.FK_Competitior_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="Competitior" EntitySet="Competitior" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competitior_EventCompetition" Association="Self.FK_Competitior_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
+      <End Role="Competitior" EntitySet="Competitior" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Competitior_User" Association="Self.FK_Competitior_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Competitior" EntitySet="Competitior" />
     </AssociationSet>
     <AssociationSet Name="FK_EventCompetition_Town" Association="Self.FK_EventCompetition_Town">
       <End Role="Town" EntitySet="Town" />
       <End Role="EventCompetition" EntitySet="EventCompetition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Judgers_Competition" Association="Self.FK_Judgers_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="Judgers" EntitySet="Judgers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Judgers_EventCompetition" Association="Self.FK_Judgers_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
+      <End Role="Judgers" EntitySet="Judgers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Judgers_Town2" Association="Self.FK_Judgers_Town2">
+      <End Role="Town" EntitySet="Town" />
+      <End Role="Judgers" EntitySet="Judgers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Judgers_User" Association="Self.FK_Judgers_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Judgers" EntitySet="Judgers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Competition" Association="Self.FK_Schedule_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_EventCompetition" Association="Self.FK_Schedule_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
+      <End Role="Schedule" EntitySet="Schedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleOfCompetitor_Competitior" Association="Self.FK_ScheduleOfCompetitor_Competitior">
+      <End Role="Competitior" EntitySet="Competitior" />
+      <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleOfCompetitor_Schedule" Association="Self.FK_ScheduleOfCompetitor_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleOfCompetitor" EntitySet="ScheduleOfCompetitor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleOfTeam_Schedule" Association="Self.FK_ScheduleOfTeam_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleOfTeam" EntitySet="ScheduleOfTeam" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sponsorship_CategoryOfSponsorship" Association="Self.FK_Sponsorship_CategoryOfSponsorship">
+      <End Role="CategoryOfSponsorship" EntitySet="CategoryOfSponsorship" />
+      <End Role="Sponsorship" EntitySet="Sponsorship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sponsorship_Competition" Association="Self.FK_Sponsorship_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="Sponsorship" EntitySet="Sponsorship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sponsorship_EventCompetition" Association="Self.FK_Sponsorship_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
+      <End Role="Sponsorship" EntitySet="Sponsorship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sponsorship_Sponsor" Association="Self.FK_Sponsorship_Sponsor">
+      <End Role="Sponsor" EntitySet="Sponsor" />
+      <End Role="Sponsorship" EntitySet="Sponsorship" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeamCompetition_Competition" Association="Self.FK_TeamCompetition_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="TeamCompetition" EntitySet="TeamCompetition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeamCompetition_Competitior" Association="Self.FK_TeamCompetition_Competitior">
+      <End Role="Competitior" EntitySet="Competitior" />
+      <End Role="TeamCompetition" EntitySet="TeamCompetition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TeamCompetition_EventCompetition" Association="Self.FK_TeamCompetition_EventCompetition">
+      <End Role="EventCompetition" EntitySet="EventCompetition" />
+      <End Role="TeamCompetition" EntitySet="TeamCompetition" />
     </AssociationSet>
     <AssociationSet Name="FK_Town_Country1" Association="Self.FK_Town_Country1">
       <End Role="Country" EntitySet="Country" />
@@ -165,6 +732,26 @@
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Town" Association="Self.FK_User_Town">
+      <End Role="Town" EntitySet="Town" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Competition" Association="Self.FK_Volunteer_Competition">
+      <End Role="Competition" EntitySet="Competition" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Country" Association="Self.FK_Volunteer_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Country1" Association="Self.FK_Volunteer_Country1">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Volunteer_Gender" Association="Self.FK_Volunteer_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Volunteer" EntitySet="Volunteer" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
